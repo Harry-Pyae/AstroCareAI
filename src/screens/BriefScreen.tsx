@@ -27,7 +27,7 @@ export const BriefScreen: React.FC = () => {
 
   const member = crewMembers.find(c => c.id === crewId);
   const task = allTasks.find(t => t.crewId === crewId) || null;
-  const observations = allObservations.filter(o => o.crewId === crewId);
+  const observations = [...allObservations, ...getCheckins(crewId ?? '')].filter(o => o.crewId === crewId);
 
   // Use a fixed "now" or current time. A mission dashboard often uses real time.
   // Using current time. Note: if demo data is fixed in the past, this might affect baseline windows.
@@ -37,7 +37,7 @@ export const BriefScreen: React.FC = () => {
   const baselineResults = useMemo(() => {
     if (!crewId) return [];
     try {
-      return computeBaselines(observations, crewId, now);
+      return computeBaselines(observations, crewId, new Date(now));
     } catch (e) {
       console.error("Failed to compute baselines:", e);
       return [];

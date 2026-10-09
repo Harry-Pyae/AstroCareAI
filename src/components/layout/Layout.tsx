@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { resetAll } from '../../lib/storage';
 
 function resetDemo() {
   try {
