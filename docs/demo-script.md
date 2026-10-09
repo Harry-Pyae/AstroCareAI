@@ -1,82 +1,42 @@
-# ASTROCARE 2-Minute Live Demo Script
+# ASTROCARE — 2-Minute Demo Script (final)
 
-**Target Duration**: 2 minutes (120 seconds)  
-**Target Environment**: Deployed web application  
-**Primary Persona**: Commander Alex Chen (`ac-cmdr-01`)
+**Duration**: 2:00 · **Environment**: deployed web app (live URL) · **Backup**: screen recording of this exact flow
+**Personas**: Cmdr. Alex Chen (`ac-cmdr-01`, the "change worth reviewing" story) + any stable crew member for contrast
 
----
-
-## Demo Timeline & Spoken Script
-
-### [0:00 – 0:20] Step 1: Crew Badges & Accessing the Brief
-- **Action**: Open the deployed website homepage (`/`). The screen displays the crew selection view with digital badge cards for the crew: Commander Alex Chen (`ac-cmdr-01`), Flight Engineer Sam Rivera (`ac-eng-02`), and Mission Scientist Maya Patel (`ac-sci-03`).
-- **Presenter**:
-  > *"Welcome to ASTROCARE. In spaceflight, autonomy begins with clear self-awareness. On our landing screen, each crew member has a digital badge featuring an instant QR deep link. A crew member can scan their physical badge with a mobile device or click directly on their card to open their personal brief. Let's open Commander Alex Chen (`ac-cmdr-01`)."*
-- **Action**: Point phone camera at Commander Alex Chen's badge QR code and open the link, or click directly on Alex Chen's badge card to navigate to `/crew/ac-cmdr-01`.
+> Judge self-serve path: open the live URL → **Explore demo** → follow the in-app "How this demo works" guide. The script below is the presented version of the same path.
 
 ---
 
-### [0:20 – 0:45] Step 2: Personal Baseline Comparison & Trend Chart
-- **Action**: On Commander Chen's brief screen, point out the personal baseline comparison table.
-- **Presenter**:
-  > *"Here on Commander Chen's Personal Baseline Brief, ASTROCARE doesn't compare Alex against generic population averages. Instead, it compares the last 7 days against Alex's own 21-day personal reference baseline.
-  > Notice the status tags: while exercise and radiation remain within normal bounds, Sleep Hours shows a 20% decline (5.8 hours versus a 7.3-hour baseline), and Heart Rate Variability shows a 16% dip (42 milliseconds versus 50 milliseconds). Both are flagged neutrally as 'Worth reviewing'.
-  > Expanding the detail shows plain-language explanations alongside an interactive trend chart, with the shaded zone clearly highlighting Alex's personal baseline window."*
-- **Action**: Click "Show details" on the Sleep Hours or HRV row to display the explanation text and Recharts trend visualization.
+## [0:00–0:15] Open — crew selection
+- **Action**: Open the live URL. The crew page shows three crew badge cards (name, role, QR code) and the **Explore the judge demo** panel.
+- **Say**: *"ASTROCARE is self-monitoring for astronauts: it compares each crew member against their own baseline — not a population average — and explains what changed in plain language. All data here is synthetic, and the app says so on every screen."*
+
+## [0:15–0:30] Enter demo mode
+- **Action**: Click **Explore demo** → lands in the *Change worth reviewing* scenario; the demo status chip appears in the top bar.
+- **Say**: *"Demo mode runs on three deterministic scenarios, so you can explore every state the system has — including the honest ones."*
+
+## [0:30–1:00] The Baseline Brief (the core)
+- **Action**: Open Commander Chen's brief. Point to the Changes-to-Review panel: Sleep ~20% below baseline, HRV ~16% below, both tagged **Worth reviewing**. Expand one row → plain-language explanation + trend chart with the shaded 21-day baseline window.
+- **Say**: *"Seven-day average against a personal 21-day reference window. Sleep is 20% below Alex's own normal. Notice the wording — 'worth reviewing.' Never a risk score, never 'unsafe.' The chart's shaded zone is the baseline window, so you can see the comparison, not just trust it."*
+
+## [1:00–1:20] Task context + check-in
+- **Action**: Point to the upcoming task card (docking approach, high attention demands). Click **Start check-in**, fill the grouped form (rest / activity / wellbeing), submit → confirmation toast → dashboard updates, "Self-reported today" card appears.
+- **Say**: *"Context, not alarms: a high-attention task is coming, so a sleep dip is worth knowing about today. A 30-second check-in feeds the same pipeline immediately."*
+
+## [1:20–1:40] The human decides + honest states
+- **Action**: Record **Propose schedule change** with a short note → appears in decision history (aligned columns, timestamps). Switch scenario to *Incomplete information* → dashboard shows insufficient-baseline and stale-data states.
+- **Say**: *"The system informs; the astronaut decides — and the decision is logged. And when data is missing or stale, ASTROCARE says exactly that. It never fills gaps with reassuring numbers."*
+
+## [1:40–2:00] Close
+- **Action**: Go back to the crew page and point at a badge QR — a phone scan opens that brief directly. Toggle theme (smooth crossfade), flick language to မြန်မာ and back. Point to the synthetic-data footer. Open the top-bar **Demo** button → **Reset this scenario** (select twice to confirm).
+- **Say**: *"Bilingual, themed, offline-capable core, zero accounts, fully client-side. ASTROCARE never says 'safe' or 'unsafe' — it says 'worth reviewing,' and keeps the human in command."*
 
 ---
 
-### [0:45 – 1:05] Step 3: Upcoming Task Context
-- **Action**: Scroll down to the "Upcoming task context" card directly below the baseline comparison.
-- **Presenter**:
-  > *"Self-monitoring only matters when connected to operational realities. Immediately below the baseline data, the Task Context card shows Alex's upcoming operational milestone: 'Docking approach monitoring' scheduled in 24 hours.
-  > ASTROCARE highlights the task's critical demands—sustained attention and fine motor control. Alex now has immediate, objective context connecting recent cumulative fatigue with a high-consequence flight operation."*
+## Rules during demo
+- Never claim diagnosis, prediction, or clinical validation.
+- If the space-weather card shows "(cached)", say: *"live NASA feed with a cached fallback — resilience by design."*
+- If anything breaks: Reset demo → continue; worst case, switch to the backup recording without comment.
 
----
-
-### [1:05 – 1:25] Step 4: Submitting a Live Check-in
-- **Action**: Click the "Add check-in →" button in the upper header to open the check-in screen (`/crew/ac-cmdr-01/checkin`).
-- **Presenter**:
-  > *"Completing a check-in takes less than 30 seconds. Let's submit a live morning update. We enter 6 hours of sleep, select a fatigue rating of 3 out of 5, add an optional note like 'Restless rest cycle', and hit save.
-  > The check-in saves immediately to local device storage, recalculates rolling trends without any server round-trip, and returns us directly to the brief with an updated check-in timestamp."*
-- **Action**: Enter `6` in the sleep hours input, select fatigue button `3`, type note `"Restless rest cycle"`, and click "Save check-in and return to brief". Verify navigation back to `/crew/ac-cmdr-01` and updated "Last check-in" timestamp.
-
----
-
-### [1:25 – 1:45] Step 5: Recording "Propose Schedule Change"
-- **Action**: Scroll to the "Choose your next step" Decision Bar at the bottom of the brief.
-- **Presenter**:
-  > *"Rather than making decisions for the crew, ASTROCARE empowers the human to act. In the Decision Bar, Alex has three proactive options: Recheck, Request review, or Propose schedule change.
-  > Given tomorrow's docking maneuver and the sleep deficit, Alex selects 'Propose schedule change', adds a note: 'Requesting docking approach handover to Flight Engineer Rivera', and clicks 'Save decision'.
-  > The system confirms 'Decision saved on this device' and logs the entry into Alex's local decision history."*
-- **Action**: Click "Propose schedule change", enter note `"Requesting docking approach handover to Flight Engineer Rivera"`, click "Save decision", confirm the green confirmation text, and view the new entry under "Decision history".
-
----
-
-### [1:45 – 2:00] Step 6: Environmental Context, Footer & Conclusion
-- **Action**: Scroll to view the NASA Space Weather context card and the bottom footer.
-- **Presenter**:
-  > *"Finally, ASTROCARE integrates NASA's DONKI space weather API to provide external solar activity context. This data is strictly environmental background awareness—it does not infer causation or explain personal health readings.
-  > Across every screen, our persistent footer reminds the crew: 'Synthetic demonstration data — not medical advice.'
-  > It never says ‘unsafe.’ It says ‘worth reviewing’ — and keeps the human in command."*
-
----
-
-## Fallback Procedures
-
-In the event of network disruption, camera issues, or demo hiccups, execute the following verified fallback procedures:
-
-1. **If QR scanning with a mobile device fails**:
-   - *Fallback*: Do not pause. Simply click Commander Alex Chen's badge card directly on the screen, or navigate directly to `/crew/ac-cmdr-01` in the browser URL bar.
-2. **If camera permissions or QR image generation fails**:
-   - *Fallback*: All badge cards and links are fully functional HTML hyperlinks; the app is 100% operable without camera or QR scanning.
-3. **If NASA DONKI live API fetch fails or times out**:
-   - *Fallback*: The app automatically catches API failures or rate limits and seamlessly renders the local `spaceweather-fallback.json` cached events, displaying `"Recent solar activity — NASA DONKI (cached)"`. No error modals or broken layouts appear.
-4. **If browser local storage is corrupted or full from prior practice runs**:
-   - *Fallback*: Click the **"Reset demo"** button in the top navigation header. This instantly clears `localStorage` and reloads the clean initial demonstration state.
-5. **If live check-in form validation triggers**:
-   - *Fallback*: Ensure both sleep hours (between 0 and 24) and a fatigue rating (1 through 5) are selected before clicking submit.
-
----
-
-> “It never says ‘unsafe.’ It says ‘worth reviewing’ — and keeps the human in command.”
+## Reset for repeat runs
+Demo control panel → **Reset demo** (restores the selected scenario, touches only demo records).
