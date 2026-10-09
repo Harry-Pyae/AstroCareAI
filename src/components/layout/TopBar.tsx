@@ -9,7 +9,7 @@ import DemoMenu from '../demo/DemoMenu';
 import { useDemo } from '../demo/DemoProvider';
 
 const button =
-  'inline-flex min-h-11 items-center gap-2 rounded-lg border border-default px-3 text-sm text-secondary hover:border-strong hover:text-primary';
+  'inline-flex h-11 items-center gap-2 rounded-lg border border-default bg-card px-3 text-sm text-secondary transition-colors duration-[var(--dur-fast)] hover:border-strong hover:bg-card-raised hover:text-primary';
 
 export default function TopBar({ onOpenMenu }: { onOpenMenu: () => void }) {
   const { t } = useI18n();

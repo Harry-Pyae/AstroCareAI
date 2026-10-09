@@ -15,8 +15,8 @@ export const icons = {
 
 // Collapsible = sidebar (icons-only ≤1024px). Same paddings and states in both
 // sizes; only the label visibility and icon centering change.
-const collapseLabel = 'sr-only min-[1025px]:not-sr-only';
-const collapseAlign = 'justify-center min-[1025px]:justify-start';
+const collapseLabel = 'sr-only min-[1025px]:not-sr-only min-[1025px]:[html[data-sidebar=collapsed]_&]:sr-only';
+const collapseAlign = 'justify-center min-[1025px]:justify-start min-[1025px]:[html[data-sidebar=collapsed]_&]:justify-center';
 
 export function Brand({ collapsible }: { collapsible: boolean }) {
   return (
@@ -53,7 +53,7 @@ export function NavList({ collapsible }: { collapsible: boolean }) {
             title={t(item.label)}
             aria-label={t(item.label)}
             className={({ isActive }) =>
-              `flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm ${collapsible ? collapseAlign : ''} ${
+              `flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm transition-colors duration-[var(--dur-fast)] ${collapsible ? collapseAlign : ''} ${
                 isActive
                   ? 'bg-accent/15 font-semibold text-accent'
                   : 'text-secondary hover:bg-card-raised hover:text-primary'

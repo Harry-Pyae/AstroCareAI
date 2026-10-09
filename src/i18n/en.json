@@ -250,5 +250,7 @@
   "guide.3.title": "Add a check-in",
   "guide.3.body": "Select Start check-in and enter sleep, activity and wellbeing. Back on the brief, the averages and the Self-reported today card update.",
   "guide.4.title": "Record a decision",
-  "guide.4.body": "Choose Recheck, Request review or Propose schedule change. Reset this scenario clears demo records only and restores the starting point."
+  "guide.4.body": "Choose Recheck, Request review or Propose schedule change. Reset this scenario clears demo records only and restores the starting point.",
+  "Expand sidebar": "Expand sidebar",
+  "Collapse sidebar": "Collapse sidebar"
 }

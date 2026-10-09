@@ -7,7 +7,7 @@ import Select from '../ui/Select';
 import { useDemo } from './DemoProvider';
 import { useDemoGuide } from './DemoGuide';
 
-const chip = 'inline-flex min-h-8 items-center gap-1.5 rounded-full border border-accent-review/40 bg-accent-review/10 px-3 text-xs font-medium text-accent-review';
+const chip = 'inline-flex h-11 items-center gap-1.5 rounded-full border border-accent-review/40 bg-accent-review/10 px-3 text-xs font-medium text-accent-review';
 
 /** Top-bar demo status. Off: a static synthetic-data label. On: a button that
  * opens the demo control panel (scenario, reset, guide, exit). */
@@ -51,13 +51,13 @@ export default function DemoMenu() {
   }
 
   return <div ref={rootRef} className="relative">
-    <button ref={triggerRef} type="button" aria-expanded={open} aria-controls="demo-panel" onClick={() => { setOpen(!open); setNotice(''); }} className={`${chip} min-h-11 hover:bg-accent-review/20`}>
+    <button ref={triggerRef} type="button" aria-expanded={open} aria-controls="demo-panel" onClick={() => { setOpen(!open); setNotice(''); }} className={`${chip} transition-colors duration-[var(--dur-fast)] hover:bg-accent-review/20`}>
       <Icon name="play" size={14} />{t('Demo')} · {t(SCENARIOS[scenario].label)}<Icon name="chevron-down" size={14} />
     </button>
     {open && <div id="demo-panel" role="dialog" aria-label={t('Demo controls')} className="motion-popover absolute right-0 z-40 mt-2 w-[min(22rem,calc(100vw-2rem))] rounded-xl border border-default bg-card p-5 text-primary shadow-lg">
       <div className="flex items-center justify-between gap-3">
         <h2 className="text-base font-semibold">{t('Demo controls')}</h2>
-        <span className={chip}>{t('Synthetic data')}</span>
+        <span className="rounded-full border border-accent-review/40 bg-accent-review/10 px-3 py-1 text-xs font-medium text-accent-review">{t('Synthetic data')}</span>
       </div>
       <p className="mt-1 text-xs text-secondary">{t('Demo records are kept separate from your own check-ins.')}</p>
       <div className="mt-5">
