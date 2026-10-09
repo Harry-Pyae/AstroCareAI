@@ -26,6 +26,7 @@ export function timeUntil(timestamp: string, now: Date) {
   const remaining = Date.parse(timestamp) - now.getTime();
   if (!Number.isFinite(remaining)) return 'Time unavailable';
   if (remaining <= 0) return 'Scheduled time reached';
-  const hours = Math.ceil(remaining / 3_600_000);
-  return hours < 24 ? `In ${hours} hour${hours === 1 ? '' : 's'}` : `In ${Math.floor(hours / 24)}d ${hours % 24}h`;
+  const minutes = Math.ceil(remaining / 60_000);
+  const hours = Math.floor(minutes / 60);
+  return hours < 24 ? `In ${hours}h ${minutes % 60}m` : `In ${Math.floor(hours / 24)}d ${hours % 24}h`;
 }
