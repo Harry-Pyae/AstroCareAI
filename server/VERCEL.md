@@ -410,7 +410,10 @@ environment/revision behind the supplied public alias.
 
 The connected Vercel account still cannot access this project (empty project/team
 lists and not-found lookup). Opening
-`https://vercel.com/harry-j-s-projects/astro-care-ai/settings/git` requires login.
+`https://vercel.com/harry-j-s-projects/astro-care-ai/settings/git` initially
+required login. After the browser's authenticated dashboard became available,
+the owning team's Git settings still displayed **Not Found**. The accessible
+dashboard belongs to a different team; project-owner/team access is required.
 No authentication, project configuration, deployment or production change was
 performed. Since Git pushes can automatically deploy the configured Production
 Branch, push remains pending until the owner confirms `integration/full-local`
