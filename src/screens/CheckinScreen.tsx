@@ -15,14 +15,15 @@ export default function CheckinScreen() {
   const [note, setNote] = useState('');
   const [error, setError] = useState('');
   if (!member) return <section><h1>Crew member not found</h1><Link to='/'>Return to crew selection</Link></section>;
-  const briefPath = `/crew/${encodeURIComponent(member.id)}`;
+  const memberId = member.id;
+  const briefPath = `/crew/${encodeURIComponent(memberId)}`;
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const hours = Number(sleep);
     if (!sleep.trim() || !Number.isFinite(hours) || hours < 0 || hours > 24 || fatigue === null) { setError('Enter sleep from 0 to 24 hours and choose a fatigue rating.'); return; }
     const timestamp = new Date().toISOString();
-    const observation: Observation = { crewId: member.id, metric: 'sleep_hours', value: hours, timestamp, provenance: 'user_checkin' };
-    const saved = saveCheckinEntry(observation, { crewId: member.id, timestamp, fatigue, note: note.trim() });
+    const observation: Observation = { crewId: memberId, metric: 'sleep_hours', value: hours, timestamp, provenance: 'user_checkin' };
+    const saved = saveCheckinEntry(observation, { crewId: memberId, timestamp, fatigue, note: note.trim() });
     if (saved) navigate(briefPath);
     else setError('Could not save in this browser. Your entries are still here; enable browser storage and try again.');
   }

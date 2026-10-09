@@ -10,7 +10,7 @@ Expected P4 storage API:
 ```ts
 getCheckins(crewId: string): Observation[]
 getDecisions(crewId: string): Decision[]
-saveDecision(decision: Decision): void
+saveDecision(decision: Decision): boolean
 ```
 
 Check-ins are merged with telemetry before comparison. Local history refreshes

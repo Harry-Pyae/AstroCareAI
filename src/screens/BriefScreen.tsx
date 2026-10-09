@@ -43,7 +43,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
   const task = tasks.filter(item => item.crewId === member.id && Date.parse(item.scheduledFor) >= now.getTime()).sort((a, b) => Date.parse(a.scheduledFor) - Date.parse(b.scheduledFor))[0];
   function recordDecision(action: Decision['action'], note: string) {
     const decision: Decision = { crewId: member.id, action, note, timestamp: new Date().toISOString() };
-    saveDecision(decision);
+    if (saveDecision(decision) === false) throw new Error('Decision storage unavailable');
     setDecisions(getDecisions(member.id));
   }
   return <div className="space-y-6">
