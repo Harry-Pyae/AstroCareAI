@@ -20,23 +20,64 @@ via QR deep link. All health data is SYNTHETIC and labeled as such.
 
 ## Stack (fixed — do not add dependencies beyond these)
 - React 18 + Vite + TypeScript, react-router-dom
-- Tailwind CSS
+- Tailwind CSS v4 (CSS-first config: there is NO tailwind.config.js — theme
+  tokens are mapped to classes in src/styles/tokens.css via `@theme inline`)
 - Recharts (charts), qrcode (QR generation), html5-qrcode (optional scanner)
 - State: React context + localStorage. No Redux, no server.
 - Deploy: Vercel. `vercel.json` must contain the SPA rewrite:
   { "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
 
-## Folder structure & ownership (do not edit files you don't own)
+## Folder structure & ownership (REDESIGN phase — do not edit files you don't own)
 src/
-  App.tsx, main.tsx, routes.tsx, components/layout/*   → OWNER: P1 (shell)
-  data/crew.json, data/observations.json,
-  data/tasks.json, data/spaceweather-fallback.json,
-  lib/baseline.ts, lib/types.ts                        → OWNER: P2 (data+logic)
-  screens/BriefScreen.tsx, components/brief/*          → OWNER: P3 (main UI)
+  App.tsx, main.tsx, routes.tsx, index.css, theme.tsx,
+  styles/tokens.css, components/layout/*, index.html,
+  AGENTS.md, all merges                                → OWNER: P1 (theme + shell)
+  screens/BriefScreen.tsx, components/brief/*,
+  dashboard pieces of the home route                   → OWNER: P2 (dashboard)
+  lib/demo.ts, data/scenarios/*, components/demo/*,
+  DemoProvider context                                 → OWNER: P3 (demo mode)
   screens/CheckinScreen.tsx, components/checkin/*,
   lib/storage.ts, components/qr/*,
-  components/spaceweather/*                            → OWNER: P4 (checkin/QR/DONKI)
-docs/ (pitch, references, demo script)                 → OWNER: P5 (no code)
+  components/spaceweather/*, i18n/*                    → OWNER: P4 (polish + QA)
+  data/crew.json, observations.json, tasks.json,
+  spaceweather-fallback.json, lib/baseline.ts,
+  lib/types.ts                                         → FROZEN: change only via P1
+docs/, PPT, submission                                 → OWNER: P5 (no code)
+
+## Theme tokens (src/styles/tokens.css — style ONLY with these, never hex or
+## raw palette classes like gray-800 / amber-400)
+Theme = data-theme="dark|light" on <html>. useTheme() from src/theme.tsx gives
+{ theme, toggleTheme }. Both themes define every token below.
+| Token (CSS var)       | Tailwind class               | Use                                 |
+|-----------------------|------------------------------|-------------------------------------|
+| --page                | bg-page                      | page background                     |
+| --card                | bg-card                      | card / panel surface                |
+| --card-raised         | bg-card-raised               | hover, nested surface, chips        |
+| --text-primary        | text-primary                 | headings, values, body              |
+| --text-secondary      | text-secondary               | labels, captions, placeholders      |
+| --border-default      | border-default               | card + input borders                |
+| --border-strong       | border-strong                | hover / emphasized borders          |
+| --accent              | bg-accent, text-accent       | primary action, selected state      |
+| --on-accent           | text-on-accent               | text on bg-accent                   |
+| --accent-review       | text-accent-review, bg-accent-review/15 | "worth reviewing" (amber) |
+| --danger              | text-danger                  | existing urgent states ONLY         |
+| --focus-ring          | outline-focus-ring           | focus (global :focus-visible ring)  |
+| --chart-line          | stroke="var(--chart-line)"   | Recharts series                     |
+| --chart-grid          | stroke="var(--chart-grid)"   | Recharts CartesianGrid              |
+| --chart-label         | fill="var(--chart-label)"    | Recharts axis ticks                 |
+| --chart-tooltip-bg    | contentStyle background      | Recharts tooltip                    |
+| --chart-baseline-fill | fill="var(--chart-baseline-fill)" | shaded baseline window (ReferenceArea) |
+Opacity modifiers work on all color classes (bg-accent/15, border-accent-review/40).
+Spacing 4/8/12/16/24/32/48px, card padding 20–24px, touch targets ≥44px (min-h-11).
+Never communicate state by color alone. prefers-reduced-motion is handled globally.
+Breakpoints: sidebar is icons-only ≤1024px and a hamburger sheet <768px (md).
+Legacy bridge: tokens.css temporarily remaps gray/neutral/amber/white/red-400
+classes onto tokens so un-migrated screens theme correctly — do not rely on it;
+it is deleted once P2/P4 migrate.
+Shell slots: the top bar shows a placeholder "Synthetic data" chip until P3's
+DemoProvider chip merges; the language switch renders only with full
+translations from P4. localStorage key "astrocare:theme" belongs to theme.tsx
+(the one exception to "only storage.ts touches localStorage").
 
 ## Shared data contracts (lib/types.ts — P2 commits this in the first 15 min;
 ## everyone else codes against it, changes only via P1)
