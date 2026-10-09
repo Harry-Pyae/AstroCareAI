@@ -20,6 +20,8 @@ Crew members can scan a physical badge QR code or tap their card to open their b
 
 ASTROCARE never computes arbitrary risk scores, never makes clinical diagnoses, and never declares an astronaut "safe" or "unsafe." By translating personal physiological baselines into actionable operational context, ASTROCARE keeps the human in command.
 
+The interface is engineered with a strict semantic design system—utilizing CSS-first tokens across both light and dark themes, calm reduced-motion-compliant animation timing (`--dur-fast`, `--dur-base`), and full English and Myanmar (`en`/`my`) bilingual localization with dedicated Noto Sans Myanmar typography.
+
 ---
 
 ## 3. Project Limitations
