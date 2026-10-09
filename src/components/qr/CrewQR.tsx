@@ -17,8 +17,8 @@ export default function CrewQR({ crewId, size = 160, className = '' }: CrewQRPro
   }, [crewId, size, url]);
   const current = result?.url === url ? result : null;
   return <span className={`inline-flex flex-col items-center gap-2 ${className}`}>
-    {current?.image ? <img src={current.image} width={size} height={size} className='rounded bg-white' alt={`Scan to open crew ${crewId}'s baseline brief`} /> :
-      <span role='status' className='flex items-center justify-center rounded border border-neutral-700 p-3 text-center text-xs text-neutral-400' style={{width:size,height:size}}>{current?.error ? 'QR unavailable. Use the crew card or link.' : 'Generating crew QR…'}</span>}
-    <span className='font-mono text-xs text-neutral-400'>Scan badge · {crewId}</span>
+    {current?.image ? <img src={current.image} width={size} height={size} className='rounded' alt={`Scan to open crew ${crewId}'s baseline brief`} /> :
+      <span role='status' className='flex items-center justify-center rounded border border-default bg-card p-3 text-center text-xs text-secondary' style={{width:size,height:size}}>{current?.error ? 'QR unavailable. Use the crew card or link.' : 'Generating crew QR…'}</span>}
+    <span className='font-mono text-xs text-secondary'>Scan badge · {crewId}</span>
   </span>;
 }
