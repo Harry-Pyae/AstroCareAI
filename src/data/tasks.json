@@ -25,5 +25,32 @@
       "visual observation",
       "data recording"
     ]
+  },
+  {
+    "crewId": "ac-med-04",
+    "title": "Crew medical kit inventory",
+    "scheduledFor": "2026-10-10T02:00:00.000Z",
+    "attentionDemands": [
+      "procedural attention",
+      "data recording"
+    ]
+  },
+  {
+    "crewId": "ac-pay-05",
+    "title": "Payload deployment rehearsal",
+    "scheduledFor": "2026-10-09T18:00:00.000Z",
+    "attentionDemands": [
+      "fine motor control",
+      "team coordination"
+    ]
+  },
+  {
+    "crewId": "ac-plt-06",
+    "title": "Manual piloting simulator session",
+    "scheduledFor": "2026-10-10T22:00:00.000Z",
+    "attentionDemands": [
+      "sustained attention",
+      "rapid decision-making"
+    ]
   }
 ]

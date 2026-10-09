@@ -39,7 +39,7 @@ for (const task of read('../data/tasks.json')) {
   for (const demand of task.attentionDemands) assert.ok(demand in my);
 }
 const observations = read('../data/observations.json');
-for (const crewId of ['ac-cmdr-01', 'ac-eng-02', 'ac-sci-03']) {
+for (const { id: crewId } of read('../data/crew.json')) {
   for (const result of computeBaselines(observations, crewId, new Date('2026-10-09T06:00:00Z'))) {
     const explanation = baselineExplanation(result, 'my');
     assert.ok(/[\u1000-\u109f]/.test(explanation));

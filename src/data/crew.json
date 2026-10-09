@@ -12,6 +12,21 @@
   {
     "id": "ac-sci-03",
     "name": "Maya Patel",
-    "role": "Mission Scientist"
+    "role": "Mission Specialist"
+  },
+  {
+    "id": "ac-med-04",
+    "name": "Lena Okafor",
+    "role": "Medical Officer"
+  },
+  {
+    "id": "ac-pay-05",
+    "name": "Kenji Sato",
+    "role": "Payload Specialist"
+  },
+  {
+    "id": "ac-plt-06",
+    "name": "Sofia Marquez",
+    "role": "Pilot"
   }
 ]

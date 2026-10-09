@@ -13,9 +13,23 @@ for (const [metric, expected] of [['sleep_hours', -20], ['hrv', -16]]) {
   assert.equal(result.status, 'worth_reviewing');
   assert.ok(Math.abs(result.deltaPct - expected) < 0.01);
 }
-assert.ok(results('ac-eng-02').every(row => row.status === 'within_range'));
-assert.equal(results('ac-sci-03').find(row => row.metric === 'mood').status, 'insufficient_data');
-assert.equal(results('ac-sci-03').find(row => row.metric === 'radiation_msv').status, 'stale_data');
+const status = (id, metric) => results(id).find(row => row.metric === metric).status;
+assert.ok(results('ac-eng-02').every(row => row.status === 'within_range'), 'engineer fully stable');
+assert.equal(status('ac-sci-03', 'mood'), 'insufficient_data');
+assert.equal(status('ac-med-04', 'hrv'), 'stale_data');
+assert.equal(status('ac-med-04', 'radiation_msv'), 'stale_data');
+const exercise = results('ac-pay-05').find(row => row.metric === 'exercise_min');
+assert.equal(exercise.status, 'worth_reviewing', 'an increase is also only worth reviewing');
+assert.ok(Math.abs(exercise.deltaPct - 25) < 0.01);
+assert.equal(status('ac-plt-06', 'mood'), 'worth_reviewing');
+assert.equal(status('ac-plt-06', 'exercise_min'), 'stale_data');
+// Runtime scenarios come from the same profiles.
+const { buildObservations, STABLE_PROFILES, INCOMPLETE_PROFILES } = await import('./profiles.ts');
+const stable = buildObservations(now.getTime(), STABLE_PROFILES);
+assert.ok(read('crew.json').every(m => computeBaselines(stable, m.id, now).every(row => row.status === 'within_range')), 'stable scenario');
+const incomplete = buildObservations(now.getTime(), INCOMPLETE_PROFILES);
+assert.ok(read('crew.json').every(m => computeBaselines(incomplete, m.id, now).some(row => row.status === 'insufficient_data' || row.status === 'stale_data')), 'incomplete scenario');
+assert.ok(incomplete.every(row => row.value > 0), 'gaps are missing readings, never zeros');
 assert.equal(JSON.stringify(observations), before, 'Input remains unchanged');
 assert.ok(computeBaselines([], 'unknown', now).every(row => row.status === 'insufficient_data'));
 const flat = observations.filter(row => row.crewId === 'ac-eng-02').map(row => ({ ...row, value: 0 }));
@@ -23,8 +37,8 @@ assert.ok(computeBaselines(flat, 'ac-eng-02', now).every(row => row.status === '
 const nonzero = flat.map(row => ({ ...row, value: Date.parse(row.timestamp) >= now.getTime() - 7 * 86400000 ? 1 : 0 }));
 assert.ok(computeBaselines(nonzero, 'ac-eng-02', now).every(row => row.status === 'worth_reviewing' && row.deltaPct === null));
 const tasks = read('tasks.json');
-assert.equal(read('crew.json').length, 3);
-assert.equal(tasks.length, 3);
+assert.equal(read('crew.json').length, 6);
+assert.equal(tasks.length, 6);
 assert.ok(Date.parse(tasks[0].scheduledFor) > now.getTime() && Date.parse(tasks[0].scheduledFor) <= now.getTime() + 48 * 3600000);
 assert.ok(observations.every(row => row.provenance === 'synthetic_telemetry'));
 // Exact rolling-window edges, inclusive 48h freshness and 15% threshold.

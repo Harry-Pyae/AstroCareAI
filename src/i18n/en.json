@@ -22,7 +22,6 @@
   "Scan a badge QR or click a card to open the baseline brief.": "Scan a badge QR or click a card to open the baseline brief.",
   "Commander": "Commander",
   "Flight Engineer": "Flight Engineer",
-  "Mission Scientist": "Mission Scientist",
   "QR unavailable. Use the crew card or link.": "QR unavailable. Use the crew card or link.",
   "Generating crew QR…": "Generating crew QR…",
   "qr.alt": "Scan to open crew {id}'s baseline brief",
@@ -252,5 +251,14 @@
   "guide.4.title": "Record a decision",
   "guide.4.body": "Choose Recheck, Request review or Propose schedule change. Reset this scenario clears demo records only and restores the starting point.",
   "Expand sidebar": "Expand sidebar",
-  "Collapse sidebar": "Collapse sidebar"
+  "Collapse sidebar": "Collapse sidebar",
+  "Mission Specialist": "Mission Specialist",
+  "Medical Officer": "Medical Officer",
+  "Payload Specialist": "Payload Specialist",
+  "Pilot": "Pilot",
+  "Crew medical kit inventory": "Crew medical kit inventory",
+  "Payload deployment rehearsal": "Payload deployment rehearsal",
+  "Manual piloting simulator session": "Manual piloting simulator session",
+  "team coordination": "team coordination",
+  "rapid decision-making": "rapid decision-making"
 }

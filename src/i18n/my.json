@@ -22,7 +22,6 @@
   "Scan a badge QR or click a card to open the baseline brief.": "နှိုင်းယှဉ်ချက်ကို ကြည့်ရန် QR ကို စကင်ဖတ်ပါ သို့မဟုတ် ကတ်ကို နှိပ်ပါ။",
   "Commander": "ယာဉ်မှူးချုပ်",
   "Flight Engineer": "အာကာသယာဉ် အင်ဂျင်နီယာ",
-  "Mission Scientist": "မစ်ရှင် သိပ္ပံပညာရှင်",
   "QR unavailable. Use the crew card or link.": "QR မရရှိနိုင်ပါ။ ကတ် သို့မဟုတ် လင့်ခ်ကို အသုံးပြုပါ။",
   "Generating crew QR…": "အာကာသယာဉ်မှူး၏ QR ကို ဖန်တီးနေပါသည်…",
   "qr.alt": "အာကာသယာဉ်မှူး {id} ၏ နှိုင်းယှဉ်ချက်ကို ဖွင့်ရန် စကင်ဖတ်ပါ",
@@ -252,5 +251,14 @@
   "guide.4.title": "ဆုံးဖြတ်ချက် မှတ်တမ်းတင်ပါ",
   "guide.4.body": "ပြန်စစ်ရန်၊ ပြန်လည်သုံးသပ်ရန် တောင်းဆိုရန် သို့မဟုတ် အချိန်ဇယားပြောင်းရန် အဆိုပြုရန်ကို ရွေးပါ။ ဤအခြေအနေကို ပြန်စရန်က သရုပ်ပြမှတ်တမ်းများကိုသာ ရှင်းသည်။",
   "Expand sidebar": "ဘေးဘားကို ချဲ့ရန်",
-  "Collapse sidebar": "ဘေးဘားကို ချုံ့ရန်"
+  "Collapse sidebar": "ဘေးဘားကို ချုံ့ရန်",
+  "Mission Specialist": "မစ်ရှင် အထူးကျွမ်းကျင်သူ",
+  "Medical Officer": "ဆေးဘက်ဆိုင်ရာ အရာရှိ",
+  "Payload Specialist": "ဝန်စည် အထူးကျွမ်းကျင်သူ",
+  "Pilot": "လေယာဉ်မှူး",
+  "Crew medical kit inventory": "အဖွဲ့ဝင် ဆေးသေတ္တာ စာရင်းစစ်ခြင်း",
+  "Payload deployment rehearsal": "ဝန်စည် ဖြန့်ချထားမှု အစမ်းလေ့ကျင့်ခြင်း",
+  "Manual piloting simulator session": "လက်ဖြင့် မောင်းနှင်မှု စမ်းသပ်လေ့ကျင့်ခန်း",
+  "team coordination": "အဖွဲ့ ညှိနှိုင်းမှု",
+  "rapid decision-making": "လျင်မြန်သော ဆုံးဖြတ်ချက်ချမှု"
 }
