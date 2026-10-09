@@ -3,10 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": { "node": "22.x" },
   "scripts": {
     "dev": "vite",
+    "dev:server": "node --env-file=.env server/index.ts",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "build:server": "tsc -p server/tsconfig.json",
+    "build:function": "tsc -p api/tsconfig.json",
+    "preview": "vite preview",
+    "test": "node --test server/proxy.test.mjs server/vercel.test.mjs src/data/baseline.test.mjs src/components/brief/integration.test.mjs",
+    "test:brief": "node src/components/brief/contract.test.mjs"
   },
   "dependencies": {
     "html5-qrcode": "^2.3.8",

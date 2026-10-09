@@ -1,0 +1,8 @@
+{
+  "extends": "../server/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "..",
+    "outDir": "../.vercel/function-check"
+  },
+  "include": ["space-weather.ts"]
+}
