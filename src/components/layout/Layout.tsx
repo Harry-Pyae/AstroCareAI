@@ -1,7 +1,7 @@
 import { useI18n } from "../../i18n/LanguageProvider";
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { Brand, NavList, icons } from './Nav';
+import { Brand, NavList } from './Nav';
 import TopBar from './TopBar';
 import { getUiPref, setUiPref } from '../../lib/storage';
 import Icon from '../icons/Icon';
@@ -73,7 +73,7 @@ export default function Layout() {
               onClick={() => setMenuOpen(false)}
               className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-secondary hover:text-primary"
             >
-              {icons.close}
+              <Icon name="close" />
             </button>
           </div>
           <nav aria-label={t("Main")}>

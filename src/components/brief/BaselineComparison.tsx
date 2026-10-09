@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 import { CartesianGrid, Line, LineChart, ReferenceArea, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import type { BaselineResult, Observation } from '../../lib/types';
 import { DAY, freshness, metricLabels, metricValue } from './format';
-import Icon from './Icon';
+import Icon from '../icons/Icon';
 import Select from '../ui/Select';
 
 function Status({ result }: { result: BaselineResult }) {
   const { t, language, date } = useI18n();
-  const content = { within_range: ['check', 'Within range'], worth_reviewing: ['review', 'Worth reviewing'], insufficient_data: ['info', 'Insufficient data'], stale_data: ['clock', 'Stale data'] } as const;
+  const content = { within_range: ['check', 'Within range'], worth_reviewing: ['review', 'Worth reviewing'], insufficient_data: ['info', 'Insufficient data'], stale_data: ['schedule', 'Stale data'] } as const;
   const [icon, label] = content[result.status];
-  return <span className={`brief-status ${result.status === 'worth_reviewing' ? 'brief-status-review' : result.status === 'within_range' ? 'brief-status-good' : ''}`}><Icon name={icon} />{t(label)}</span>;
+  return <span className={`brief-status ${result.status === 'worth_reviewing' ? 'brief-status-review' : result.status === 'within_range' ? 'brief-status-good' : ''}`}><Icon name={icon} size={16} />{t(label)}</span>;
 }
 
 export default function BaselineComparison({ results, observations, now, crewId }: { results: BaselineResult[]; observations: readonly Observation[]; now: Date; crewId: string }) {
@@ -30,7 +30,7 @@ export default function BaselineComparison({ results, observations, now, crewId 
   const label = metricLabels[metric] ?? { name: metric, unit: '' };
   const supporting = results.filter(item => item.status !== 'worth_reviewing').sort((a, b) => Number(b.status !== 'within_range') - Number(a.status !== 'within_range')).slice(0, 4);
   return <>
-    <section className={`brief-panel ${flagged.length ? 'brief-review-panel' : ''}`} aria-labelledby="review-heading"><div className="brief-panel-header"><h2 id="review-heading">{t("Changes to review")}</h2><span className={`brief-status ${flagged.length ? 'brief-status-review' : ''}`}><Icon name={flagged.length ? 'review' : 'info'} />{t('flaggedCount', { count: flagged.length })}</span></div><p className="brief-muted">{t("Recent 7-day averages against your own 3-week baseline.")}</p>
+    <section className={`brief-panel ${flagged.length ? 'brief-review-panel' : ''}`} aria-labelledby="review-heading"><div className="brief-panel-header"><h2 id="review-heading">{t("Changes to review")}</h2><span className={`brief-status ${flagged.length ? 'brief-status-review' : ''}`}><Icon name={flagged.length ? 'review' : 'info'} size={16} />{t('flaggedCount', { count: flagged.length })}</span></div><p className="brief-muted">{t("Recent 7-day averages against your own 3-week baseline.")}</p>
       {flagged.map(item => <article key={item.metric} className="brief-review-row"><div className="brief-row-title"><h3>{t(metricLabels[item.metric]?.name ?? item.metric)}</h3><Status result={item} /></div>{values(item)}<p>{baselineExplanation(item, language)}</p><p className="brief-muted mt-2 text-xs">{freshness(latest(item.metric), now, t)}</p></article>)}
       {!flagged.length && <div className="brief-empty"><p className="font-medium">{results.length ? t("No changes flagged against personal baseline") : t("No comparisons available yet")}</p><p className="mt-2">{t("This is not medical clearance. Missing or stale observations may limit comparisons.")}</p><Link className="brief-link mt-3 inline-block" to={`/crew/${crewId}/checkin`}>{t("Add a recent check-in")}</Link></div>}
       <p className="brief-muted mt-5 text-xs">{t("Illustrative demo settings: changes of 15% or more are worth reviewing, not clinical thresholds.")}</p>

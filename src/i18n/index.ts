@@ -7,7 +7,9 @@ export const LANGUAGE_KEY = 'astrocare:language';
 export type Translator = (key: string, params?: Record<string, string | number>) => string;
 export function translate(language: Language, key: string, params: Record<string, string | number> = {}): string {
   const dictionary: Record<string, string> = language === 'my' ? my : en;
-  const text = dictionary[key] ?? (en as Record<string, string>)[key] ?? key;
+  // Singular forms: "key.one" is used when params.count === 1 (if that language has it).
+  const pick = (dict: Record<string, string>) => (params.count === 1 && dict[`${key}.one`] !== undefined ? dict[`${key}.one`] : dict[key]);
+  const text = pick(dictionary) ?? pick(en as Record<string, string>) ?? key;
   return text.replace(/\{(\w+)\}/g, (_, name: string) => String(params[name] ?? `{${name}}`));
 }
 export function localizedDate(value: string, language: Language, options: Intl.DateTimeFormatOptions = {}) {

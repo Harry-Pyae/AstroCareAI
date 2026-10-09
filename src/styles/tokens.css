@@ -89,7 +89,7 @@
 
 @layer base {
   /* Interactive color feedback. Color properties only — never layout. */
-  :where(a, button, summary, [role='option'], .brief-button) {
+  :where(a, button, summary, [role='option']) {
     transition-property: color, background-color, border-color, outline-color, box-shadow, opacity, transform;
     transition-duration: var(--dur-base);
     transition-timing-function: var(--ease);
@@ -202,6 +202,6 @@ dialog.modal::backdrop {
 }
 
 /* Gentle press feedback on every button-like control. */
-:where(button, .brief-button, [role='option']):not(:disabled):active {
+:where(button, [role='option']):not(:disabled):active {
   transform: scale(0.98);
 }

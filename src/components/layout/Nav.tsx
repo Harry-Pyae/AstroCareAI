@@ -1,17 +1,6 @@
 import { useI18n } from "../../i18n/LanguageProvider";
 import { NavLink, useMatch } from 'react-router-dom';
-
-const svg = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true } as const;
-
-export const icons = {
-  crew: <svg {...svg}><circle cx="9" cy="8" r="3.5" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5" /></svg>,
-  brief: <svg {...svg}><path d="M3 12h4l3-7 4 14 3-7h4" /></svg>,
-  checkin: <svg {...svg}><rect x="4" y="3" width="16" height="18" rx="2" /><path d="m8.5 12 2.5 2.5 4.5-5" /></svg>,
-  menu: <svg {...svg}><path d="M4 7h16M4 12h16M4 17h16" /></svg>,
-  close: <svg {...svg}><path d="M6 6l12 12M18 6 6 18" /></svg>,
-  sun: <svg {...svg}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>,
-  moon: <svg {...svg}><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" /></svg>,
-};
+import Icon from '../icons/Icon';
 
 // Collapsible = sidebar (icons-only ≤1024px). Same paddings and states in both
 // sizes; only the label visibility and icon centering change.
@@ -34,11 +23,11 @@ export function NavList({ collapsible }: { collapsible: boolean }) {
   const { t } = useI18n();
   const crewId = useMatch('/crew/:crewId/*')?.params.crewId;
   const items = [
-    { to: '/', label: 'Crew', icon: icons.crew },
+    { to: '/', label: 'Crew', icon: 'crew' },
     ...(crewId
       ? [
-          { to: `/crew/${crewId}`, label: 'Baseline brief', icon: icons.brief },
-          { to: `/crew/${crewId}/checkin`, label: 'Check-in', icon: icons.checkin },
+          { to: `/crew/${crewId}`, label: 'Baseline brief', icon: 'brief' },
+          { to: `/crew/${crewId}/checkin`, label: 'Check-in', icon: 'checkin' },
         ]
       : []),
   ];
@@ -60,7 +49,7 @@ export function NavList({ collapsible }: { collapsible: boolean }) {
               }`
             }
           >
-            {item.icon}
+            <Icon name={item.icon as 'crew' | 'brief' | 'checkin'} />
             <span className={collapsible ? collapseLabel : ''}>{t(item.label)}</span>
           </NavLink>
         </li>

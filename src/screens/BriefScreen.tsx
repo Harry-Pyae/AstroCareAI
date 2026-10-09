@@ -11,7 +11,9 @@ import BaselineComparison from '../components/brief/BaselineComparison';
 import DecisionBar from '../components/brief/DecisionBar';
 import SpaceWeatherCard from '../components/spaceweather/SpaceWeatherCard';
 import TaskCard from '../components/brief/TaskCard';
-import Icon from '../components/brief/Icon';
+import Icon from '../components/icons/Icon';
+import { buttonClass } from '../components/ui/Button';
+import CrewBadgeDialog from '../components/qr/CrewBadgeDialog';
 import { formatTime, metricLabels, metricValue } from '../components/brief/format';
 import '../components/brief/dashboard.css';
 
@@ -71,10 +73,10 @@ function CrewBrief({ member }: { member: CrewMember }) {
     setToast('Decision saved on this device.');
   }
   return <div className="brief-dashboard">
-    <header><Link to="/" className="brief-link text-xs">{t("← All crew")}</Link><div className="brief-overview"><div className="brief-overview-identity"><p className="brief-eyebrow">{t("Personal baseline brief")}</p><h1 className="mt-2">{t("Today's overview")}</h1><p className="mt-3 text-lg font-medium">{member.name} <span className="brief-muted text-sm">· {t(member.role)}</span></p></div><div className="brief-overview-actions"><div className="brief-overview-metadata"><p className="brief-muted text-xs">{t("Latest observation")}: {latest ? <time dateTime={latest}>{date(latest)}</time> : t('No observations available')}</p><p className="brief-muted text-xs">{t("Last check-in")}: {lastCheckin ? <time dateTime={lastCheckin}>{date(lastCheckin)}</time> : t('No check-in recorded yet')}</p></div><Link to={`/crew/${encodeURIComponent(member.id)}/checkin`} className="brief-button brief-primary">{t("Start check-in")} <Icon name="arrow" /></Link></div></div><p className="brief-summary">{summary}</p></header>
+    <header><Link to="/" className={buttonClass('ghost', 'sm', '-ml-3')}><Icon name="arrow-left" size={16} />{t("All crew")}</Link><div className="brief-overview"><div className="brief-overview-identity"><p className="brief-eyebrow">{t("Personal baseline brief")}</p><h1 className="mt-2">{t("Today's overview")}</h1><p className="mt-3 text-lg font-medium">{member.name} <span className="brief-muted text-sm">· {t(member.role)}</span></p></div><div className="brief-overview-actions"><div className="brief-overview-metadata"><p className="brief-muted text-xs">{t("Latest observation")}: {latest ? <time dateTime={latest}>{date(latest)}</time> : t('No observations available')}</p><p className="brief-muted text-xs">{t("Last check-in")}: {lastCheckin ? <time dateTime={lastCheckin}>{date(lastCheckin)}</time> : t('No check-in recorded yet')}</p></div><div className="flex flex-wrap gap-2"><CrewBadgeDialog member={member} /><Link to={`/crew/${encodeURIComponent(member.id)}/checkin`} className={buttonClass('primary')}>{t("Start check-in")}<Icon name="arrow" size={18} /></Link></div></div></div><p className="brief-summary">{summary}</p></header>
     {storageMessage && <p role="status" className="brief-muted mb-5">{t(storageMessage)}</p>}
     <div className="brief-columns"><div className="brief-stack"><BaselineComparison results={results} observations={observations} now={now} crewId={member.id} /></div><aside className="brief-stack" aria-label={t("Task and next steps")}><TaskCard task={task} now={now} /><SelfReportCard details={details} checkins={checkins} now={now} crewId={member.id} /><DecisionBar decisions={decisions.filter(row => row.crewId === member.id)} onSave={recordDecision} /><SpaceWeatherCard /></aside></div>
-    <div role="status" aria-live="polite" aria-atomic="true">{toast && <div className="brief-toast"><Icon name="check" />{t(toast)}</div>}</div>
+    <div role="status" aria-live="polite" aria-atomic="true">{toast && <div className="brief-toast"><Icon name="check" size={18} className="text-accent" />{t(toast)}</div>}</div>
   </div>;
 }
 

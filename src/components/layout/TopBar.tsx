@@ -2,7 +2,7 @@ import { useI18n } from "../../i18n/LanguageProvider";
 import { useMatch, useNavigate } from 'react-router-dom';
 import { resetAll } from '../../lib/storage';
 import { useTheme } from '../../theme';
-import { icons } from './Nav';
+import Icon from '../icons/Icon';
 import LanguageSwitcher from '../LanguageSwitcher';
 import Select from '../ui/Select';
 import DemoMenu from '../demo/DemoMenu';
@@ -26,7 +26,7 @@ export default function TopBar({ onOpenMenu }: { onOpenMenu: () => void }) {
   return (
     <header className="z-30 flex flex-wrap items-center gap-3 border-b border-default bg-page/95 px-4 py-3 backdrop-blur md:sticky md:top-0 md:px-8">
       <button type="button" onClick={onOpenMenu} aria-label={t("Open navigation")} className={`${button} md:hidden`}>
-        {icons.menu}
+        <Icon name="menu" />
       </button>
       <p className="text-lg font-semibold text-primary">{t(title)}</p>
 
@@ -44,7 +44,7 @@ export default function TopBar({ onOpenMenu }: { onOpenMenu: () => void }) {
         />
 
         <button type="button" onClick={toggleTheme} aria-label={t(nextTheme === 'light' ? 'Switch to light theme' : 'Switch to dark theme')} className={button}>
-          {theme === 'dark' ? icons.sun : icons.moon}
+          <Icon name={theme === 'dark' ? 'sun' : 'moon'} size={18} />
           <span>{t(theme === 'dark' ? 'Light theme' : 'Dark theme')}</span>
         </button>
 

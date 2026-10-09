@@ -1,6 +1,7 @@
 import { useI18n } from "../../i18n/LanguageProvider";
 import { useEffect, useState } from 'react';
 import fallbackData from '../../data/spaceweather-fallback.json';
+import Icon from '../icons/Icon';
 
 interface SolarFlare { flrID: string; beginTime: string; peakTime: string; classType: string; }
 function recentFlares(data: unknown): SolarFlare[] {
@@ -39,11 +40,11 @@ export default function SpaceWeatherCard() {
   return <section aria-label={t("Space weather context")} className='rounded-xl border border-default bg-card p-5 text-primary sm:p-6'>
     <div className='flex flex-wrap items-start justify-between gap-3'>
       <div>
-        <h2 className='text-lg font-semibold'>{t("Space weather context")}</h2>
+        <h2 className='flex items-center gap-2 text-lg font-semibold'><Icon name='spaceweather' size={18} className='text-secondary' />{t("Space weather context")}</h2>
         <p className='mt-1 text-sm text-secondary'>{t("Recent solar activity · NASA DONKI")}</p>
       </div>
       <span className='inline-flex min-h-8 items-center gap-2 rounded-full border border-default px-3 py-1 text-xs text-secondary'>
-        <span aria-hidden='true'>{cached ? '◷' : '✓'}</span>{cached ? t("Cached demonstration data") : t("Live data")}
+        <Icon name={cached ? 'schedule' : 'check'} size={14} />{cached ? t("Cached demonstration data") : t("Live data")}
       </span>
     </div>
     {loading ? <div role='status' aria-label={t("Checking for recent solar flares… Cached events remain available.")} className='mt-4 space-y-3'>{[0, 1, 2].map(i => <div key={i} className='flex items-center justify-between gap-4'><div className='skeleton h-5 w-24' /><div className='skeleton h-5 w-40' /></div>)}</div>
