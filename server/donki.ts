@@ -3,6 +3,8 @@ export interface SolarFlare {
   beginTime: string;
   peakTime: string;
   classType: string;
+  submissionTime?: string;
+  link?: string;
 }
 export interface SpaceWeatherResponse {
   source: 'nasa_donki';
@@ -19,6 +21,15 @@ export class DonkiError extends Error {
     this.code = code; this.status = status; this.retryAfter = retryAfter;
   }
 }
+function nasaLink(value: unknown): string | undefined {
+  if (typeof value !== 'string' || value.length > 2000) return;
+  try {
+    const url = new URL(value);
+    if (url.protocol === 'https:' && !url.username && !url.password
+      && (url.hostname === 'nasa.gov' || url.hostname.endsWith('.nasa.gov'))
+      && ![...url.searchParams.keys()].some(key => /key|token|secret/i.test(key))) return url.href;
+  } catch { /* Invalid upstream links are omitted. */ }
+}
 export function normalizeEvents(data: unknown): SolarFlare[] {
   if (!Array.isArray(data)) throw new DonkiError('invalid_schema', 502);
   const events: SolarFlare[] = [];
@@ -33,7 +44,11 @@ export function normalizeEvents(data: unknown): SolarFlare[] {
         typeof row.classType !== 'string' || !/^[ABCMX]\d+(\.\d+)?$/.test(row.classType)) continue;
     if (seen.has(row.flrID)) continue;
     seen.add(row.flrID);
-    events.push({ flrID: row.flrID, beginTime: row.beginTime, peakTime: row.peakTime, classType: row.classType });
+    const event: SolarFlare = { flrID: row.flrID, beginTime: row.beginTime, peakTime: row.peakTime, classType: row.classType };
+    if (typeof row.submissionTime === 'string' && Number.isFinite(Date.parse(row.submissionTime))) event.submissionTime = row.submissionTime;
+    const link = nasaLink(row.link);
+    if (link) event.link = link;
+    events.push(event);
   }
   if (data.length && !events.length) throw new DonkiError('invalid_schema', 502);
   return events.sort((a, b) => Date.parse(b.peakTime) - Date.parse(a.peakTime)).slice(0, 3);

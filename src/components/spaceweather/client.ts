@@ -1,4 +1,4 @@
-export interface SolarFlare { flrID: string; beginTime: string; peakTime: string; classType: string; }
+export interface SolarFlare { flrID: string; beginTime: string; peakTime: string; classType: string; submissionTime?: string; link?: string; }
 export interface SpaceWeatherState { events: SolarFlare[]; cached: boolean; message: string; fetchedAt?: string; }
 export function recentFlares(data: unknown): SolarFlare[] {
   if (!Array.isArray(data)) return [];
@@ -7,6 +7,17 @@ export function recentFlares(data: unknown): SolarFlare[] {
     if (!item || typeof item !== 'object') return false;
     const row = item as Record<string, unknown>;
     return typeof row.flrID === 'string' && row.flrID.length > 0 && typeof row.beginTime === 'string' && Number.isFinite(Date.parse(row.beginTime)) && typeof row.peakTime === 'string' && Number.isFinite(Date.parse(row.peakTime)) && Date.parse(row.peakTime) >= Date.parse(row.beginTime) && typeof row.classType === 'string' && /^[ABCMX]\d+(\.\d+)?$/.test(row.classType);
+  }).map(row => {
+    const event: SolarFlare = { flrID: row.flrID, beginTime: row.beginTime, peakTime: row.peakTime, classType: row.classType };
+    if (typeof row.submissionTime === 'string' && Number.isFinite(Date.parse(row.submissionTime))) event.submissionTime = row.submissionTime;
+    if (typeof row.link === 'string' && row.link.length <= 2000) {
+      try {
+        const url = new URL(row.link);
+        if (url.protocol === 'https:' && !url.username && !url.password && (url.hostname === 'nasa.gov' || url.hostname.endsWith('.nasa.gov'))
+          && ![...url.searchParams.keys()].some(key => /key|token|secret/i.test(key))) event.link = url.href;
+      } catch { /* Only validated NASA links reach the UI. */ }
+    }
+    return event;
   }).sort((a, b) => Date.parse(b.peakTime) - Date.parse(a.peakTime)).filter(row => !seen.has(row.flrID) && Boolean(seen.add(row.flrID))).slice(0, 3);
 }
 export async function loadSpaceWeather(fallback: SolarFlare[], signal: AbortSignal, fetchImpl: typeof fetch = fetch): Promise<SpaceWeatherState> {

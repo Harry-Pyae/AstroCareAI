@@ -14,6 +14,13 @@ const failure = code => error => error instanceof DonkiError && error.code === c
 test('normalizes only valid fields, sorts/deduplicates, and preserves legitimate empty results', async () => {
   assert.deepEqual(normalizeEvents([{ ...fixture, privateField: 'never send' }, fixture, { bad: true }]), [fixture]);
   assert.deepEqual(normalizeEvents([]), []);
+  const metadata = { ...fixture, submissionTime: '2026-10-01T01:00Z', link: 'https://ccmc.gsfc.nasa.gov/DONKI/view/FLR/1' };
+  assert.deepEqual(normalizeEvents([metadata]), [metadata]);
+  assert.deepEqual(recentFlares([metadata]), [metadata]);
+  for (const link of ['https://untrusted.example/event', 'https://nasa.gov/?api_key=test-only-key', 'https://user:password@nasa.gov/']) {
+    assert.equal(normalizeEvents([{ ...fixture, link }])[0].link, undefined);
+    assert.equal(recentFlares([{ ...fixture, link }])[0].link, undefined);
+  }
   assert.throws(() => normalizeEvents({ events: [] }), failure('invalid_schema'));
   assert.throws(() => normalizeEvents([{ ...fixture, peakTime: 'invalid' }]), failure('invalid_schema'));
   const data = await fetchSpaceWeather('test-only-key', { fetchImpl: async () => json([fixture]) });
