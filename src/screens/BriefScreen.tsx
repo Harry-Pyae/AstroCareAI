@@ -45,7 +45,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
           const key = `${member.id}:${newest.timestamp}`;
           if (age >= 0 && age < 120_000 && !acknowledgedCheckins.has(key)) { acknowledgedCheckins.add(key); setToast('Check-in saved. Your recent observations are updated.'); }
         }
-      } catch { setStorageMessage('Local history is unavailable. Showing synthetic telemetry; browser storage access is needed for saved check-ins and decisions.'); }
+      } catch { setCheckins([]); setDecisions([]); setStorageMessage('Local history is unavailable. Showing synthetic telemetry; browser storage access is needed for saved check-ins and decisions.'); }
     };
     refresh();
     const interval = window.setInterval(refresh, 60_000);
@@ -60,7 +60,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
   const task = tasks.filter(item => item.crewId === member.id && Date.parse(item.scheduledFor) >= now.getTime()).sort((a, b) => Date.parse(a.scheduledFor) - Date.parse(b.scheduledFor))[0];
   const relevant = [...results].filter(item => item.status === 'worth_reviewing').sort((a, b) => Math.abs(b.deltaPct ?? 0) - Math.abs(a.deltaPct ?? 0))[0];
   const limited = results.filter(item => item.status === 'stale_data' || item.status === 'insufficient_data').length;
-  const summary = relevant ? `${metricLabels[relevant.metric]?.name} averages ${metricValue(relevant.currentMean, relevant.metric)}, ${Math.abs(relevant.deltaPct ?? 0).toFixed(0)}% ${Number(relevant.deltaPct) < 0 ? 'below' : 'above'} your personal baseline. Change worth reviewing.` : limited ? `${limited} metric${limited === 1 ? '' : 's'} need fresher or more observations before a comparison can be made.` : 'Recent observations are within personal baseline range. This is not medical clearance.';
+  const summary = relevant?.deltaPct === null ? relevant.explanation : relevant ? `${metricLabels[relevant.metric]?.name} averages ${metricValue(relevant.currentMean, relevant.metric)}, ${Math.abs(relevant.deltaPct ?? 0).toFixed(0)}% ${Number(relevant.deltaPct) < 0 ? 'below' : 'above'} your personal baseline. Change worth reviewing.` : limited ? `${limited} metric${limited === 1 ? '' : 's'} need fresher or more observations before a comparison can be made.` : 'Recent observations are within personal baseline range. This is not medical clearance.';
   function recordDecision(action: Decision['action'], note: string) {
     const decision: Decision = { crewId: member.id, action, note, timestamp: new Date().toISOString() };
     if (saveDecision(decision) === false) throw new Error('Decision storage unavailable');
@@ -75,9 +75,13 @@ function CrewBrief({ member }: { member: CrewMember }) {
   </div>;
 }
 
+// Compatible with both P1's default and named lazy route loaders.
+export { BriefScreen };
+
 export default function BriefScreen() {
   const { crewId } = useParams<{ crewId: string }>();
   const member = crew.find(item => item.id === crewId);
   if (!member) return <section className="brief-dashboard"><h1>Crew member not found</h1><p className="brief-muted mt-3">This link does not match a crew member in the demonstration data.</p><Link to="/" className="brief-link mt-4 inline-block">Choose a crew member</Link></section>;
   return <CrewBrief key={member.id} member={member} />;
 }
+
