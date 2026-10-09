@@ -8,14 +8,14 @@ const BriefScreen = lazy(() => import('./screens/BriefScreen').then((m) => ({ de
 const CheckinScreen = lazy(() => import('./screens/CheckinScreen'));
 
 export default function AppRoutes() {
-  const { t, language, date } = useI18n();
+  const { t } = useI18n();
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<CrewSelectPage />} />
         <Route path="/crew/:crewId" element={<BriefScreen />} />
         <Route path="/crew/:crewId/checkin" element={<CheckinScreen />} />
-        <Route path="*" element={<p className="font-mono text-sm text-neutral-500">{t("Page not found.")}</p>} />
+        <Route path="*" element={<p className="font-mono text-sm text-secondary">{t("Page not found.")}</p>} />
       </Route>
     </Routes>
   );

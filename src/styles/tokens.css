@@ -2,6 +2,15 @@
    Theme is selected by data-theme="dark|light" on <html> (set before paint
    by the inline script in index.html, then managed by src/theme.tsx). */
 
+/* Motion: hover/focus = fast; mount, theme switch, toast = base;
+   layout-level (drawer, reflow) = slow. Calm only — no bounce, no loops. */
+:root {
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 280ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
 :root,
 :root[data-theme='dark'] {
   color-scheme: dark;
@@ -62,39 +71,7 @@
   --color-accent-review: var(--accent-review);
   --color-danger: var(--danger);
   --color-focus-ring: var(--focus-ring);
-
-  /* ponytail: legacy bridge — maps the gray/neutral/amber/white classes still
-     used by pre-redesign screens onto tokens so both themes work there.
-     Delete this block once P2/P4 have migrated their files to tokens. */
-  --color-white: var(--text-primary);
-  --color-gray-100: var(--text-primary);
-  --color-gray-200: var(--text-primary);
-  --color-gray-300: var(--text-primary);
-  --color-gray-400: var(--text-secondary);
-  --color-gray-500: var(--text-secondary);
-  --color-gray-600: var(--border-strong);
-  --color-gray-700: var(--border-default);
-  --color-gray-800: var(--card-raised);
-  --color-gray-900: var(--card);
-  --color-neutral-100: var(--text-primary);
-  --color-neutral-200: var(--text-primary);
-  --color-neutral-400: var(--text-secondary);
-  --color-neutral-500: var(--text-secondary);
-  --color-neutral-700: var(--border-default);
-  --color-neutral-800: var(--border-default);
-  --color-neutral-900: var(--card);
-  --color-neutral-950: var(--page);
-  --color-amber-200: var(--accent-review);
-  --color-amber-300: var(--accent-review);
-  --color-amber-400: var(--accent-review);
-  --color-amber-500: var(--accent-review);
-  --color-amber-600: var(--accent-review);
-  --color-red-400: var(--danger);
 }
-.bg-\[\#0a0f18\] {
-  background-color: var(--page) !important;
-}
-
 @layer base {
   body {
     background-color: var(--page);
@@ -110,13 +87,76 @@
   }
 }
 
+@layer base {
+  /* Interactive color feedback. Color properties only — never layout. */
+  :where(a, button, summary, [role='option'], .brief-button) {
+    transition-property: color, background-color, border-color, outline-color, box-shadow;
+    transition-duration: var(--dur-fast);
+    transition-timing-function: var(--ease);
+  }
+}
+
+/* Added for ~one --dur-base by theme.tsx while the theme flips. */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition-property: color, background-color, border-color, fill, stroke !important;
+  transition-duration: var(--dur-base) !important;
+  transition-timing-function: var(--ease) !important;
+}
+
+/* Shared mount utility: fade + 4px rise. Use .motion-mount, not per-component keyframes. */
+@keyframes motion-mount {
+  from { opacity: 0; transform: translateY(4px); }
+}
+.motion-mount,
+.brief-panel {
+  animation: motion-mount var(--dur-base) var(--ease) both;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+.brief-toast {
+  animation: toast-in var(--dur-base) var(--ease) both;
+}
+
+/* Mobile nav drawer (Layout.tsx): always mounted, slides via data-open. */
+.drawer {
+  transition: visibility 0s linear var(--dur-slow);
+}
+.drawer[data-open='false'] {
+  visibility: hidden;
+}
+.drawer[data-open='true'] {
+  transition-delay: 0s;
+}
+.drawer-backdrop {
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease);
+}
+.drawer-panel {
+  transform: translateX(-100%);
+  transition: transform var(--dur-slow) var(--ease);
+}
+.drawer[data-open='true'] .drawer-backdrop {
+  opacity: 1;
+}
+.drawer[data-open='true'] .drawer-panel {
+  transform: none;
+}
+
+@keyframes popover-in {
+  from { opacity: 0; transform: translateY(-4px); }
+}
+.motion-popover {
+  animation: popover-in var(--dur-fast) var(--ease) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  * {
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation: none !important;
   }
 }

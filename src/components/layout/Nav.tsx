@@ -13,15 +13,15 @@ export const icons = {
   moon: <svg {...svg}><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" /></svg>,
 };
 
+// Collapsible = sidebar (icons-only ≤1024px). Same paddings and states in both
+// sizes; only the label visibility and icon centering change.
 const collapseLabel = 'sr-only min-[1025px]:not-sr-only';
+const collapseAlign = 'justify-center min-[1025px]:justify-start';
 
 export function Brand({ collapsible }: { collapsible: boolean }) {
   return (
-    <NavLink to="/" className="flex min-h-11 items-center gap-3 rounded-lg px-2 text-primary">
-      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden className="shrink-0 text-accent">
-        <circle cx="14" cy="14" r="5" fill="currentColor" />
-        <ellipse cx="14" cy="14" rx="12" ry="5" fill="none" stroke="currentColor" strokeWidth="1.5" transform="rotate(-25 14 14)" />
-      </svg>
+    <NavLink to="/" aria-label="ASTROCARE" className={`flex min-h-11 items-center gap-3 rounded-lg px-3 text-primary ${collapsible ? collapseAlign : ''}`}>
+      <img src="/favicon.svg" alt="" width="28" height="28" className="shrink-0" />
       <span className={`font-mono text-sm font-semibold tracking-[0.2em] ${collapsible ? collapseLabel : ''}`}>
         ASTROCARE
       </span>
@@ -31,7 +31,7 @@ export function Brand({ collapsible }: { collapsible: boolean }) {
 
 /** Existing destinations only. Brief/Check-in appear once a crew member is selected. */
 export function NavList({ collapsible }: { collapsible: boolean }) {
-  const { t, language, date } = useI18n();
+  const { t } = useI18n();
   const crewId = useMatch('/crew/:crewId/*')?.params.crewId;
   const items = [
     { to: '/', label: 'Crew', icon: icons.crew },
@@ -51,8 +51,9 @@ export function NavList({ collapsible }: { collapsible: boolean }) {
             to={item.to}
             end
             title={t(item.label)}
+            aria-label={t(item.label)}
             className={({ isActive }) =>
-              `flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm ${
+              `flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm ${collapsible ? collapseAlign : ''} ${
                 isActive
                   ? 'bg-accent/15 font-semibold text-accent'
                   : 'text-secondary hover:bg-card-raised hover:text-primary'

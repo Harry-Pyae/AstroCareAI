@@ -44,6 +44,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     } catch {
       // not persisted; still applies for this session
     }
+    // Fade colors only for this one switch (see .theme-switching in tokens.css).
+    const root = document.documentElement;
+    root.classList.add('theme-switching');
+    window.setTimeout(() => root.classList.remove('theme-switching'), 250);
     setTheme(next);
   }
 
