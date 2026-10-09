@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TaskContext } from '../../lib/types';
+import { TaskContext } from '../../screens/BriefScreen';
 
 interface TaskContextCardProps {
   task: TaskContext | null;
@@ -73,4 +73,3 @@ export const TaskContextCard: React.FC<TaskContextCardProps> = ({ task }) => {
     </div>
   );
 };
-

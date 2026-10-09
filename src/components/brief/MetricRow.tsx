@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BaselineResult, Observation } from '../../lib/types';
+import { BaselineResult, Observation } from '../../screens/BriefScreen';
 import { MetricTrendChart } from './MetricTrendChart';
 
 interface MetricRowProps {

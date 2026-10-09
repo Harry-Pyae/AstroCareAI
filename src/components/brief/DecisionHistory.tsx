@@ -1,5 +1,5 @@
 import React from 'react';
-import { Decision } from '../../lib/types';
+import { Decision } from '../../screens/BriefScreen';
 
 interface DecisionHistoryProps {
   decisions: Decision[];
@@ -51,4 +51,3 @@ export const DecisionHistory: React.FC<DecisionHistoryProps> = ({ decisions }) =
     </div>
   );
 };
-

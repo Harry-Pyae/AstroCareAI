@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Decision } from '../../lib/types';
-import { saveDecision } from '../../lib/storage';
+import { Decision } from '../../screens/BriefScreen';
 
 interface DecisionBarProps {
   crewId: string;
-  onDecisionSaved: () => void;
+  onDecisionSaved: (decision: Decision) => void;
 }
 
 type ActionType = "recheck" | "request_review" | "propose_schedule_change";
@@ -13,7 +12,6 @@ export const DecisionBar: React.FC<DecisionBarProps> = ({ crewId, onDecisionSave
   const [selectedAction, setSelectedAction] = useState<ActionType | null>(null);
   const [note, setNote] = useState('');
   const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   const actionLabels: Record<ActionType, string> = {
     recheck: "Recheck",
@@ -21,13 +19,13 @@ export const DecisionBar: React.FC<DecisionBarProps> = ({ crewId, onDecisionSave
     propose_schedule_change: "Propose Schedule Change"
   };
 
-  const handleSave = async () => {
+  const handleSave = () => {
     if (!selectedAction) return;
     
     setIsSaving(true);
-    setError(null);
     
-    try {
+    // Simulate async saving
+    setTimeout(() => {
       const decision: Decision = {
         crewId,
         action: selectedAction,
@@ -35,23 +33,16 @@ export const DecisionBar: React.FC<DecisionBarProps> = ({ crewId, onDecisionSave
         timestamp: new Date().toISOString()
       };
       
-      // Assume saveDecision is sync or async, wrapping in Promise.resolve just in case
-      await Promise.resolve(saveDecision(decision));
-      
+      onDecisionSaved(decision);
       setSelectedAction(null);
       setNote('');
-      onDecisionSaved();
-    } catch (err) {
-      setError('Failed to save decision. Please try again.');
-    } finally {
       setIsSaving(false);
-    }
+    }, 300);
   };
 
   const handleCancel = () => {
     setSelectedAction(null);
     setNote('');
-    setError(null);
   };
 
   if (selectedAction) {
@@ -70,8 +61,6 @@ export const DecisionBar: React.FC<DecisionBarProps> = ({ crewId, onDecisionSave
           disabled={isSaving}
           maxLength={150}
         />
-        
-        {error && <p className="text-red-400 text-sm mb-3">{error}</p>}
         
         <div className="flex gap-3">
           <button 
@@ -110,4 +99,3 @@ export const DecisionBar: React.FC<DecisionBarProps> = ({ crewId, onDecisionSave
     </div>
   );
 };
-

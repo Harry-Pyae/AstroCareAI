@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaselineResult, Observation } from '../../lib/types';
+import { BaselineResult, Observation } from '../../screens/BriefScreen';
 import { MetricRow } from './MetricRow';
 
 interface BaselineComparisonProps {

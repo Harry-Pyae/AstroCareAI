@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceArea } from 'recharts';
-import { Observation, BaselineResult } from '../../lib/types';
+import { Observation } from '../../screens/BriefScreen';
 
 interface MetricTrendChartProps {
   observations: Observation[];
@@ -43,7 +43,7 @@ export const MetricTrendChart: React.FC<MetricTrendChartProps> = ({ observations
           <YAxis 
             stroke="#9ca3af" 
             fontSize={12} 
-            domain={['auto', 'auto']}
+            domain={['dataMin - 5', 'dataMax + 5']}
             tickFormatter={(val) => (typeof val === 'number' ? val.toFixed(1) : val)}
           />
           <Tooltip 
@@ -55,7 +55,7 @@ export const MetricTrendChart: React.FC<MetricTrendChartProps> = ({ observations
             x1={new Date(baselineStart).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} 
             x2={new Date(baselineEnd).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} 
             fill="#374151" 
-            fillOpacity={0.3} 
+            fillOpacity={0.15} 
           />
           <Line 
             type="monotone" 
