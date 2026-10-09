@@ -53,12 +53,12 @@ const run = (file, args) => execFileSync(process.execPath, [join(root, 'node_mod
 try {
   run('typescript/bin/tsc', ['--noEmit']);
   run('vite/bin/vite.js', ['build']);
-  save('verify.tsx', "export { default as BriefScreen } from './screens/BriefScreen'; export { LanguageProvider } from './i18n/LanguageProvider'; export { DemoProvider } from './components/demo/DemoProvider'; export { default as DecisionBar } from './components/brief/DecisionBar';");
+  save('verify.tsx', "export { default as BriefScreen } from './screens/BriefScreen'; export { LanguageProvider } from './i18n/LanguageProvider'; export { DemoProvider } from './components/demo/DemoProvider'; export { default as DecisionBar } from './components/brief/DecisionBar'; export { default as SelfReportCard } from './components/brief/SelfReportCard';");
   run('vite/bin/vite.js', ['build', '--ssr', 'src/verify.tsx', '--outDir', 'ssr']);
-  const { BriefScreen, LanguageProvider, DemoProvider, DecisionBar } = await import(pathToFileURL(join(work, 'ssr/verify.js')).href);
+  const { BriefScreen, LanguageProvider, DemoProvider, DecisionBar, SelfReportCard } = await import(pathToFileURL(join(work, 'ssr/verify.js')).href);
   const render = path => renderToString(React.createElement(LanguageProvider, null, React.createElement(DemoProvider, null, React.createElement(MemoryRouter, { initialEntries: [path] }, React.createElement(Routes, null, React.createElement(Route, { path: '/crew/:crewId', element: React.createElement(BriefScreen) }))))));
   const page = render('/crew/ac-cmdr-01');
-  for (const text of ["Today&#x27;s overview", 'Demo Commander', 'Latest observation', 'Start check-in', 'Changes to review', 'Worth reviewing', 'Within range', 'Insufficient data', 'Stale data', 'Not enough baseline observations', 'Last reading 3 days ago', 'Shaded: personal baseline', 'Docking approach monitoring', 'sustained attention', 'fine motor control', 'Recheck', 'Request review', 'Propose schedule change', 'No decisions recorded yet']) assert.ok(page.includes(text), `Missing ${text}`);
+  for (const text of ["Today&#x27;s overview", 'Demo Commander', 'Latest observation', 'Start check-in', 'Changes to review', 'Worth reviewing', 'Within range', 'Insufficient data', 'Stale data', 'Not enough baseline observations', 'Last reading 3 days ago', 'Shaded: personal baseline', 'Docking approach monitoring', 'sustained attention', 'fine motor control', 'Recheck', 'Request review', 'Propose schedule change', 'No decisions recorded yet', 'Self-reported today']) assert.ok(page.includes(text), `Missing ${text}`);
   assert.ok(page.indexOf('Changes to review') < page.indexOf('Baseline vs recent trend'), 'Review comes before chart');
   assert.ok((page.match(/class="brief-support-card\b/g) ?? []).length <= 4);
   assert.ok(page.includes('aria-haspopup="listbox"'), 'Metric uses shared accessible Select');
@@ -76,9 +76,34 @@ try {
   assert.ok(history.indexOf('Latest note') < history.indexOf('Earlier note'), 'History newest first');
   assert.match(history, /datetime="2026-10-09T05:00:00Z"/i, 'Recorded timestamp retained');
   assert.equal(decisionRows[0].note, 'Earlier note', 'Rendering does not mutate history');
+  const reportNow = new Date('2026-10-09T12:00:00Z');
+  const reportTime = '2026-10-09T11:00:00Z';
+  const reportDetails = [
+    { crewId: 'ac-eng-02', timestamp: '2026-10-09T11:30:00Z', fatigue: 1, note: 'Other crew note' },
+    { crewId: 'ac-cmdr-01', timestamp: '2026-10-09T13:00:00Z', fatigue: 1, note: 'Future note' },
+    { crewId: 'ac-cmdr-01', timestamp: 'invalid', fatigue: 1, note: 'Invalid note' },
+    { crewId: 'ac-cmdr-01', timestamp: reportTime, fatigue: 2, note: 'Recorded note', sleepQuality: 4, stress: 3, hydrationLiters: 0, symptoms: ['none'] },
+  ];
+  const reportObservations = [
+    { crewId: 'ac-eng-02', timestamp: reportTime, metric: 'sleep_hours', value: 22, provenance: 'user_checkin' },
+    { crewId: 'ac-cmdr-01', timestamp: reportTime, metric: 'sleep_hours', value: 7.5, provenance: 'user_checkin' },
+    { crewId: 'ac-cmdr-01', timestamp: reportTime, metric: 'exercise_min', value: 0, provenance: 'user_checkin' },
+    { crewId: 'ac-cmdr-01', timestamp: reportTime, metric: 'mood', value: 4, provenance: 'user_checkin' },
+  ];
+  const renderReport = (details, checkins = reportObservations) => renderToString(React.createElement(LanguageProvider, null,
+    React.createElement(MemoryRouter, null, React.createElement(SelfReportCard, { details, checkins, now: reportNow, crewId: 'ac-cmdr-01' }))));
+  const report = renderReport(reportDetails);
+  for (const text of ['7.5 h', '0 min', '0 L', 'Recorded note', 'contribute to recent averages', 'without comparison or interpretation']) assert.ok(report.includes(text), `Missing descriptive report ${text}`);
+  for (const excluded of ['Other crew note', 'Future note', 'Invalid note', '22 h', 'Worth reviewing']) assert.equal(report.includes(excluded), false, `Unexpected self-report ${excluded}`);
+  assert.equal(reportDetails[0].crewId, 'ac-eng-02', 'Self report does not mutate detail order');
+  const oldReport = renderReport([{ crewId: 'ac-cmdr-01', timestamp: '2026-10-07T11:00:00Z', fatigue: 3, note: '' }]);
+  assert.ok(oldReport.includes('This check-in is more than a day old.'));
+  const emptyReport = renderReport(reportDetails.filter(row => row.note !== 'Recorded note'));
+  assert.ok(emptyReport.includes('No check-in recorded yet.'));
+  assert.ok(emptyReport.includes('/crew/ac-cmdr-01/checkin'), 'Missing self report offers check-in action');
   assert.ok(existsSync(join(work, 'dist/index.html')));
   assert.ok(readFileSync(join(root, 'src/screens/BriefScreen.tsx'), 'utf8').includes('saveDecision(decision)'));
-  console.log('PASS: contract typecheck, production build, crew route, all status states, chart reference legend, task context, decision controls, and unknown crew.');
+  console.log('PASS: contract typecheck/build, crew routes, baseline states/chart/task, shared select, sorted decision columns/dateTime, and descriptive self-report isolation/freshness/empty states.');
   console.log(`Temporary integration artifacts: ${work}`);
   if (process.argv.includes('--serve')) {
     const server = spawn(process.execPath, [join(root, 'node_modules/vite/bin/vite.js'), 'preview', '--host', '127.0.0.1', '--port', '4173', '--strictPort'], { cwd: work, stdio: 'inherit' });

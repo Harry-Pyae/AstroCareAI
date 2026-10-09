@@ -90,7 +90,7 @@
 @layer base {
   /* Interactive color feedback. Color properties only — never layout. */
   :where(a, button, summary, [role='option'], .brief-button) {
-    transition-property: color, background-color, border-color, outline-color, box-shadow;
+    transition-property: color, background-color, border-color, outline-color, box-shadow, opacity, transform;
     transition-duration: var(--dur-fast);
     transition-timing-function: var(--ease);
   }
@@ -159,4 +159,46 @@
     transition-duration: 0.01ms !important;
     animation: none !important;
   }
+}
+
+/* Focus outline as a utility, for peer-focus-visible:focus-ring on custom controls. */
+@utility focus-ring {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Native <dialog> modals (demo guide, crew badge). */
+dialog.modal {
+  margin: auto;
+}
+dialog.modal[open] {
+  animation: motion-mount var(--dur-base) var(--ease) both;
+}
+dialog.modal::backdrop {
+  background: rgb(0 0 0 / 0.55);
+}
+
+/* Breathing room: pages fade in; stacked panels and form groups enter in a
+   short sequence (60ms apart) rather than all at once. */
+.motion-page {
+  animation: motion-mount var(--dur-slow) var(--ease) both;
+}
+.brief-stack > :nth-child(2), .motion-stagger > :nth-child(2) { animation-delay: 60ms; }
+.brief-stack > :nth-child(3), .motion-stagger > :nth-child(3) { animation-delay: 120ms; }
+.brief-stack > :nth-child(4), .motion-stagger > :nth-child(4) { animation-delay: 180ms; }
+.brief-stack > :nth-child(n + 5), .motion-stagger > :nth-child(n + 5) { animation-delay: 240ms; }
+.motion-stagger > * {
+  animation: motion-mount var(--dur-base) var(--ease) both;
+}
+
+/* Loading shapes stay calm and static after the standard mount transition. */
+.skeleton {
+  border-radius: 0.5rem;
+  background: var(--card-raised);
+  animation: motion-mount var(--dur-base) var(--ease) both;
+}
+
+/* Gentle press feedback on every button-like control. */
+:where(button, [role='option']):not(:disabled):active {
+  transform: scale(0.98);
 }

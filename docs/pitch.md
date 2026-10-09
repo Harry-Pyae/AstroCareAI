@@ -1,62 +1,58 @@
-# ASTROCARE Pitch & Judge Q&A
+# ASTROCARE — Pitch & Judge Q&A (final)
 
-ASTROCARE is a lightweight astronaut health self-monitoring web application designed to support operational decision-making during spaceflight missions.
-
----
-
-## 1. 30-Second Pitch
-
-In deep space, astronauts cannot wait hours for flight surgeons on Earth to tell them how they are doing. ASTROCARE is a rapid self-monitoring tool that compares each crew member’s recent health readings against their own personal baseline—not a generic population average—and explains meaningful changes in plain, neutral language. With rapid 30-second check-ins, badge QR deep links, and upcoming task context, ASTROCARE helps crew members make informed operational choices. It never diagnoses or labels anyone unsafe; it flags what is worth reviewing and keeps the astronaut in command.
+**Tagline:** *It never says "safe." It says "worth reviewing" — and keeps the human in command.*
 
 ---
 
-## 2. 90-Second Pitch
+## 30-second pitch
 
-During long-duration spaceflight, circadian disruption, high-tempo workloads, and confined environments steadily degrade sleep, heart rate variability, and cognitive reserve. Traditional ground-dependent monitoring faces growing communication delays, while rigid automated alerts risk alarming crew or triggering false alarms.
+In deep space, astronauts can't wait on Earth to tell them how they're doing. ASTROCARE is a self-monitoring tool that compares each crew member's recent health readings against their **own personal baseline** — not a population average — and explains meaningful changes in plain, neutral language. Thirty-second check-ins, upcoming-task context, honest handling of missing data, and a decision log that keeps the astronaut in command. It never diagnoses and never computes a risk score: it tells you what changed, how trustworthy the data is, and lets you decide.
 
-ASTROCARE solves this by putting self-monitoring directly into the astronaut's hands through an intuitive personal baseline brief. Instead of comparing biometrics against static population norms, ASTROCARE calculates a 21-day individualized baseline for each crew member and compares it with their rolling 7-day average. When meaningful deviations occur—such as a dip in sleep duration or HRV—the system explains the change in transparent, plain language, side by side with the astronaut's upcoming operational task demands, like manual docking approach monitoring.
+## 90-second pitch
 
-Crew members can scan a physical badge QR code or tap their card to open their brief instantly, complete a 30-second check-in, and record immediate operational decisions such as requesting peer review or proposing a schedule adjustment. Environmental telemetry from NASA's DONKI space weather API is displayed strictly as contextual background awareness, ensuring crew understand external mission conditions without false attribution to individual biology.
+Long missions erode sleep, heart-rate variability, and cognitive reserve — while communication delays grow and crews shrink. The person best positioned to notice a change in an astronaut is that astronaut, but raw numbers don't self-interpret.
 
-ASTROCARE never computes arbitrary risk scores, never makes clinical diagnoses, and never declares an astronaut "safe" or "unsafe." By translating personal physiological baselines into actionable operational context, ASTROCARE keeps the human in command.
+ASTROCARE turns scattered indicators into a **Personal Baseline Brief**: a 21-day individualized reference window compared against the rolling last 7 days, per metric. When something deviates meaningfully — a sleep decline, an HRV dip — the system explains the change transparently, beside the crew member's **upcoming task demands** (a docking approach deserves different attention than a rest day). Daily check-ins covering rest, activity, and wellbeing feed the same pipeline instantly. Data problems are first-class states: insufficient baselines and stale readings are displayed as limits, never papered over with reassuring values.
+
+Three deliberate boundaries define the product: **no diagnosis, no risk scores, no "safe/unsafe" labels.** Every explanation is deterministic and traceable to the arithmetic that produced it — we chose rule-based transparency over an AI layer precisely because this is a health context. NASA's DONKI space-weather feed appears strictly as environmental context, never causally linked to biology.
+
+The same pattern — compare a person to their own baseline, explain honestly, keep decisions human — serves remote communities on Earth, which is why ASTROCARE ships bilingual in English and Myanmar. Built by a five-member student team from Myanmar: fully client-side, offline-capable core, no accounts, deployed and testable today.
+
+---
+
+## Three limitations we state up front
+1. **Synthetic data** — real astronaut records are privacy-restricted; all observations are team-generated, labeled in-app, and informed by NASA Human Research Program literature.
+2. **Illustrative thresholds** — the 15% review trigger and window sizes are demo settings, not clinically validated values.
+3. **Per-device storage** — records live in the browser (by design for the prototype); cross-device sync is future work.
+
+## Claims we never make
+Diagnosis · prediction of health outcomes · risk scores · "safe/unsafe" for duty · clinical validation · NASA endorsement · that a planning action improves physiology.
 
 The interface is engineered with a strict semantic design system—utilizing CSS-first tokens across both light and dark themes, calm reduced-motion-compliant animation timing (`--dur-fast`, `--dur-base`), and full English and Myanmar (`en`/`my`) bilingual localization with dedicated Noto Sans Myanmar typography.
 
 ---
 
-## 3. Project Limitations
+## Hard judge questions — candid answers
 
-To ensure absolute scientific and operational integrity, ASTROCARE explicitly operates within the following boundaries:
+**"Is this medical advice / a diagnostic tool?"**
+No. It compares observations against a personal baseline and flags deviations in neutral language. Interpretation and action remain with the human; the persistent footer states it is not medical advice.
 
-1. **Synthetic Demonstration Data**: All crew biometrics, vitals, daily observations (sleep duration, heart rate variability, exercise minutes, radiation readings, mood), and default check-in entries are synthetic fixtures generated for demonstration purposes.
-2. **Illustrative Demo Settings**: All mathematical detection thresholds (such as the ±15% deviation flag between the 7-day current window and 21-day baseline window) are illustrative demonstration parameters, not clinically established diagnostic criteria.
-3. **No Clinical Validation**: ASTROCARE is an operational concept prototype. It has not undergone clinical trials, FDA review, or NASA operational flight certification, and it does not provide medical diagnoses or treatment recommendations.
+**"Why these thresholds?"**
+They're illustrative demo settings chosen to make states demonstrable, and the UI labels them as such. Production would calibrate per-metric thresholds from published spaceflight literature with clinical review — that's named future work, not something we fake today.
+
+**"Where's the AI? Your check-in form mentioned 'AstroCare AI'."**
+We made the opposite call, deliberately: in a health context, every statement must be traceable, so explanations are deterministic, unit-tested rules — AI tools assisted our *development*, not the product's runtime. We renamed the product plain ASTROCARE to match.
+
+**"What's real NASA data here versus synthetic?"**
+Real: the DONKI space-weather feed (live, with cached fallback) and the NASA research that justified which metrics we track. Synthetic: all health observations, clearly labeled. Real astronaut medical data is restricted — honesty about that beats pretending.
+
+**"Anyone who scans a crew badge sees that person's health data?"**
+In this demo, yes — synthetic data, and the badge lives behind an explicit action, not on the landing page. A real deployment would gate the deep link behind device identity (badge + crew PIN) or show a non-medical summary. We built the boundary where the prototype needed it and documented the rest.
+
+**"Why no backend?"**
+Because nothing requires one: data is seeded or local, computation is client-side, and the one external API is public-tier. That makes the demo resilient — judges can't hit a down server — and it's an architecture choice we can defend, not a gap.
 
 ---
 
-## 4. Judge Questions & Answers
-
-### Q1: QR Privacy — Does scanning the crew badge expose sensitive health data?
-**Answer**:
-No. The badge QR code encodes only a deep-link URL pointing to the crew member’s client-side route (e.g., `/crew/ac-cmdr-01`). It contains zero biometric measurements, vital signs, or protected health information (PHI). In this prototype, all personal check-in entries and decision logs remain stored locally in the browser’s `localStorage` on the individual device and are never broadcast over the network. In an operational production deployment, QR access would require hardware-token authentication or zero-trust cryptographic role-based access control (RBAC), ensuring that only authorized personnel can access personal health brief screens.
-
-### Q2: Is this a diagnosis?
-**Answer**:
-No. ASTROCARE is an operational self-monitoring decision-support tool, not a diagnostic or prognostic system. The software strictly refrains from generating clinical diagnoses, predicting medical outcomes, computing numerical "risk scores," or assigning binary "safe/unsafe" fitness-for-duty designations. Instead, it computes an objective mathematical comparison against an individual's personal reference history and surfaces neutral status descriptions (e.g., "within range", "change worth reviewing", "insufficient data", or "stale data") to encourage timely personal reflection and peer communication.
-
-### Q3: Why are these specific thresholds used?
-**Answer**:
-The ±15% variance threshold and the 21-day baseline / 7-day current evaluation windows are illustrative demo settings designed to demonstrate how an adaptive, personal baseline algorithm behaves under different operational scenarios (such as normal operations, detectable fatigue, insufficient sample sizes, or stale readings). In actual spaceflight operations, threshold values would be multi-parametric, individualized, and clinically calibrated by flight surgeons and circadian physiologists based on each astronaut's validated pre-flight physiological profile and mission mission phase.
-
-### Q4: Which data is real NASA data?
-**Answer**:
-The space weather solar flare events queried via the NASA Space Weather Database Of Notifications, Knowledge, Information (DONKI) API (`https://api.nasa.gov/DONKI/FLR`) represent real NASA space weather observation data (with an included static cached fallback for offline or rate-limited environments). Crucially, this solar activity data is presented strictly as environmental contextual awareness. It is never used to correlate with, explain, or infer causation for any crew member's physiological measurements. In contrast, all astronaut biometrics, task schedules, and crew profiles are completely synthetic demonstration fixtures.
-
-### Q5: What would a production version require?
-**Answer**:
-Transitioning ASTROCARE from a prototype to a flight-certified operational system would require:
-- **Clinical Validation**: Comprehensive clinical studies conducted with space medicine researchers and NASA Flight Surgeons to determine validated baseline models, multi-sensor fusion logic, and physiological safety parameters.
-- **Flight Hardware & Sensor Integration**: Certified telemetry pipelines connecting real-time astronaut wearable biosensors (such as medical-grade actigraphy, continuous ECG/HRV monitors, and dosimeters) and vehicle life support telemetry.
-- **End-to-End Security & Medical Privacy**: Compliance with NASA flight medical privacy policies and HIPAA-equivalent security frameworks, incorporating end-to-end encryption at rest and in transit, multi-factor hardware authentication, and immutable audit logging.
-- **Delay-Tolerant Networking (DTN)**: Robust offline-first operational architecture with store-and-forward synchronization over DTN protocols to gracefully accommodate deep-space communications latency and orbital blackout periods.
-- **Multi-Variate Contextual Modeling**: Algorithmic enhancement to account for microgravity physiological adaptation curves, high-g transitional phases, circadian lighting protocols, and multi-member workload distribution.
+## One-line close
+*Generic dashboards show readings. ASTROCARE shows what changed — for you, against you — explains it honestly, and leaves the decision where it belongs.*

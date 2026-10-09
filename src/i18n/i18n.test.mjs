@@ -18,9 +18,11 @@ const activeFiles = [
   '../screens/BriefScreen.tsx', '../screens/CheckinScreen.tsx', '../routes.tsx', '../components/qr/CrewQR.tsx', '../components/spaceweather/SpaceWeatherCard.tsx',
   '../components/brief/BaselineComparison.tsx', '../components/brief/DecisionBar.tsx', '../components/brief/TaskCard.tsx', '../components/brief/format.ts',
   '../components/demo/DemoControlPanel.tsx', '../components/demo/DemoStatusChip.tsx', '../components/demo/ExploreDemoEntry.tsx',
+  '../components/brief/SelfReportCard.tsx', '../components/demo/DemoMenu.tsx', '../components/demo/DemoGuide.tsx', '../components/qr/CrewBadgeDialog.tsx',
 ];
 for (const file of activeFiles) {
   const source = ts.createSourceFile(file, readFileSync(new URL(file, import.meta.url), 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  assert.equal(source.parseDiagnostics.length, 0, `Syntax error in active component ${file}`);
   function visit(node) {
     if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === 't' && node.arguments[0] && ts.isStringLiteral(node.arguments[0])) {
       assert.ok(node.arguments[0].text in en, `Missing key ${node.arguments[0].text} in ${file}`);
@@ -50,6 +52,7 @@ function verifyKeyArgument(argument, file) {
 }
 for (const file of readdirSync(sourceRoot, { recursive: true }).filter(file => file.endsWith('.tsx'))) {
   const source = ts.createSourceFile(file, readFileSync(new URL(file.replaceAll('\\', '/'), sourceRoot), 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  assert.equal(source.parseDiagnostics.length, 0, `Syntax error in ${file}`);
   function visit(node) {
     if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === 't' && node.arguments[0]) verifyKeyArgument(node.arguments[0], file);
     ts.forEachChild(node, visit);
@@ -62,7 +65,7 @@ for (const task of read('../data/tasks.json')) {
   for (const demand of task.attentionDemands) assert.ok(demand in my);
 }
 const observations = read('../data/observations.json');
-for (const crewId of ['ac-cmdr-01', 'ac-eng-02', 'ac-sci-03']) {
+for (const { id: crewId } of read('../data/crew.json')) {
   for (const result of computeBaselines(observations, crewId, new Date('2026-10-09T06:00:00Z'))) {
     const explanation = baselineExplanation(result, 'my');
     assert.ok(/[\u1000-\u109f]/.test(explanation));
@@ -73,4 +76,10 @@ for (const crewId of ['ac-cmdr-01', 'ac-eng-02', 'ac-sci-03']) {
 assert.ok(translate('my', 'overview.change', { metric: 'အိပ်ချိန်', current: '5.84 h', delta: 20, direction: translate('my', 'below') }).includes('5.84 h'));
 assert.ok(localizedDate('2026-10-09T06:00:00Z', 'my').includes('2026') === false); // default date intentionally omits year
 assert.equal(translate('en', 'points'), 'points');
+for (const key of ['overview.limited', 'freshness.hours', 'freshness.days', 'task.hours', 'crew.reviewing', 'crew.limited']) {
+  for (const [language, dictionary] of [['en', en], ['my', my]]) {
+    assert.equal(translate(language, key, { count: 1 }), dictionary[`${key}.one`].replaceAll('{count}', '1'), `Singular label: ${language}/${key}`);
+    assert.equal(translate(language, key, { count: 2 }), dictionary[key].replaceAll('{count}', '2'), `Plural label: ${language}/${key}`);
+  }
+}
 console.log(`PASS: ${Object.keys(en).length} bilingual keys, placeholder parity, ${translatedCalls} literal labels, all active JSX labels, seed task/role coverage, and dynamic baseline translations.`);

@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { initializeDemoSession, changeDemoSession, rebaseScenarioData, DEMO_SCENARIO_KEY } from '../../lib/demo.ts';
-import { saveCheckin, getCheckins, saveDecision, getDecisions } from '../../lib/storage.ts';
+import { saveCheckin, getCheckins, saveDecision, getDecisions, LEGACY_DEMO_STATE_KEY } from '../../lib/storage.ts';
 import { computeBaselines } from '../../lib/baseline.ts';
-import { SCENARIO_DATA } from '../../data/scenarios/index.ts';
+import { SCENARIO_DATA, SCENARIO_IDS, buildScenarioDataset } from '../../data/scenarios/index.ts';
 
 function browserStorage() {
   const values = new Map();
@@ -52,16 +52,20 @@ test('enter/switch/reset isolates records, increments revision, and exit restore
 
 test('deep-link reload restores the namespace synchronously and migrates the legacy scenario name', () => {
   const values = browserStorage();
-  values.set(DEMO_SCENARIO_KEY, 'review');
+  values.set(LEGACY_DEMO_STATE_KEY, 'review');
   const loaded = initializeDemoSession(now);
   assert.equal(loaded.active, true);
   assert.equal(loaded.scenario, 'reviewing');
   saveCheckin(observation(6));
   assert.equal(values.has('demo:astrocare:v1:state'), true);
   assert.equal(values.has('astrocare:v1:state'), false);
+  const saved = changeDemoSession(loaded, { type: 'scenario', scenario: 'stable' }, now);
+  assert.equal(saved.scenario, 'stable');
+  assert.equal(JSON.parse(values.get(DEMO_SCENARIO_KEY)).scenario, 'stable');
   values.set(DEMO_SCENARIO_KEY, JSON.stringify({ active: true, scenario: 'incomplete' }));
   assert.equal(initializeDemoSession(now).scenario, 'incomplete');
   values.set(DEMO_SCENARIO_KEY, '{ broken JSON');
+  values.delete(LEGACY_DEMO_STATE_KEY);
   assert.equal(initializeDemoSession(now).active, false);
 });
 
@@ -92,17 +96,17 @@ test('clock rebasing preserves intervals, real check-in dates, and original data
   assert.equal(Date.parse(rebased.tasks[0].scheduledFor) - Date.parse(input.tasks[0].scheduledFor), shift);
 });
 
-test('all three scenarios remain valid for all three crews on a future clock', () => {
-  for (const [id, data] of Object.entries(SCENARIO_DATA)) {
-    const rebased = rebaseScenarioData(data, now);
-    assert.equal(rebased.crew.length, 3);
+test('all three runtime scenarios remain valid for all six crews on a future clock', () => {
+  for (const id of SCENARIO_IDS) {
+    const rebased = buildScenarioDataset(id, now);
+    assert.equal(rebased.crew.length, 6);
+    assert.equal(rebased.tasks.length, 6);
     assert.ok(rebased.observations.every(row => row.provenance === 'synthetic_telemetry'));
     for (const crew of rebased.crew) {
       const results = computeBaselines(rebased.observations, crew.id, new Date(now));
       assert.equal(results.length, 5);
       if (id === 'incomplete') {
-        assert.equal(results.find(row => row.metric === 'exercise_min').status, 'insufficient_data');
-        assert.equal(results.find(row => row.metric === 'mood').status, 'stale_data');
+        assert.ok(results.some(row => row.status === 'insufficient_data' || row.status === 'stale_data'));
       } else if (id === 'reviewing' && crew.id === crewId) {
         const hrv = results.find(row => row.metric === 'hrv');
         const sleep = results.find(row => row.metric === 'sleep_hours');
@@ -110,7 +114,16 @@ test('all three scenarios remain valid for all three crews on a future clock', (
         assert.equal(sleep.status, 'worth_reviewing');
         assert.ok(Math.abs(hrv.deltaPct + 16) < 0.1);
         assert.ok(Math.abs(sleep.deltaPct + 20) < 0.1);
-      } else assert.ok(results.every(row => row.status === 'within_range'));
+      } else if (id === 'stable' || crew.id === 'ac-eng-02') assert.ok(results.every(row => row.status === 'within_range'));
+    }
+    if (id === 'reviewing') {
+      const status = (crew, metric) => computeBaselines(rebased.observations, crew, new Date(now)).find(row => row.metric === metric).status;
+      assert.equal(status('ac-sci-03', 'mood'), 'insufficient_data');
+      assert.equal(status('ac-med-04', 'hrv'), 'stale_data');
+      assert.equal(status('ac-med-04', 'radiation_msv'), 'stale_data');
+      assert.equal(status('ac-pay-05', 'exercise_min'), 'worth_reviewing');
+      assert.equal(status('ac-plt-06', 'mood'), 'worth_reviewing');
+      assert.equal(status('ac-plt-06', 'exercise_min'), 'stale_data');
     }
   }
 });

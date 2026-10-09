@@ -198,21 +198,21 @@
   {
     "crewId": "ac-cmdr-01",
     "metric": "hrv",
-    "value": 44.25,
+    "value": 44.4,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-cmdr-01",
     "metric": "hrv",
-    "value": 43.5,
+    "value": 43.6,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-cmdr-01",
     "metric": "hrv",
-    "value": 42.75,
+    "value": 42.8,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
@@ -226,21 +226,21 @@
   {
     "crewId": "ac-cmdr-01",
     "metric": "hrv",
-    "value": 41.25,
+    "value": 41.2,
     "timestamp": "2026-10-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-cmdr-01",
     "metric": "hrv",
-    "value": 40.5,
+    "value": 40.4,
     "timestamp": "2026-10-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-cmdr-01",
     "metric": "hrv",
-    "value": 39.75,
+    "value": 39.6,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
@@ -1227,980 +1227,980 @@
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 62.93,
     "timestamp": "2026-09-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 62.62,
     "timestamp": "2026-09-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 62.31,
     "timestamp": "2026-09-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50,
+    "value": 62,
     "timestamp": "2026-09-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 61.69,
     "timestamp": "2026-09-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 61.38,
     "timestamp": "2026-09-10T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 61.07,
     "timestamp": "2026-09-11T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 62.93,
     "timestamp": "2026-09-12T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 62.62,
     "timestamp": "2026-09-13T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 62.31,
     "timestamp": "2026-09-14T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50,
+    "value": 62,
     "timestamp": "2026-09-15T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 61.69,
     "timestamp": "2026-09-16T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 61.38,
     "timestamp": "2026-09-17T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 61.07,
     "timestamp": "2026-09-18T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 62.93,
     "timestamp": "2026-09-19T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 62.62,
     "timestamp": "2026-09-20T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 62.31,
     "timestamp": "2026-09-21T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50,
+    "value": 62,
     "timestamp": "2026-09-22T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 61.69,
     "timestamp": "2026-09-23T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 61.38,
     "timestamp": "2026-09-24T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 61.07,
     "timestamp": "2026-09-25T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 62.93,
     "timestamp": "2026-09-26T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 62.62,
     "timestamp": "2026-09-27T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 62.31,
     "timestamp": "2026-09-28T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50,
+    "value": 62,
     "timestamp": "2026-09-29T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 61.69,
     "timestamp": "2026-09-30T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 61.38,
     "timestamp": "2026-10-01T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 61.07,
     "timestamp": "2026-10-02T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 62.93,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 62.62,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 62.31,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 50,
+    "value": 62,
     "timestamp": "2026-10-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 61.69,
     "timestamp": "2026-10-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 61.38,
     "timestamp": "2026-10-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 61.07,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.105,
     "timestamp": "2026-09-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.07,
     "timestamp": "2026-09-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.035,
     "timestamp": "2026-09-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7,
     "timestamp": "2026-09-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 6.965,
     "timestamp": "2026-09-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 6.93,
     "timestamp": "2026-09-10T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 6.895,
     "timestamp": "2026-09-11T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.105,
     "timestamp": "2026-09-12T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.07,
     "timestamp": "2026-09-13T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.035,
     "timestamp": "2026-09-14T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7,
     "timestamp": "2026-09-15T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 6.965,
     "timestamp": "2026-09-16T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 6.93,
     "timestamp": "2026-09-17T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 6.895,
     "timestamp": "2026-09-18T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.105,
     "timestamp": "2026-09-19T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.07,
     "timestamp": "2026-09-20T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.035,
     "timestamp": "2026-09-21T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7,
     "timestamp": "2026-09-22T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 6.965,
     "timestamp": "2026-09-23T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 6.93,
     "timestamp": "2026-09-24T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 6.895,
     "timestamp": "2026-09-25T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.105,
     "timestamp": "2026-09-26T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.07,
     "timestamp": "2026-09-27T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.035,
     "timestamp": "2026-09-28T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7,
     "timestamp": "2026-09-29T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 6.965,
     "timestamp": "2026-09-30T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 6.93,
     "timestamp": "2026-10-01T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 6.895,
     "timestamp": "2026-10-02T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.105,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.07,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.035,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7,
     "timestamp": "2026-10-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 6.965,
     "timestamp": "2026-10-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 6.93,
     "timestamp": "2026-10-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 6.895,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 50.75,
     "timestamp": "2026-09-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 50.5,
     "timestamp": "2026-09-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 50.25,
     "timestamp": "2026-09-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 50,
     "timestamp": "2026-09-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 49.75,
     "timestamp": "2026-09-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 49.5,
     "timestamp": "2026-09-10T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 49.25,
     "timestamp": "2026-09-11T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 50.75,
     "timestamp": "2026-09-12T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 50.5,
     "timestamp": "2026-09-13T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 50.25,
     "timestamp": "2026-09-14T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 50,
     "timestamp": "2026-09-15T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 49.75,
     "timestamp": "2026-09-16T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 49.5,
     "timestamp": "2026-09-17T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 49.25,
     "timestamp": "2026-09-18T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 50.75,
     "timestamp": "2026-09-19T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 50.5,
     "timestamp": "2026-09-20T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 50.25,
     "timestamp": "2026-09-21T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 50,
     "timestamp": "2026-09-22T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 49.75,
     "timestamp": "2026-09-23T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 49.5,
     "timestamp": "2026-09-24T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 49.25,
     "timestamp": "2026-09-25T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 50.75,
     "timestamp": "2026-09-26T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 50.5,
     "timestamp": "2026-09-27T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 50.25,
     "timestamp": "2026-09-28T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 50,
     "timestamp": "2026-09-29T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 49.75,
     "timestamp": "2026-09-30T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 49.5,
     "timestamp": "2026-10-01T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 49.25,
     "timestamp": "2026-10-02T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 50.75,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 50.5,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 50.25,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 50,
     "timestamp": "2026-10-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 49.75,
     "timestamp": "2026-10-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 49.5,
     "timestamp": "2026-10-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 49.25,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.2842,
     "timestamp": "2026-09-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.2828,
     "timestamp": "2026-09-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.2814,
     "timestamp": "2026-09-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.28,
     "timestamp": "2026-09-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.2786,
     "timestamp": "2026-09-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.2772,
     "timestamp": "2026-09-10T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.2758,
     "timestamp": "2026-09-11T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.2842,
     "timestamp": "2026-09-12T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.2828,
     "timestamp": "2026-09-13T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.2814,
     "timestamp": "2026-09-14T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.28,
     "timestamp": "2026-09-15T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.2786,
     "timestamp": "2026-09-16T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.2772,
     "timestamp": "2026-09-17T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.2758,
     "timestamp": "2026-09-18T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.2842,
     "timestamp": "2026-09-19T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.2828,
     "timestamp": "2026-09-20T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.2814,
     "timestamp": "2026-09-21T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.28,
     "timestamp": "2026-09-22T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.2786,
     "timestamp": "2026-09-23T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.2772,
     "timestamp": "2026-09-24T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.2758,
     "timestamp": "2026-09-25T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.2842,
     "timestamp": "2026-09-26T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.2828,
     "timestamp": "2026-09-27T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.2814,
     "timestamp": "2026-09-28T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.28,
     "timestamp": "2026-09-29T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.2786,
     "timestamp": "2026-09-30T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.2772,
     "timestamp": "2026-10-01T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.2758,
     "timestamp": "2026-10-02T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.2842,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.2828,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.2814,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.28,
     "timestamp": "2026-10-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.2786,
     "timestamp": "2026-10-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.2772,
     "timestamp": "2026-10-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-eng-02",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.2758,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
@@ -2452,960 +2452,981 @@
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 55.825,
     "timestamp": "2026-09-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 55.55,
     "timestamp": "2026-09-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 55.275,
     "timestamp": "2026-09-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50,
+    "value": 55,
     "timestamp": "2026-09-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 54.725,
     "timestamp": "2026-09-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 54.45,
     "timestamp": "2026-09-10T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 54.175,
     "timestamp": "2026-09-11T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 55.825,
     "timestamp": "2026-09-12T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 55.55,
     "timestamp": "2026-09-13T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 55.275,
     "timestamp": "2026-09-14T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50,
+    "value": 55,
     "timestamp": "2026-09-15T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 54.725,
     "timestamp": "2026-09-16T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 54.45,
     "timestamp": "2026-09-17T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 54.175,
     "timestamp": "2026-09-18T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 55.825,
     "timestamp": "2026-09-19T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 55.55,
     "timestamp": "2026-09-20T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 55.275,
     "timestamp": "2026-09-21T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50,
+    "value": 55,
     "timestamp": "2026-09-22T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 54.725,
     "timestamp": "2026-09-23T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 54.45,
     "timestamp": "2026-09-24T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 54.175,
     "timestamp": "2026-09-25T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 55.825,
     "timestamp": "2026-09-26T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 55.55,
     "timestamp": "2026-09-27T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 55.275,
     "timestamp": "2026-09-28T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50,
+    "value": 55,
     "timestamp": "2026-09-29T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 54.725,
     "timestamp": "2026-09-30T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 54.45,
     "timestamp": "2026-10-01T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 54.175,
     "timestamp": "2026-10-02T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.75,
+    "value": 55.825,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.5,
+    "value": 55.55,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50.25,
+    "value": 55.275,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 50,
+    "value": 55,
     "timestamp": "2026-10-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.75,
+    "value": 54.725,
     "timestamp": "2026-10-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.5,
+    "value": 54.45,
     "timestamp": "2026-10-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "hrv",
-    "value": 49.25,
+    "value": 54.175,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.6125,
     "timestamp": "2026-09-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.575,
     "timestamp": "2026-09-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.5375,
     "timestamp": "2026-09-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7.5,
     "timestamp": "2026-09-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 7.4625,
     "timestamp": "2026-09-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 7.425,
     "timestamp": "2026-09-10T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 7.3875,
     "timestamp": "2026-09-11T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.6125,
     "timestamp": "2026-09-12T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.575,
     "timestamp": "2026-09-13T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.5375,
     "timestamp": "2026-09-14T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7.5,
     "timestamp": "2026-09-15T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 7.4625,
     "timestamp": "2026-09-16T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 7.425,
     "timestamp": "2026-09-17T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 7.3875,
     "timestamp": "2026-09-18T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.6125,
     "timestamp": "2026-09-19T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.575,
     "timestamp": "2026-09-20T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.5375,
     "timestamp": "2026-09-21T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7.5,
     "timestamp": "2026-09-22T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 7.4625,
     "timestamp": "2026-09-23T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 7.425,
     "timestamp": "2026-09-24T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 7.3875,
     "timestamp": "2026-09-25T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.6125,
     "timestamp": "2026-09-26T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.575,
     "timestamp": "2026-09-27T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.5375,
     "timestamp": "2026-09-28T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7.5,
     "timestamp": "2026-09-29T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 7.4625,
     "timestamp": "2026-09-30T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 7.425,
     "timestamp": "2026-10-01T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 7.3875,
     "timestamp": "2026-10-02T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.4095,
+    "value": 7.6125,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.373,
+    "value": 7.575,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3365,
+    "value": 7.5375,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.3,
+    "value": 7.5,
     "timestamp": "2026-10-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.2635,
+    "value": 7.4625,
     "timestamp": "2026-10-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.227,
+    "value": 7.425,
     "timestamp": "2026-10-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "sleep_hours",
-    "value": 7.1905,
+    "value": 7.3875,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 40.6,
     "timestamp": "2026-09-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 40.4,
     "timestamp": "2026-09-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 40.2,
     "timestamp": "2026-09-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 40,
     "timestamp": "2026-09-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 39.8,
     "timestamp": "2026-09-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 39.6,
     "timestamp": "2026-09-10T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 39.4,
     "timestamp": "2026-09-11T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 40.6,
     "timestamp": "2026-09-12T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 40.4,
     "timestamp": "2026-09-13T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 40.2,
     "timestamp": "2026-09-14T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 40,
     "timestamp": "2026-09-15T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 39.8,
     "timestamp": "2026-09-16T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 39.6,
     "timestamp": "2026-09-17T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 39.4,
     "timestamp": "2026-09-18T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 40.6,
     "timestamp": "2026-09-19T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 40.4,
     "timestamp": "2026-09-20T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 40.2,
     "timestamp": "2026-09-21T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 40,
     "timestamp": "2026-09-22T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 39.8,
     "timestamp": "2026-09-23T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 39.6,
     "timestamp": "2026-09-24T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 39.4,
     "timestamp": "2026-09-25T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 40.6,
     "timestamp": "2026-09-26T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 40.4,
     "timestamp": "2026-09-27T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 40.2,
     "timestamp": "2026-09-28T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 40,
     "timestamp": "2026-09-29T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 39.8,
     "timestamp": "2026-09-30T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 39.6,
     "timestamp": "2026-10-01T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 39.4,
     "timestamp": "2026-10-02T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.675,
+    "value": 40.6,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.45,
+    "value": 40.4,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45.225,
+    "value": 40.2,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 45,
+    "value": 40,
     "timestamp": "2026-10-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.775,
+    "value": 39.8,
     "timestamp": "2026-10-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.55,
+    "value": 39.6,
     "timestamp": "2026-10-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "exercise_min",
-    "value": 44.325,
+    "value": 39.4,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.3146,
     "timestamp": "2026-09-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.3131,
     "timestamp": "2026-09-06T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.3115,
     "timestamp": "2026-09-07T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.31,
     "timestamp": "2026-09-08T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.3085,
     "timestamp": "2026-09-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.3069,
     "timestamp": "2026-09-10T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.3054,
     "timestamp": "2026-09-11T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.3146,
     "timestamp": "2026-09-12T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.3131,
     "timestamp": "2026-09-13T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.3115,
     "timestamp": "2026-09-14T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.31,
     "timestamp": "2026-09-15T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.3085,
     "timestamp": "2026-09-16T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.3069,
     "timestamp": "2026-09-17T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.3054,
     "timestamp": "2026-09-18T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.3146,
     "timestamp": "2026-09-19T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.3131,
     "timestamp": "2026-09-20T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.3115,
     "timestamp": "2026-09-21T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.31,
     "timestamp": "2026-09-22T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.3085,
     "timestamp": "2026-09-23T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.3069,
     "timestamp": "2026-09-24T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.3054,
     "timestamp": "2026-09-25T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.3146,
     "timestamp": "2026-09-26T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.3131,
     "timestamp": "2026-09-27T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.3115,
     "timestamp": "2026-09-28T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.31,
     "timestamp": "2026-09-29T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.2985,
+    "value": 0.3085,
     "timestamp": "2026-09-30T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.297,
+    "value": 0.3069,
     "timestamp": "2026-10-01T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.2955,
+    "value": 0.3054,
     "timestamp": "2026-10-02T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3045,
+    "value": 0.3146,
     "timestamp": "2026-10-03T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.303,
+    "value": 0.3131,
     "timestamp": "2026-10-04T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3015,
+    "value": 0.3115,
     "timestamp": "2026-10-05T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
     "crewId": "ac-sci-03",
     "metric": "radiation_msv",
-    "value": 0.3,
+    "value": 0.31,
     "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-sci-03",
+    "metric": "radiation_msv",
+    "value": 0.3085,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-sci-03",
+    "metric": "radiation_msv",
+    "value": 0.3069,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-sci-03",
+    "metric": "radiation_msv",
+    "value": 0.3054,
+    "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   },
   {
@@ -3475,6 +3496,3618 @@
     "crewId": "ac-sci-03",
     "metric": "mood",
     "value": 3.94,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.72,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.48,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.24,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.76,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.52,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.28,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.72,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.48,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.24,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.76,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.52,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.28,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.72,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.48,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.24,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.76,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.52,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.28,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.72,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.48,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.24,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.76,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.52,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 47.28,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.72,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.48,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48.24,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "hrv",
+    "value": 48,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.308,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.272,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.236,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.2,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.164,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.128,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.092,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.308,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.272,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.236,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.2,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.164,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.128,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.092,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.308,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.272,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.236,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.2,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.164,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.128,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.092,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.308,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.272,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.236,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.2,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.164,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.128,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.092,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.308,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.272,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.236,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.2,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.164,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.128,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "sleep_hours",
+    "value": 7.092,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.525,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.35,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.175,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.825,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.65,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.475,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.525,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.35,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.175,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.825,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.65,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.475,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.525,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.35,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.175,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.825,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.65,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.475,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.525,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.35,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.175,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.825,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.65,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.475,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.525,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.35,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35.175,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 35,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.825,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.65,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "exercise_min",
+    "value": 34.475,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2943,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2929,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2914,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.29,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2885,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2871,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2856,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2943,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2929,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2914,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.29,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2885,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2871,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2856,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2943,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2929,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2914,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.29,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2885,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2871,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2856,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2943,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2929,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2914,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.29,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2885,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2871,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2856,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2943,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2929,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.2914,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "radiation_msv",
+    "value": 0.29,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-med-04",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.87,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.58,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.29,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.71,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.42,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.13,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.87,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.58,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.29,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.71,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.42,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.13,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.87,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.58,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.29,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.71,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.42,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.13,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.87,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.58,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.29,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.71,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.42,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.13,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.87,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.58,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58.29,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 58,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.71,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.42,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "hrv",
+    "value": 57.13,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 7.0035,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.969,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9345,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.8655,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.831,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.7965,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 7.0035,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.969,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9345,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.8655,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.831,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.7965,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 7.0035,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.969,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9345,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.8655,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.831,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.7965,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 7.0035,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.969,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9345,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.8655,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.831,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.7965,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 7.0035,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.969,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9345,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.9,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.8655,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.831,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "sleep_hours",
+    "value": 6.7965,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.675,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.45,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.225,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.775,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.55,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.325,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.675,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.45,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.225,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.775,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.55,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.325,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.675,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.45,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.225,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.775,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.55,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.325,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.675,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.45,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45.225,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 45,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.775,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.55,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 44.325,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 52.875,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 54,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 55.125,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 56.25,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 57.375,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 58.5,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "exercise_min",
+    "value": 59.625,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3248,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3232,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3216,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.32,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3184,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3168,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3152,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3248,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3232,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3216,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.32,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3184,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3168,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3152,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3248,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3232,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3216,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.32,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3184,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3168,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3152,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3248,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3232,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3216,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.32,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3184,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3168,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3152,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3248,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3232,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3216,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.32,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3184,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3168,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "radiation_msv",
+    "value": 0.3152,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-pay-05",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.78,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.52,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.26,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.74,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.48,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.22,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.78,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.52,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.26,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.74,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.48,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.22,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.78,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.52,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.26,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.74,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.48,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.22,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.78,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.52,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.26,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.74,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.48,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.22,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.78,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.52,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52.26,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 52,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.74,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.48,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "hrv",
+    "value": 51.22,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.511,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.474,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.437,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.4,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.363,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.326,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.289,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.511,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.474,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.437,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.4,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.363,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.326,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.289,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.511,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.474,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.437,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.4,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.363,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.326,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.289,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.511,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.474,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.437,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.4,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.363,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.326,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.289,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.511,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.474,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.437,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.4,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.363,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.326,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "sleep_hours",
+    "value": 7.289,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.825,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.55,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.275,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.725,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.45,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.175,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.825,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.55,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.275,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.725,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.45,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.175,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.825,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.55,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.275,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.725,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.45,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.175,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.825,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.55,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.275,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.725,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.45,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 54.175,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.825,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.55,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55.275,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "exercise_min",
+    "value": 55,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3045,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.303,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3015,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2985,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.297,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2955,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3045,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.303,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3015,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2985,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.297,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2955,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3045,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.303,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3015,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2985,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.297,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2955,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3045,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.303,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3015,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2985,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.297,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2955,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3045,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.303,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3015,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.3,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2985,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.297,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "radiation_msv",
+    "value": 0.2955,
+    "timestamp": "2026-10-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-09T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-10T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-11T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-12T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-13T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-14T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-15T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-16T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-17T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-18T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-19T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-20T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-21T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-22T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-23T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-09-24T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-09-25T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.06,
+    "timestamp": "2026-09-26T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.04,
+    "timestamp": "2026-09-27T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4.02,
+    "timestamp": "2026-09-28T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 4,
+    "timestamp": "2026-09-29T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.98,
+    "timestamp": "2026-09-30T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.96,
+    "timestamp": "2026-10-01T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.94,
+    "timestamp": "2026-10-02T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.496,
+    "timestamp": "2026-10-03T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.424,
+    "timestamp": "2026-10-04T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.352,
+    "timestamp": "2026-10-05T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.28,
+    "timestamp": "2026-10-06T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.208,
+    "timestamp": "2026-10-07T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.136,
+    "timestamp": "2026-10-08T05:00:00.000Z",
+    "provenance": "synthetic_telemetry"
+  },
+  {
+    "crewId": "ac-plt-06",
+    "metric": "mood",
+    "value": 3.064,
     "timestamp": "2026-10-09T05:00:00.000Z",
     "provenance": "synthetic_telemetry"
   }

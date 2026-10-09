@@ -3,14 +3,17 @@
 `integration/full-local` preserves the histories of all inspected local and
 remote branches. Its independent source heads were `p2-complete` (0297e4f),
 `p1-shell` (6bdac0b), `p5-work` (68cee2c), `dev` (e332099), and
-`feat/demo-mode` (ef4e89f). The remaining branch heads were already ancestors
-of those heads. The old standalone demo's mocked dashboard was reconciled with
+`feat/demo-mode` (ef4e89f), the newer `feature/person4` (bef2436), and
+`final-polish` (390fb2a, also the fetched remote main). All 20 inspected local
+and remote branch heads are preserved by ancestry. Local `main` remains at
+75a7bd1; it was not checked out or modified. The old standalone demo's mocked dashboard was reconciled with
 the real baseline/dashboard implementation, while retaining its commit history
 and compatible demo entry button.
 
-The integrated app includes crew selection and QR deep links, the dashboard,
-baseline trends, local check-ins and decision history, three complete demo
-scenarios, English/Myanmar, dark/light themes, and the optional NASA proxy.
+The integrated app includes six crew profiles and QR badge dialogs, the dashboard,
+baseline trends, multi-metric local check-ins and descriptive self-report details,
+decision history, three complete runtime demo scenarios, a four-step guide,
+English/Myanmar, dark/light themes, and the optional NASA proxy.
 All health telemetry is clearly labeled synthetic demonstration data. The
 existing server-side key and Vercel function are retained; no database was added.
 
@@ -44,18 +47,29 @@ the full crew journey available.
 
 ## Verification executed on 2026-10-09
 
-- `npm test`: 19/19 passed (NASA proxy/serverless/client fallback, baseline,
-  storage integration, demo isolation/clock/reset, and bilingual coverage).
+- A fresh `npm ci` completed after stopping old repository dev/preview processes
+  that held Windows native dependency file locks.
+- `npm test`: 25/25 passed (NASA proxy/serverless/client fallback, baseline,
+  atomic storage/migration/duplicate handling, unavailable vs empty history,
+  demo isolation/clock/reset, and 334 bilingual keys).
 - `npm run test:brief`: passed its fixture TypeScript/Vite/SSR contract checks.
   React Router's existing isolated SSR `useLayoutEffect` warnings remain.
-- `npm run build`, `build:server`, `build:function`: passed. The frontend build
-  retains one informational large-chunk warning; this does not prevent output.
-- Browser: all three crews/scenarios, all three decision actions, validation and
-  check-in updates, scoped reset, metric selector keyboard interaction, chart
-  shading/tooltip, both themes/languages at 390/1024/1440 widths, and labeled
+- `npm run build`, `build:server`, `build:function`: passed, including TypeScript.
+  The final route-split frontend build has no large-chunk warning.
+- Browser: six crew profiles, all three scenarios, guide steps, QR generation
+  and link copy, form validation, multi-field check-in save and dashboard updates,
+  duplicate guard, decision/history columns, scoped reset, metric selector
+  keyboard interaction, shaded chart/tooltip, mobile navigation, and EN/MY in
+  both themes at 390/1024/1440 widths. No horizontal overflow; primary CTA is 44px.
+  The earlier integration pass also exercised all three decision actions and
   fallback with the proxy deliberately stopped.
-- NASA local connection: HTTP 200 JSON with three normalized events through
-  NASA CCMC. This verifies connectivity, not gateway API-key validity.
+- Latest NASA local connection: frontend proxy returns HTTP 504 on upstream
+  timeout; the browser honestly displays synthetic fallback. An earlier local
+  pass returned HTTP 200 JSON with three normalized NASA CCMC events. Live
+  availability is external and gateway API-key validity remains unverified.
+- `npm audit --omit=dev` reports two moderate dependency entries for the existing
+  React Router 6 chain. Its proposed fix is a major-version upgrade; no forced
+  or unrelated dependency migration was applied during integration.
 
 Synthetic dates shift together at session start so the demonstration still
 works on a later day. Personal check-in timestamps are never moved. Demo
@@ -65,3 +79,7 @@ never clears the normal user record envelope.
 No push, deployment, branch deletion, database change, or update to `main` is
 part of this local integration. Vercel cloud packaging/deployment validation
 remains separate; see [Vercel setup](../server/VERCEL.md).
+
+The user-created untracked `astrocare.pptx` is left untouched and outside the
+integration commit. Local secrets remain ignored; the configured key is absent
+from staged source and built browser assets.

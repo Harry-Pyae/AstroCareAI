@@ -1,136 +1,75 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../../i18n/LanguageProvider';
-import type { Observation } from '../../lib/types';
-import CrewQR from '../qr/CrewQR';
+import { computeBaselines } from '../../lib/baseline';
+import { getCheckins } from '../../lib/storage';
+import type { BaselineResult } from '../../lib/types';
+import { freshness } from '../brief/format';
+import ExploreDemoEntry from '../demo/ExploreDemoEntry';
+import { useDemo } from '../demo/DemoProvider';
 import Icon from '../icons/Icon';
-import { useCrew, useObservations, useTasks } from '../demo/DemoProvider';
-import { ExploreDemoEntry } from '../demo/ExploreDemoEntry';
 
-/**
- * Summarizes the tracked baseline metrics for a crew member.
- */
-function getCrewMetricSummary(crewId: string, observations: Observation[]) {
-  const memberObs = observations.filter((o) => o.crewId === crewId);
-  const metricSet = new Set(memberObs.map((o) => o.metric));
-  return {
-    count: metricSet.size,
-    totalReadings: memberObs.length,
-    latest: memberObs.reduce<string | null>((latest, reading) => !latest || Date.parse(reading.timestamp) > Date.parse(latest) ? reading.timestamp : latest, null),
-  };
+const chip = 'inline-flex min-h-7 items-center gap-1.5 rounded-full border px-2.5 text-xs font-medium';
+
+/** Counts only, never a score or rating. */
+function StatusSummary({ results }: { results: BaselineResult[] }) {
+  const { t } = useI18n();
+  const reviewing = results.filter(r => r.status === 'worth_reviewing').length;
+  const limited = results.filter(r => r.status === 'insufficient_data' || r.status === 'stale_data').length;
+  if (!reviewing && !limited) return <span className={`${chip} border-default text-secondary`}><Icon name="check" size={14} />{t('All within personal baseline range')}</span>;
+  return <span className="flex flex-wrap gap-2">
+    {reviewing > 0 && <span className={`${chip} border-accent-review/40 bg-accent-review/10 text-accent-review`}><Icon name="review" size={14} />{t('crew.reviewing', { count: reviewing })}</span>}
+    {limited > 0 && <span className={`${chip} border-default text-secondary`}><Icon name="info" size={14} />{t('crew.limited', { count: limited })}</span>}
+  </span>;
 }
 
 export default function CrewSelectPage() {
-  const { t, date } = useI18n();
-  const crew = useCrew();
-  const observations = useObservations();
-  const tasks = useTasks();
+  const { t } = useI18n();
+  const { dataset, version } = useDemo();
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const refresh = () => setNow(new Date());
+    refresh();
+    window.addEventListener('storage', refresh);
+    return () => window.removeEventListener('storage', refresh);
+  }, [version]);
 
-  return (
-    <section className="motion-mount space-y-8" aria-labelledby="crew-select-heading">
-      {/* Page Header */}
-      <header className="space-y-2">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-accent">
-          <Icon name="crew" size={16} />
-          <span>{t("ASTROCARE · Crew Access")}</span>
-        </div>
-        <h1
-          id="crew-select-heading"
-          className="text-2xl font-semibold tracking-tight text-primary sm:text-3xl"
-        >
-          {t("Select crew member")}
-        </h1>
-        <p className="text-base text-secondary">
-          {t("Select your profile to open your personal baseline brief")}
-        </p>
-      </header>
+  const rows = dataset.crew.map(member => {
+    const observations = [...dataset.observations, ...getCheckins(member.id)].filter(row => row.crewId === member.id && Date.parse(row.timestamp) <= now.getTime());
+    const latest = observations.reduce((max, row) => Math.max(max, Date.parse(row.timestamp)), -Infinity);
+    return { member, results: computeBaselines(observations, member.id, now), latest: Number.isFinite(latest) ? new Date(latest).toISOString() : undefined };
+  });
+  const reviewingCrew = rows.filter(r => r.results.some(x => x.status === 'worth_reviewing')).length;
+  const limitedCrew = rows.filter(r => r.results.some(x => x.status === 'insufficient_data' || x.status === 'stale_data')).length;
 
-      <ExploreDemoEntry />
+  return <section className="space-y-8" aria-labelledby="crew-select-heading">
+    <header>
+      <h1 id="crew-select-heading" className="text-2xl font-semibold text-primary">{t('Select crew member')}</h1>
+      <p className="mt-2 text-secondary">{t('Select a profile to open their personal baseline brief.')}</p>
+    </header>
 
-      {/* Crew Badge Cards Grid - 24px gap (gap-6) & responsive 390px stacking */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {crew.map((member) => {
-          const { count, totalReadings, latest } = getCrewMetricSummary(member.id, observations);
-          const nextTask = tasks.filter(task => task.crewId === member.id && Date.parse(task.scheduledFor) >= Date.now()).sort((a, b) => Date.parse(a.scheduledFor) - Date.parse(b.scheduledFor))[0];
+    <ExploreDemoEntry />
 
-          return (
-            <Link
-              key={member.id}
-              to={`/crew/${member.id}`}
-              className="group flex flex-col justify-between rounded-xl border border-default bg-card p-6 transition-all duration-[var(--dur-fast,150ms)] hover:-translate-y-1 hover:border-accent hover:bg-card-raised focus-visible:outline-2 focus-visible:outline-focus-ring"
-              style={{
-                transitionTimingFunction: 'var(--ease, cubic-bezier(0.2, 0, 0, 1))',
-              }}
-            >
-              {/* Card Top: Identity & Role */}
-              <div className="space-y-4">
-                <div className="flex items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <h3 className="text-lg font-semibold text-primary group-hover:text-accent">
-                      {member.name}
-                    </h3>
-                    <p className="font-mono text-xs uppercase tracking-wider text-secondary">
-                      {t(member.role)}
-                    </p>
-                  </div>
-                  <span className="rounded-md border border-default bg-card-raised px-2 py-0.5 font-mono text-xs text-secondary">
-                    {member.id}
-                  </span>
-                </div>
-
-                {/* QR Badge Display */}
-                <div className="flex justify-center py-2">
-                  <div className="rounded-lg border border-default bg-card-raised p-2 transition-colors duration-[var(--dur-fast,150ms)] group-hover:border-accent/40">
-                    <CrewQR crewId={member.id} size={140} />
-                  </div>
-                </div>
-
-                {/* Metric Count Summary */}
-                <div className="space-y-1.5 border-t border-default pt-4">
-                  <div className="flex items-center justify-between text-xs text-secondary">
-                    <span className="flex items-center gap-1.5 font-medium text-primary">
-                      <Icon name="metrics" size={14} className="text-accent" />
-                      <span>{t("{count} baseline metrics", { count })}</span>
-                    </span>
-                    <span className="font-mono text-[11px] text-secondary">
-                      {totalReadings} {t("readings")}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-secondary">{t('Latest observation')}: {latest ? <time dateTime={latest}>{date(latest)}</time> : t('No observations available')}</p>
-
-                  {/* Summary metric indicators */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    <span className="inline-flex items-center gap-1 rounded bg-card-raised px-2 py-0.5 text-[11px] text-secondary">
-                      <Icon name="sleep" size={12} /> {t("Sleep")}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded bg-card-raised px-2 py-0.5 text-[11px] text-secondary">
-                      <Icon name="heart-pulse" size={12} /> {t("HRV")}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded bg-card-raised px-2 py-0.5 text-[11px] text-secondary">
-                      <Icon name="checkin" size={12} /> {t("Exercise")}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded bg-card-raised px-2 py-0.5 text-[11px] text-secondary">
-                      <Icon name="spaceweather" size={12} /> {t("Radiation")}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded bg-card-raised px-2 py-0.5 text-[11px] text-secondary">
-                      <Icon name="note" size={12} /> {t("Mood")}
-                    </span>
-                  </div>
-                  {nextTask ? <p className="pt-2 text-xs text-secondary"><Icon name="schedule" size={14} className="mr-1 inline-block" />{t(nextTask.title)} · <time dateTime={nextTask.scheduledFor}>{date(nextTask.scheduledFor)}</time></p> : <p className="pt-2 text-xs text-secondary">{t('No upcoming task is recorded for this crew member.')}</p>}
-                </div>
-              </div>
-
-              {/* Card Footer Action */}
-              <div className="mt-6 flex items-center justify-between border-t border-default pt-4 text-xs font-medium text-accent">
-                <span>{t("Open baseline brief")}</span>
-                <span className="transition-transform duration-[var(--dur-fast,150ms)] group-hover:translate-x-1">
-                  <Icon name="arrow" size={14} />
-                </span>
-              </div>
-            </Link>
-          );
-        })}
+    <div>
+      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="text-lg font-semibold">{t('Crew')}</h2>
+        <p className="text-xs text-secondary">{t('crew.overview', { total: rows.length, reviewing: reviewingCrew, limited: limitedCrew })}</p>
       </div>
-    </section>
-  );
+      <ul className="motion-stagger divide-y divide-default overflow-hidden rounded-xl border border-default bg-card">
+        {rows.map(({ member, results, latest }) => <li key={member.id}>
+          <Link to={`/crew/${encodeURIComponent(member.id)}`} className="group flex flex-wrap items-center gap-x-6 gap-y-3 px-5 py-4 transition-[background-color] duration-[var(--dur-fast)] hover:bg-card-raised lg:flex-nowrap">
+            <span aria-hidden className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/15 font-semibold text-accent">{member.name.split(' ').map(part => part[0]).join('')}</span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-medium text-primary">{member.name}</span>
+              <span className="block text-sm text-secondary">{t(member.role)} · <span className="font-mono text-xs">{member.id}</span></span>
+            </span>
+            <span className="text-xs text-secondary lg:w-44">{freshness(latest, now, t)}</span>
+            <span className="lg:w-56"><StatusSummary results={results} /></span>
+            <Icon name="chevron-right" className="hidden text-secondary transition-transform duration-[var(--dur-fast)] group-hover:translate-x-0.5 lg:block" />
+          </Link>
+        </li>)}
+      </ul>
+      <p className="mt-3 text-xs text-secondary">{t('Counts compare each person with their own baseline only. They are not health ratings.')}</p>
+    </div>
+  </section>;
 }

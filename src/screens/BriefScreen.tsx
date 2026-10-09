@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { computeBaselines } from '../lib/baseline';
-import { getCheckins, getDecisions, saveDecision } from '../lib/storage';
+import { getCheckinDetails, getCheckins, getDecisions, getStorageReadStatus, saveDecision, type CheckinDetails } from '../lib/storage';
 import type { CrewMember, Decision, Observation } from '../lib/types';
 import { useI18n } from '../i18n/LanguageProvider';
 import { baselineExplanation } from '../i18n/index';
@@ -9,8 +9,11 @@ import { useCrew, useDemo, useObservations, useTasks } from '../components/demo/
 import BaselineComparison from '../components/brief/BaselineComparison';
 import DecisionBar from '../components/brief/DecisionBar';
 import TaskCard from '../components/brief/TaskCard';
+import SelfReportCard from '../components/brief/SelfReportCard';
 import SpaceWeatherCard from '../components/spaceweather/SpaceWeatherCard';
 import Icon from '../components/icons/Icon';
+import { buttonClass } from '../components/ui/Button';
+import CrewBadgeDialog from '../components/qr/CrewBadgeDialog';
 import { metricLabels, metricValue } from '../components/brief/format';
 import '../components/brief/dashboard.css';
 
@@ -23,6 +26,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
   const tasks = useTasks();
   const [now, setNow] = useState(() => new Date());
   const [checkins, setCheckins] = useState<Observation[]>([]);
+  const [details, setDetails] = useState<CheckinDetails[]>([]);
   const [decisions, setDecisions] = useState<Decision[]>([]);
   const [storageMessage, setStorageMessage] = useState('');
   const [toast, setToast] = useState('');
@@ -38,8 +42,10 @@ function CrewBrief({ member }: { member: CrewMember }) {
       const time = new Date();
       setNow(time);
       try {
+        if (getStorageReadStatus() === 'unavailable') throw new Error('Local history unavailable');
         const saved = getCheckins(member.id);
         setCheckins(saved);
+        setDetails(getCheckinDetails(member.id));
         setDecisions(getDecisions(member.id));
         setStorageMessage('');
         const newest = [...saved].sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))[0];
@@ -48,11 +54,12 @@ function CrewBrief({ member }: { member: CrewMember }) {
           const key = [active, scenario, member.id, newest.timestamp].join(':');
           if (age >= 0 && age < 120_000 && !acknowledgedCheckins.has(key)) {
             acknowledgedCheckins.add(key);
-            setToast('Check-in saved. Your recent observations are updated.');
+            setToast(active ? 'Check-in saved to this demo scenario. Recent averages now include it.' : 'Check-in saved. Your recent observations are updated.');
           }
         }
       } catch {
         setCheckins([]);
+        setDetails([]);
         setDecisions([]);
         setStorageMessage('Local history is unavailable. Showing synthetic telemetry; browser storage access is needed for saved check-ins and decisions.');
       }
@@ -97,7 +104,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
 
   return <div className="brief-dashboard text-primary">
     <header>
-      <Link to="/" className="brief-link text-accent text-xs">{t('← All crew')}</Link>
+      <Link to="/" className={buttonClass('ghost', 'sm', '-ml-3')}><Icon name="arrow-left" size={16} />{t('All crew')}</Link>
       <div className="brief-overview">
         <div className="brief-overview-identity">
           <p className="brief-eyebrow text-secondary">{t('Personal baseline brief')}</p>
@@ -109,9 +116,12 @@ function CrewBrief({ member }: { member: CrewMember }) {
             <p>{t('Latest observation')}: {latest ? <time dateTime={latest}>{date(latest)}</time> : t('No observations available')}</p>
             <p>{t('Last check-in')}: {lastCheckin ? <time dateTime={lastCheckin}>{date(lastCheckin)}</time> : t('No check-in recorded yet')}</p>
           </div>
-          <Link to={'/crew/' + encodeURIComponent(member.id) + '/checkin'} className="brief-button border-accent bg-accent text-on-accent">
-            {t('Start check-in')} <Icon name="arrow" size={18} />
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <CrewBadgeDialog member={member} />
+            <Link to={'/crew/' + encodeURIComponent(member.id) + '/checkin'} className={buttonClass('primary')}>
+              {t('Start check-in')} <Icon name="arrow" size={18} />
+            </Link>
+          </div>
         </div>
       </div>
       <p className="brief-summary border-default">{summary}</p>
@@ -121,6 +131,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
       <div className="brief-stack"><BaselineComparison results={results} observations={observations} now={now} crewId={member.id} /></div>
       <aside className="brief-stack" aria-label={t('Task and next steps')}>
         <TaskCard task={task} now={now} />
+        <SelfReportCard details={details} checkins={checkins} now={now} crewId={member.id} />
         <DecisionBar decisions={decisions.filter(row => row.crewId === member.id)} onSave={recordDecision} />
         <SpaceWeatherCard />
       </aside>

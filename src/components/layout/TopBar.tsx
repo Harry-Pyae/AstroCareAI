@@ -1,33 +1,29 @@
 import { useI18n } from "../../i18n/LanguageProvider";
 import { useMatch, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../theme';
+import Icon from '../icons/Icon';
 import LanguageSwitcher from '../LanguageSwitcher';
 import Select from '../ui/Select';
-import Icon from '../icons/Icon';
-import { useCrew, useDemo } from '../demo/DemoProvider';
-import { DemoStatusChip } from '../demo/DemoStatusChip';
+import DemoMenu from '../demo/DemoMenu';
+import { useDemo } from '../demo/DemoProvider';
 
 const button =
-  'inline-flex min-h-11 items-center gap-2 rounded-lg border border-default px-3 text-sm text-secondary hover:border-strong hover:text-primary';
+  'inline-flex min-h-11 items-center gap-2 rounded-lg border border-default bg-card px-3 text-sm text-secondary transition-[color,background-color,border-color,opacity,transform] duration-[var(--dur-fast)] hover:border-strong hover:bg-card-raised hover:text-primary';
 
 export default function TopBar({ onOpenMenu }: { onOpenMenu: () => void }) {
   const { t } = useI18n();
+  const { dataset, active: demoActive, enter, storageMessage } = useDemo();
+  const crew = dataset.crew;
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
-  const crew = useCrew();
-  const { active, enter, exit, resetDemo } = useDemo();
   const crewMatch = useMatch('/crew/:crewId/*');
   const onCheckin = useMatch('/crew/:crewId/checkin') !== null;
   const crewId = crewMatch?.params.crewId ?? '';
   const title = !crewMatch ? 'Crew selection' : onCheckin ? 'Check-in' : 'Baseline brief';
   const nextTheme = theme === 'dark' ? 'light' : 'dark';
 
-  function handleDemoAction() {
-    if (active) resetDemo();
-    else {
-      enter('reviewing');
-      if (!crewMatch) navigate('/crew/ac-cmdr-01');
-    }
+  function exploreDemo() {
+    if (enter('reviewing') && !crewMatch) navigate('/crew/ac-cmdr-01');
   }
 
   return (
@@ -38,7 +34,7 @@ export default function TopBar({ onOpenMenu }: { onOpenMenu: () => void }) {
       <p className="text-lg font-semibold text-primary">{t(title)}</p>
 
       <div className="ml-auto flex min-w-0 max-w-full flex-wrap items-center gap-2">
-        {active ? <DemoStatusChip /> : <span className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-default bg-card px-3 text-xs font-medium text-secondary"><Icon name="info" size={16} />{t('Synthetic data')}</span>}
+        <DemoMenu />
 
         <Select
           id="crew-select"
@@ -51,15 +47,16 @@ export default function TopBar({ onOpenMenu }: { onOpenMenu: () => void }) {
         />
 
         <button type="button" onClick={toggleTheme} aria-label={t(nextTheme === 'light' ? 'Switch to light theme' : 'Switch to dark theme')} className={button}>
-          <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
+          <Icon name={theme === 'dark' ? 'sun' : 'moon'} size={18} />
           <span>{t(theme === 'dark' ? 'Light theme' : 'Dark theme')}</span>
         </button>
 
         <LanguageSwitcher />
 
-        <button type="button" onClick={handleDemoAction} className={button}><Icon name={active ? 'recheck' : 'research'} size={18} />{t(active ? 'Reset demo' : 'Explore demo')}</button>
-        {active ? <button type="button" onClick={exit} className={button}><Icon name="close" size={18} />{t('Exit demo')}</button> : null}
+        {/* In demo mode, Reset lives in the Demo panel (scenario-aware). */}
+        {!demoActive && <button type="button" onClick={exploreDemo} className={button}><Icon name="play" size={18} />{t('Explore demo')}</button>}
       </div>
+      {storageMessage ? <p role="alert" className="w-full text-xs text-secondary">{t(storageMessage)}</p> : null}
     </header>
   );
 }

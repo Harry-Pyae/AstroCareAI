@@ -18,34 +18,29 @@ interface SelectProps {
   className?: string;
 }
 
-/** Themed replacement for native <select>: button trigger + listbox popover. */
+/** Themed replacement for native <select>: the WAI-ARIA select-only combobox.
+ * Focus stays on the trigger; the active option is announced via
+ * aria-activedescendant. Keys: arrows, Home/End, Enter/Space, Esc, typeahead. */
 export default function Select({ value, options, onChange, label, placeholder = '', id, className = '' }: SelectProps) {
   const autoId = useId();
   const baseId = id ?? autoId;
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const listRef = useRef<HTMLUListElement>(null);
   const typed = useRef({ text: '', at: 0 });
-  const selectedIndex = options.findIndex((o) => o.value === value);
+  const selectedIndex = options.findIndex(o => o.value === value);
   const selected = options[selectedIndex];
   const optionId = (i: number) => `${baseId}-opt-${i}`;
 
-  function openList(index = Math.max(selectedIndex, 0)) {
+  function show(index = Math.max(selectedIndex, 0)) {
     setActive(index);
     setOpen(true);
-  }
-
-  function close(returnFocus = true) {
-    setOpen(false);
-    if (returnFocus) triggerRef.current?.focus();
   }
 
   function choose(index: number) {
     const option = options[index];
     if (option && option.value !== value) onChange(option.value);
-    close();
+    setOpen(false);
   }
 
   // Typeahead like native select: repeating one letter cycles matches,
@@ -63,14 +58,8 @@ export default function Select({ value, options, onChange, label, placeholder = 
   }
 
   useEffect(() => {
-    if (open) listRef.current?.focus();
-  }, [open]);
-
-  useEffect(() => {
     if (!open) return;
-    const onPointerDown = (e: PointerEvent) => {
-      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
-    };
+    const onPointerDown = (e: PointerEvent) => { if (!rootRef.current?.contains(e.target as Node)) setOpen(false); };
     document.addEventListener('pointerdown', onPointerDown);
     return () => document.removeEventListener('pointerdown', onPointerDown);
   }, [open]);
@@ -79,36 +68,24 @@ export default function Select({ value, options, onChange, label, placeholder = 
     if (open) document.getElementById(`${baseId}-opt-${active}`)?.scrollIntoView({ block: 'nearest' });
   }, [open, active, baseId]);
 
-  function onTriggerKeyDown(e: KeyboardEvent) {
-    if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
-      e.preventDefault();
-      openList();
-    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
-      const index = matchTyped(e.key, Math.max(selectedIndex, 0));
-      if (index >= 0) openList(index);
-    }
-  }
-
-  function onListKeyDown(e: KeyboardEvent) {
+  function onKeyDown(e: KeyboardEvent) {
     const last = options.length - 1;
-    const moves: Record<string, number> = {
-      ArrowDown: Math.min(active + 1, last),
-      ArrowUp: Math.max(active - 1, 0),
-      Home: 0,
-      End: last,
-    };
-    if (e.key in moves) {
-      e.preventDefault();
-      setActive(moves[e.key]);
-    } else if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      choose(active);
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      close();
-    } else if (e.key === 'Tab') {
-      close(false);
-    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    if (!open) {
+      if (['ArrowDown', 'ArrowUp', 'Enter', ' ', 'Home', 'End'].includes(e.key)) {
+        e.preventDefault();
+        show(e.key === 'Home' ? 0 : e.key === 'End' ? last : undefined);
+      } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        const index = matchTyped(e.key, Math.max(selectedIndex, 0));
+        if (index >= 0) show(index);
+      }
+      return;
+    }
+    const moves: Record<string, number> = { ArrowDown: Math.min(active + 1, last), ArrowUp: Math.max(active - 1, 0), Home: 0, End: last };
+    if (e.key in moves) { e.preventDefault(); setActive(moves[e.key]); }
+    else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(active); }
+    else if (e.key === 'Escape') { e.preventDefault(); setOpen(false); }
+    else if (e.key === 'Tab') setOpen(false);
+    else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
       const index = matchTyped(e.key, active);
       if (index >= 0) setActive(index);
     }
@@ -118,30 +95,28 @@ export default function Select({ value, options, onChange, label, placeholder = 
     <div ref={rootRef} className={`relative ${className}`}>
       <span id={`${baseId}-label`} className="sr-only">{label}</span>
       <button
-        ref={triggerRef}
         id={`${baseId}-trigger`}
         type="button"
+        role="combobox"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-controls={open ? `${baseId}-list` : undefined}
+        aria-controls={`${baseId}-list`}
+        aria-activedescendant={open ? optionId(active) : undefined}
         aria-labelledby={`${baseId}-label ${baseId}-trigger`}
-        onClick={() => (open ? close() : openList())}
-        onKeyDown={onTriggerKeyDown}
-        className="inline-flex min-h-11 w-full items-center justify-between gap-2 rounded-lg border border-default bg-card px-3 text-left text-sm text-primary hover:border-strong"
+        onClick={() => (open ? setOpen(false) : show())}
+        onKeyDown={onKeyDown}
+        onBlur={() => setOpen(false)}
+        className="inline-flex min-h-11 w-full items-center justify-between gap-2 rounded-lg border border-default bg-card px-3 text-left text-sm text-primary transition-[color,background-color,border-color,opacity,transform] duration-[var(--dur-fast)] hover:border-strong hover:bg-card-raised"
       >
         <span className={`truncate ${selected ? '' : 'text-secondary'}`}>{selected?.label ?? placeholder}</span>
-        <span className={`text-secondary transition-transform duration-[var(--dur-fast)] ${open ? 'rotate-180' : ''}`}><Icon name="arrow" size={16} className="rotate-90" /></span>
+        <span className={`text-secondary transition-transform duration-[var(--dur-fast)] ${open ? 'rotate-180' : ''}`}><Icon name="chevron-down" size={16} /></span>
       </button>
 
       {open && (
         <ul
-          ref={listRef}
           id={`${baseId}-list`}
           role="listbox"
-          tabIndex={-1}
           aria-labelledby={`${baseId}-label`}
-          aria-activedescendant={optionId(active)}
-          onKeyDown={onListKeyDown}
           className="motion-popover absolute left-0 z-50 mt-1 max-h-72 w-max min-w-full max-w-[calc(100vw-2rem)] overflow-auto rounded-lg border border-default bg-card p-1 shadow-lg"
         >
           {options.map((option, i) => (
@@ -151,13 +126,15 @@ export default function Select({ value, options, onChange, label, placeholder = 
               role="option"
               aria-selected={option.value === value}
               onMouseEnter={() => setActive(i)}
+              // Keep focus on the combobox so blur doesn't close before the click.
+              onMouseDown={e => e.preventDefault()}
               onClick={() => choose(i)}
-              className={`flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-md px-3 text-sm ${
+              className={`flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-md px-3 text-sm transition-colors duration-[var(--dur-fast)] ${
                 i === active ? 'bg-card-raised text-primary' : 'text-secondary'
               } ${option.value === value ? 'font-semibold text-primary' : ''}`}
             >
               {option.label}
-              {option.value === value && <Icon name="check" size={16} className="shrink-0 text-accent" />}
+              {option.value === value && <Icon name="check" size={16} className="text-accent" />}
             </li>
           ))}
         </ul>

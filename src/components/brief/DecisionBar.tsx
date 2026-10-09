@@ -3,13 +3,13 @@ import type { Decision } from '../../lib/types';
 import { useI18n } from '../../i18n/LanguageProvider';
 import Icon from '../icons/Icon';
 import DataList from '../ui/DataList';
+import Button from '../ui/Button';
 
 const actions = [
   { action: 'recheck', label: 'Recheck', icon: 'recheck' },
   { action: 'request_review', label: 'Request review', icon: 'note' },
   { action: 'propose_schedule_change', label: 'Propose schedule change', icon: 'calendar' },
 ] as const;
-const button = 'brief-button border-default bg-card-raised text-primary';
 
 export default function DecisionBar({ decisions, onSave }: {
   decisions: Decision[]; onSave: (action: Decision['action'], note: string) => void;
@@ -30,17 +30,17 @@ export default function DecisionBar({ decisions, onSave }: {
   return <section className="brief-panel motion-mount border-default bg-card" aria-labelledby="decision-heading">
     <h2 id="decision-heading">{t('What would you like to do?')}</h2>
     <p className="text-secondary mt-2">{t('Choose a next step for your own review. Requests and proposals are recorded locally.')}</p>
-    <div className="brief-action-list">{actions.map(({ action, label, icon }) => <button key={action} type="button" className={button}
+    <div className="brief-action-list">{actions.map(({ action, label, icon }) => <Button key={action} className="justify-start"
       aria-pressed={selected === action} onClick={() => { setSelected(action); setNote(''); setError(''); }}>
       <Icon name={icon} size={18} />{t(label)}
-    </button>)}</div>
-    {selected && <form onSubmit={submit} className="mt-6">
+    </Button>)}</div>
+    {selected && <form onSubmit={submit} className="motion-mount mt-6">
       <label htmlFor="decision-note">{t(actions.find(item => item.action === selected)?.label ?? 'Note')} · {t('optional note')}</label>
       <input autoFocus id="decision-note" className="brief-field border-default bg-card-raised text-primary" type="text" maxLength={280}
         value={note} onChange={event => setNote(event.target.value)} placeholder={t('Add a short note for your next review')} />
       <div className="mt-3 flex flex-wrap gap-3">
-        <button type="submit" className={button}>{t('Save decision')}</button>
-        <button type="button" className={button} onClick={cancel}>{t('Cancel')}</button>
+        <Button type="submit" variant="primary">{t('Save decision')}</Button>
+        <Button variant="ghost" onClick={cancel}>{t('Cancel')}</Button>
       </div>
     </form>}
     {error && <p role="alert" className="mt-3 text-secondary">{t(error)}</p>}

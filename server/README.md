@@ -56,8 +56,9 @@ which does not document a key parameter. No key is forwarded there; arbitrary
 redirect targets are never followed. Upstream key rejection or rate limits are
 not bypassed. CCMC success verifies data connectivity, not gateway key validity.
 
-GET `/api/space-weather` returns `{source, upstream, fetchedAt, events}`. Only
-flrID/beginTime/peakTime/classType are normalized and returned (latest 3 unique
+GET `/api/space-weather` returns `{source, upstream, fetchedAt, events}`.
+flrID/beginTime/peakTime/classType are normalized, with optional validated
+submissionTime and an HTTPS NASA source link (latest 3 unique
 valid events from the last 60 days). Empty arrays are valid live results. Error
 status codes: 503 missing key; 504 timeout; 429 rate limit with bounded Retry-After;
 502 rejected key, invalid JSON/schema/content-type or upstream failure. Errors

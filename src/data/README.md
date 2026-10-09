@@ -1,31 +1,31 @@
 # Synthetic demonstration data
 
-All values and solar flare events are fictional illustrative demo settings,
-not clinical thresholds or live NASA records.
+All health values and fallback solar flare events are fictional illustrative demo settings, not clinical thresholds or live NASA records. The fixed fixture reference is 2026-10-09T06:00:00.000Z (12:30 PM Yangon). Runtime datasets move synthetic timestamps and task times together to the current session reference; user-checkin timestamps remain unchanged.
 
-The reproducible demo reference time is `2026-10-09T06:00:00.000Z`
-(12:30 PM Yangon). Call `computeBaselines(observations, crewId, now)` with
-that time to reproduce the intended statuses. Using a later real time will
-naturally make this fixed fixture stale or insufficient.
+Six seeded crew profiles:
 
-- `ac-cmdr-01`: recent sleep averages 5.84 h versus 7.3 h (-20%); HRV
-  averages 42 ms versus 50 ms (-16%). Both are changes worth reviewing.
-- `ac-eng-02`: all five metrics are within personal baseline range.
-- `ac-sci-03`: mood has only three baseline readings; the newest radiation
-  reading is three days and one hour old. Other metrics remain within range.
+- ac-cmdr-01, Alex Chen: sleep -20% and HRV -16%, both changes worth reviewing.
+- ac-eng-02, Sam Rivera: all five metrics within personal baseline range.
+- ac-sci-03, Maya Patel: only three baseline mood readings, so insufficient data.
+- ac-med-04, Lena Okafor: HRV and radiation newest readings three days and one hour old.
+- ac-pay-05, Kenji Sato: exercise +25%, a change worth reviewing.
+- ac-plt-06, Sofia Marquez: mood -18% and stale exercise readings.
 
-Each metric normally has 35 daily readings. The scientist's two intentional
-exceptions produce 497 observations in total. Commander docking monitoring
-is scheduled 24 hours after the reference time.
+Each metric normally has 35 daily observations. Profiles represent missing readings by omission, never fabricated zeros. Every crew has one upcoming task. The stable scenario has all metrics within range; the incomplete scenario supplies at least one missing or stale metric for each crew. These states are descriptive comparisons, never medical clearance.
 
-Baseline windows use elapsed time: `[now - 28 days, now - 7 days)` for the
-21-day baseline and `[now - 7 days, now]` for the current window. Invalid,
-non-finite, and future readings are excluded. Fewer than five baseline
-readings or no current readings yields `insufficient_data` first. Otherwise
-a newest reading older than 48 hours yields `stale_data`. A zero baseline
-has `deltaPct: null`; unchanged zero values remain within range and a change
-from zero is worth reviewing. Constant nonzero baselines need no variance
-division and use the ordinary percentage comparison.
+profiles.ts is the source shared by the runtime scenarios and generate-seeds.mjs. dataset.ts preserves the JSON fixtures while shifting synthetic dates; scenarios/index.ts builds deterministic profile values against the provider's session anchor. The original fixture timestamps remain reproducible.
 
-Regenerate fixtures: `node src/data/generate-seeds.mjs`.
-Run assertions (Node 22.18+): `node src/data/baseline.test.mjs`.
+Baseline windows are [now - 28 days, now - 7 days) for the 21-day baseline and [now - 7 days, now] for the current window. Invalid, non-finite, and future readings are excluded. Fewer than five baseline readings or no current readings produces insufficient_data first. Otherwise, a newest reading older than 48 hours produces stale_data. A zero baseline has deltaPct:null; equal zeros stay within range and a change from zero is worth reviewing.
+
+Regenerate fixtures:
+
+```sh
+node src/data/generate-seeds.mjs
+```
+
+Run assertions (Node 22.18+):
+
+```sh
+node src/data/baseline.test.mjs
+node --test src/components/demo/demo.test.mjs src/lib/storage.test.mjs
+```
