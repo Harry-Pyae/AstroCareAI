@@ -1,4 +1,5 @@
 import { useI18n } from "../i18n/LanguageProvider";
+import { baselineExplanation } from "../i18n/index";
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import crewData from '../data/crew.json';
@@ -48,7 +49,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
           const key = `${member.id}:${newest.timestamp}`;
           if (age >= 0 && age < 120_000 && !acknowledgedCheckins.has(key)) { acknowledgedCheckins.add(key); setToast('Check-in saved. Your recent observations are updated.'); }
         }
-      } catch { setStorageMessage('Local history is unavailable. Showing synthetic telemetry; browser storage access is needed for saved check-ins and decisions.'); }
+      } catch { setCheckins([]); setDecisions([]); setStorageMessage('Local history is unavailable. Showing synthetic telemetry; browser storage access is needed for saved check-ins and decisions.'); }
     };
     refresh();
     const interval = window.setInterval(refresh, 60_000);
@@ -63,7 +64,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
   const task = tasks.filter(item => item.crewId === member.id && Date.parse(item.scheduledFor) >= now.getTime()).sort((a, b) => Date.parse(a.scheduledFor) - Date.parse(b.scheduledFor))[0];
   const relevant = [...results].filter(item => item.status === 'worth_reviewing').sort((a, b) => Math.abs(b.deltaPct ?? 0) - Math.abs(a.deltaPct ?? 0))[0];
   const limited = results.filter(item => item.status === 'stale_data' || item.status === 'insufficient_data').length;
-  const summary = relevant ? t('overview.change', { metric: t(metricLabels[relevant.metric]?.name ?? relevant.metric), current: metricValue(relevant.currentMean, relevant.metric, t), delta: Math.abs(relevant.deltaPct ?? 0).toFixed(0), direction: t(Number(relevant.deltaPct) < 0 ? 'below' : 'above') }) : limited ? t('overview.limited', { count: limited }) : t('Recent observations are within personal baseline range. This is not medical clearance.');
+  const summary = relevant?.deltaPct === null ? baselineExplanation(relevant, language) : relevant ? t('overview.change', { metric: t(metricLabels[relevant.metric]?.name ?? relevant.metric), current: metricValue(relevant.currentMean, relevant.metric, t), delta: Math.abs(relevant.deltaPct ?? 0).toFixed(0), direction: t(Number(relevant.deltaPct) < 0 ? 'below' : 'above') }) : limited ? t('overview.limited', { count: limited }) : t('Recent observations are within personal baseline range. This is not medical clearance.');
   function recordDecision(action: Decision['action'], note: string) {
     const decision: Decision = { crewId: member.id, action, note, timestamp: new Date().toISOString() };
     if (saveDecision(decision) === false) throw new Error('Decision storage unavailable');
@@ -71,7 +72,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
     setToast('Decision saved on this device.');
   }
   return <div className="brief-dashboard">
-    <header><Link to="/" className="brief-link text-xs">{t("← All crew")}</Link><div className="brief-overview"><div><p className="brief-eyebrow">{t("Personal baseline brief")}</p><h1 className="mt-2">{t("Today's overview")}</h1><p className="mt-3 text-lg font-medium">{member.name} <span className="brief-muted text-sm">· {t(member.role)}</span></p><p className="brief-muted mt-1 text-xs">{t("Latest observation")}: {latest ? <time dateTime={latest}>{date(latest)}</time> : t('No observations available')}</p><p className="brief-muted text-xs">{t("Last check-in")}: {lastCheckin ? <time dateTime={lastCheckin}>{date(lastCheckin)}</time> : t('No check-in recorded yet')}</p></div><Link to={`/crew/${encodeURIComponent(member.id)}/checkin`} className="brief-button brief-primary">{t("Start check-in")} <Icon name="arrow" /></Link></div><p className="brief-summary">{summary}</p></header>
+    <header><Link to="/" className="brief-link text-xs">{t("← All crew")}</Link><div className="brief-overview"><div className="brief-overview-identity"><p className="brief-eyebrow">{t("Personal baseline brief")}</p><h1 className="mt-2">{t("Today's overview")}</h1><p className="mt-3 text-lg font-medium">{member.name} <span className="brief-muted text-sm">· {t(member.role)}</span></p></div><div className="brief-overview-actions"><div className="brief-overview-metadata"><p className="brief-muted text-xs">{t("Latest observation")}: {latest ? <time dateTime={latest}>{date(latest)}</time> : t('No observations available')}</p><p className="brief-muted text-xs">{t("Last check-in")}: {lastCheckin ? <time dateTime={lastCheckin}>{date(lastCheckin)}</time> : t('No check-in recorded yet')}</p></div><Link to={`/crew/${encodeURIComponent(member.id)}/checkin`} className="brief-button brief-primary">{t("Start check-in")} <Icon name="arrow" /></Link></div></div><p className="brief-summary">{summary}</p></header>
     {storageMessage && <p role="status" className="brief-muted mb-5">{t(storageMessage)}</p>}
     <div className="brief-columns"><div className="brief-stack"><BaselineComparison results={results} observations={observations} now={now} crewId={member.id} /></div><aside className="brief-stack" aria-label={t("Task and next steps")}><TaskCard task={task} now={now} /><DecisionBar decisions={decisions.filter(row => row.crewId === member.id)} onSave={recordDecision} /><SpaceWeatherCard /></aside></div>
     <div role="status" aria-live="polite" aria-atomic="true">{toast && <div className="brief-toast"><Icon name="check" />{t(toast)}</div>}</div>

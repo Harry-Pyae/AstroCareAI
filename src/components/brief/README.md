@@ -1,5 +1,57 @@
 # Dashboard integration
 
+## P2 consolidation audit (2026-10-09)
+
+`p2-complete` starts at `origin/p2-dashboard` (`3ee1aa2`). The complete
+`origin/p2-data` history (`1b9d93c`) is already an ancestor, so merging it
+reported Already up to date. Both histories are preserved without squashing.
+Original P2 data/types/baseline responsibility and the updated P2 dashboard
+responsibility were reviewed. No teammate-owned source files were modified.
+
+Fixes: chart inputs now filter by crew ID; failed history refresh clears cached
+rows; zero-baseline overview uses the explanation rather than an invented 0%;
+the screen supports default and named P1 lazy imports; CSS recognizes current
+P1 semantic tokens while retaining old-shell fallback values. Baseline tests
+cover exact window edges, the 48h boundary, 15% threshold, invalid/future values,
+zero means and unchanged inputs.
+
+Executed: seed tests, real storage integration tests, contract typecheck/build
+and server-render checks, and production build. Browser verified chart selection,
+check-in changing sleep from 5.84 to 6.11 h, saved decision history, reset,
+crew route switching, scientist stale/insufficient states and no console errors.
+Dark/light and 390/768/1280 layouts were checked in the isolated contract preview;
+390/768 widths had no horizontal document overflow. The original shell on this
+P2 base has no theme toggle; the latest theme shell is on `origin/p1-shell`.
+React Router emits SSR useLayoutEffect warnings in the test harness.
+
+### Integration requirements for P1
+
+No P3 DemoProvider, scenario files, demo observation selector, scenario clock or
+scenario-change subscription exists in the inspected branches. Scenario switching
+and reset cannot be tested. Agree with P3 on typed context containing active crew,
+observations, task context, comparison time and reset/change notification. Storage
+namespace changes must notify the dashboard immediately, rather than waiting for
+its minute refresh. P4's latest `feature/person4` adds namespace support; the P4
+module already included here supports the shared getters and save signatures,
+and real check-in/decision integration passed. Latest P4 namespaces are not
+claimed as runtime verified in this branch.
+
+No backend directory, PostgreSQL migrations/schema, backend health API client,
+agreed endpoints or API environment configuration exists. Only NASA DONKI fetch
+exists. P1 must provide endpoint paths/methods, request/response types for crew,
+observations/tasks/decisions/check-ins, errors/pagination, timestamp/provenance
+rules, API base URL variable, authentication/CORS policy, demo fallback policy
+and local backend startup instructions. The team's PostgreSQL decision supersedes
+the old no-backend rule, but there is no implementation to connect yet. Do not
+put database credentials or PostgreSQL connections in browser code.
+
+These are dependency blockers, not completed scenario/backend features. P1 can
+read this handoff; no message was sent to another person without authorization.
+The existing bilingual integration remains on its separate branch.
+
+Demo: http://127.0.0.1:5181/ (synthetic data). Fixed seed time is
+2026-10-09T06:00Z; later calendar dates intentionally make observations stale.
+
 `BriefScreen` remains the default component discovered by the existing P1
 route loader at `/crew/:crewId`. It consumes the shared types, baseline
 function, seed arrays, and P3 storage module through their existing imports.

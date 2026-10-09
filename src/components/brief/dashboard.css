@@ -13,13 +13,15 @@
 .brief-dashboard h3 { font-size: 15px; font-weight: 600; }
 .brief-muted { color: var(--brief-muted); }
 .brief-eyebrow { color: var(--brief-muted); font-size: 11px; text-transform: uppercase; letter-spacing: .13em; font-weight: 600; }
-.brief-overview { display: flex; justify-content: space-between; gap: 24px; align-items: center; padding: 24px 0; }
+.brief-overview { display: grid; gap: 24px; padding: 24px 0; }
+.brief-overview-actions { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.brief-overview-metadata { display: grid; gap: 8px; }
 .brief-summary { border-bottom: 1px solid var(--brief-border); padding-bottom: 24px; margin-bottom: 28px; font-size: 15px; }
 .brief-columns { display: grid; gap: 28px; align-items: start; }
 .brief-stack { display: grid; gap: 24px; min-width: 0; }
 .brief-panel { border: 1px solid var(--brief-border); border-radius: 12px; padding: 24px; min-width: 0; }
 .brief-review-panel { border-top: 3px solid var(--brief-review); }
-.brief-panel-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.brief-panel-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
 .brief-icon { width: 17px; height: 17px; flex-shrink: 0; vertical-align: middle; }
 .brief-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--brief-border); background: var(--brief-subtle); color: var(--brief-text); padding: 10px 14px; font-weight: 500; min-height: 44px; cursor: pointer; text-decoration: none; }
 .brief-button:hover { border-color: var(--brief-accent); }
@@ -28,15 +30,15 @@
 .brief-status { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; padding: 4px 9px; border-radius: 6px; background: var(--brief-subtle); color: var(--brief-muted); }
 .brief-status-review { color: var(--brief-review); background: var(--brief-review-bg); }
 .brief-status-good { color: var(--brief-good); }
-.brief-review-row { padding: 20px 0; border-top: 1px solid var(--brief-border); }
-.brief-review-row:last-child { padding-bottom: 0; }
+.brief-review-row { padding: 24px 0; border-top: 1px solid var(--brief-border); }
+
 .brief-row-title { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 .brief-values { display: flex; gap: 16px; flex-wrap: wrap; margin: 8px 0; align-items: baseline; font-variant-numeric: tabular-nums; }
 .brief-value { font-size: 25px; font-weight: 600; letter-spacing: -.025em; }
 .brief-delta { color: var(--brief-review); font-weight: 600; }
-.brief-chip-list { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+.brief-chip-list { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
 .brief-chip { background: var(--brief-subtle); border: 1px solid var(--brief-border); padding: 4px 9px; border-radius: 6px; font-size: 12px; }
-.brief-support { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.brief-support { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
 .brief-support-card { padding: 18px; border: 1px solid var(--brief-border); border-radius: 10px; }
 .brief-field { display: block; width: 100%; margin-top: 8px; border: 1px solid var(--brief-border); padding: 10px 12px; background: var(--brief-subtle); color: var(--brief-text); min-height: 44px; }
 .brief-field::placeholder { color: var(--brief-muted); }
@@ -54,4 +56,4 @@
 .brief-dashboard details { margin-top: 18px; }
 .brief-dashboard summary { color: var(--brief-accent); cursor: pointer; padding: 6px 0; }
 @media (min-width:1024px) { .brief-columns { grid-template-columns: minmax(0,2fr) minmax(0,1fr); } }
-@media (max-width:600px) { .brief-overview { align-items: stretch; flex-direction: column; gap: 16px; } .brief-support { grid-template-columns: 1fr; } .brief-panel { padding: 18px; } .brief-toast { bottom: 16px; right: 16px; } }
+@media (max-width:600px) { .brief-overview-actions { align-items: stretch; flex-direction: column; gap: 24px; } .brief-support { grid-template-columns: 1fr; } .brief-panel { padding: 18px; } .brief-toast { bottom: 16px; right: 16px; } }

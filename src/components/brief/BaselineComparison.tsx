@@ -19,7 +19,7 @@ export default function BaselineComparison({ results, observations, now, crewId 
   const flagged = results.filter(result => result.status === 'worth_reviewing');
   const [metric, setMetric] = useState(flagged[0]?.metric ?? results[0]?.metric ?? 'hrv');
   const end = now.getTime();
-  const valid = observations.filter(row => Number.isFinite(row.value) && Number.isFinite(Date.parse(row.timestamp)) && Date.parse(row.timestamp) <= end);
+  const valid = observations.filter(row => row.crewId === crewId && Number.isFinite(row.value) && Number.isFinite(Date.parse(row.timestamp)) && Date.parse(row.timestamp) <= end);
   const latest = (name: string) => valid.filter(row => row.metric === name).sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))[0]?.timestamp;
   const currentExists = (name: string) => valid.some(row => row.metric === name && Date.parse(row.timestamp) >= end - 7 * DAY);
   const baselineExists = (name: string) => valid.filter(row => row.metric === name && Date.parse(row.timestamp) >= end - 28 * DAY && Date.parse(row.timestamp) < end - 7 * DAY).length >= 5;
