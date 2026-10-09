@@ -51,3 +51,4 @@ export const DecisionHistory: React.FC<DecisionHistoryProps> = ({ decisions }) =
     </div>
   );
 };
+

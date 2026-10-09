@@ -110,3 +110,4 @@ export const DecisionBar: React.FC<DecisionBarProps> = ({ crewId, onDecisionSave
     </div>
   );
 };
+
