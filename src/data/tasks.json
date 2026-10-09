@@ -1,0 +1,29 @@
+[
+  {
+    "crewId": "ac-cmdr-01",
+    "title": "Docking approach monitoring",
+    "scheduledFor": "2026-10-10T06:00:00.000Z",
+    "attentionDemands": [
+      "sustained attention",
+      "fine motor control"
+    ]
+  },
+  {
+    "crewId": "ac-eng-02",
+    "title": "Life support maintenance",
+    "scheduledFor": "2026-10-10T12:00:00.000Z",
+    "attentionDemands": [
+      "procedural attention",
+      "equipment handling"
+    ]
+  },
+  {
+    "crewId": "ac-sci-03",
+    "title": "Orbital sample imaging",
+    "scheduledFor": "2026-10-10T18:00:00.000Z",
+    "attentionDemands": [
+      "visual observation",
+      "data recording"
+    ]
+  }
+]

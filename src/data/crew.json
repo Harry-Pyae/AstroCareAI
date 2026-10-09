@@ -1,0 +1,17 @@
+[
+  {
+    "id": "ac-cmdr-01",
+    "name": "Alex Chen",
+    "role": "Commander"
+  },
+  {
+    "id": "ac-eng-02",
+    "name": "Sam Rivera",
+    "role": "Flight Engineer"
+  },
+  {
+    "id": "ac-sci-03",
+    "name": "Maya Patel",
+    "role": "Mission Scientist"
+  }
+]
