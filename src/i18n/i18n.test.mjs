@@ -17,6 +17,7 @@ const activeFiles = [
   '../components/LanguageSwitcher.tsx', '../components/layout/TopBar.tsx', '../components/layout/Nav.tsx', '../components/layout/Layout.tsx', '../components/layout/CrewSelectPage.tsx',
   '../screens/BriefScreen.tsx', '../screens/CheckinScreen.tsx', '../routes.tsx', '../components/qr/CrewQR.tsx', '../components/spaceweather/SpaceWeatherCard.tsx',
   '../components/brief/BaselineComparison.tsx', '../components/brief/DecisionBar.tsx', '../components/brief/TaskCard.tsx', '../components/brief/format.ts',
+  '../components/brief/SelfReportCard.tsx', '../components/demo/DemoMenu.tsx', '../components/demo/ExploreDemoEntry.tsx', '../components/demo/DemoGuide.tsx',
 ];
 for (const file of activeFiles) {
   const source = ts.createSourceFile(file, readFileSync(new URL(file, import.meta.url), 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);

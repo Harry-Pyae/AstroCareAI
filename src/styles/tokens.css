@@ -160,3 +160,20 @@
     animation: none !important;
   }
 }
+
+/* Focus outline as a utility, for peer-focus-visible:focus-ring on custom controls. */
+@utility focus-ring {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Native <dialog> modals (demo guide, crew badge). */
+dialog.modal {
+  margin: auto;
+}
+dialog.modal[open] {
+  animation: motion-mount var(--dur-base) var(--ease) both;
+}
+dialog.modal::backdrop {
+  background: rgb(0 0 0 / 0.55);
+}

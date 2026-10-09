@@ -34,13 +34,7 @@ export interface BaselineResult { metric: string; baselineMean: number; baseline
 export interface Decision { crewId: string; action: "recheck"|"request_review"|"propose_schedule_change"; note: string; timestamp: string; }
 export interface TaskContext { crewId: string; title: string; scheduledFor: string; attentionDemands: string[]; }
 `);
-save('lib/storage.ts', `import type { Decision, Observation } from './types';
-export function resetAll(): void { }
-export function getDecisions(crewId: string): Decision[] { return typeof localStorage === 'undefined' ? [] : JSON.parse(localStorage.getItem('p3-test-decisions') ?? '[]').filter((item: Decision) => item.crewId === crewId); }
-export function getCheckins(crewId: string): Observation[] { return typeof localStorage === 'undefined' ? [] : JSON.parse(localStorage.getItem('dashboard-test-checkins') ?? '[]').filter((item: Observation) => item.crewId === crewId); }
-export function saveDecision(decision: Decision): boolean { const rows = JSON.parse(localStorage.getItem('p3-test-decisions') ?? '[]'); localStorage.setItem('p3-test-decisions', JSON.stringify([...rows, decision])); return true; }
-export function saveCheckinEntry(observation: Observation, details: { crewId: string; timestamp: string; fatigue: number; note: string }): boolean { const rows = JSON.parse(localStorage.getItem('dashboard-test-checkins') ?? '[]'); localStorage.setItem('dashboard-test-checkins', JSON.stringify([...rows, observation])); return true; }
-`);
+// Real lib/storage.ts: every access is try/catch-wrapped, so SSR gets empty history.
 save('lib/baseline.ts', `import type { Observation, BaselineResult } from './types';
 export function computeBaselines(observations: Observation[], crewId: string, now: Date): BaselineResult[] {
  return [

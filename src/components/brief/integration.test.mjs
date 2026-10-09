@@ -15,7 +15,7 @@ const observations = JSON.parse(readFileSync(new URL('../../data/observations.js
 const findSleep = rows => computeBaselines(rows, crewId, now).find(row => row.metric === 'sleep_hours');
 const before = findSleep(observations);
 const checkin = { crewId, metric: 'sleep_hours', value: 8, timestamp: now.toISOString(), provenance: 'user_checkin' };
-assert.equal(saveCheckinEntry(checkin, { crewId, timestamp: checkin.timestamp, fatigue: 2, note: 'Synthetic integration check' }), true);
+assert.equal(saveCheckinEntry([checkin], { crewId, timestamp: checkin.timestamp, fatigue: 2, note: 'Synthetic integration check' }), true);
 assert.deepEqual(getCheckins(crewId), [checkin]);
 assert.ok(findSleep([...observations, ...getCheckins(crewId)]).currentMean > before.currentMean);
 for (const [index, action] of ['recheck', 'request_review', 'propose_schedule_change'].entries()) {
@@ -23,6 +23,17 @@ for (const [index, action] of ['recheck', 'request_review', 'propose_schedule_ch
 }
 assert.deepEqual(getDecisions(crewId).map(row => row.action), ['propose_schedule_change', 'request_review', 'recheck']);
 assert.deepEqual(getDecisions('ac-eng-02'), []);
+// v2: multi-metric check-in, duplicate guard, HRV never self-reported, v1 records still load.
+const later = new Date(now.getTime() + 3600_000).toISOString();
+const multi = ['sleep_hours', 'mood', 'exercise_min'].map((metric, i) => ({ crewId, metric, value: [7, 4, 30][i], timestamp: later, provenance: 'user_checkin' }));
+assert.equal(saveCheckinEntry(multi, { crewId, timestamp: later, fatigue: 3, note: '', sleepQuality: 4, stress: 2, symptoms: ['none'], hydrationLiters: 2 }), true);
+assert.equal(saveCheckinEntry(multi, { crewId, timestamp: later, fatigue: 3, note: '' }), false, 'duplicate rejected');
+assert.equal(saveCheckinEntry([{ ...multi[0], metric: 'hrv' }], { crewId, timestamp: later, fatigue: 3, note: '' }), false, 'HRV not self-reportable');
+const v1 = new Map([['astrocare:v1:state', JSON.stringify({ version: 1, checkins: [checkin], decisions: [], details: [{ crewId, timestamp: checkin.timestamp, fatigue: 2, note: 'v1' }] })]]);
+const realGet = window.localStorage.getItem;
+window.localStorage.getItem = key => v1.get(key) ?? null;
+assert.equal(getCheckins(crewId).length, 1, 'v1 record loads');
+window.localStorage.getItem = realGet;
 window.localStorage.setItem = () => { throw new Error('Storage unavailable'); };
 assert.equal(saveDecision({ crewId, action: 'recheck', note: '', timestamp: now.toISOString() }), false);
 assert.equal(getDecisions(crewId).length, 3);

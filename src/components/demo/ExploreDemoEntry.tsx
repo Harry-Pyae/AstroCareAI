@@ -1,23 +1,29 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../i18n/LanguageProvider';
+import Icon from '../icons/Icon';
+import Button from '../ui/Button';
 import { useDemo } from './DemoProvider';
+import { useDemoGuide } from './DemoGuide';
 
-export function ExploreDemoEntry() {
-  const { active, enter } = useDemo();
+/** Crew-page entry: starts demo mode in "Change worth reviewing" and opens
+ * the commander's brief — the strongest first impression, no sign-up. */
+export default function ExploreDemoEntry() {
+  const { t } = useI18n();
+  const { active, enter, dataset } = useDemo();
+  const openGuide = useDemoGuide();
+  const navigate = useNavigate();
+  const star = dataset.crew[0]?.id ?? 'ac-cmdr-01';
 
-  if (active) return null;
-
-  return (
-    <div className="mt-8 rounded-xl border border-default bg-page p-6 text-center shadow-sm">
-      <h3 className="mb-2 text-lg font-semibold text-primary">Try the Judge Demo</h3>
-      <p className="mb-4 text-sm text-secondary">
-        Explore interactive scenarios with synthetic data. No real records will be affected.
-      </p>
-      <button
-        onClick={() => enter('reviewing')}
-        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-accent-review px-6 text-sm font-medium text-white hover:opacity-90 transition-opacity"
-      >
-        <span aria-hidden="true">✨</span> Explore Demo
-      </button>
+  return <section className="rounded-xl border border-accent/40 bg-accent/5 p-5 sm:p-6" aria-labelledby="explore-heading">
+    <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="max-w-xl">
+        <h2 id="explore-heading" className="flex items-center gap-2 text-lg font-semibold"><Icon name="play" size={18} className="text-accent" />{t(active ? 'Demo mode is on' : 'Explore the judge demo')}</h2>
+        <p className="mt-1 text-sm text-secondary">{t(active ? 'Use the Demo button in the top bar to switch scenarios or reset.' : 'Three ready-made scenarios with synthetic data. No sign-up, and your own records are not affected.')}</p>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <Button variant="secondary" onClick={openGuide}><Icon name="help" size={18} />{t('How this demo works')}</Button>
+        {!active && <Button variant="primary" onClick={() => { enter('reviewing'); navigate(`/crew/${star}`); }}>{t('Explore demo')}<Icon name="arrow" size={18} /></Button>}
+      </div>
     </div>
-  );
+  </section>;
 }

@@ -1,114 +1,63 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import type { ScenarioId } from '../../data/scenarios';
-import { SCENARIO_DATA } from '../../data/scenarios';
-import { setStorageNamespace, resetAll } from '../../lib/storage';
+import { createContext, useContext, useState, type ReactNode } from 'react';
+import { SCENARIOS, SCENARIO_IDS, type ScenarioId } from '../../data/scenarios';
+import { defaultDataset, type Dataset } from '../../data/dataset';
+import { readDemoState, resetAll, setStorageNamespace, writeDemoState } from '../../lib/storage';
 
-// Original seeds
-import defaultObservations from '../../data/observations.json';
-import defaultCrew from '../../data/crew.json';
-import defaultTasks from '../../data/tasks.json';
-
-interface DemoContextType {
+interface DemoState {
   active: boolean;
   scenario: ScenarioId;
-  enter: (id?: ScenarioId) => void;
+}
+
+interface DemoContextValue extends DemoState {
+  /** What every screen reads: the active scenario, or the default seeds. */
+  dataset: Dataset;
+  /** Bumps on enter/exit/switch/reset so screens re-read saved records. */
+  version: number;
+  enter: (scenario?: ScenarioId) => void;
   exit: () => void;
-  setScenario: (id: ScenarioId) => void;
+  setScenario: (scenario: ScenarioId) => void;
   resetDemo: () => void;
 }
 
-const DemoContext = createContext<DemoContextType | null>(null);
+const DemoContext = createContext<DemoContextValue | null>(null);
 
-const STORAGE_KEY = 'demo:active_scenario';
+function initialState(): DemoState {
+  const saved = readDemoState();
+  const scenario = SCENARIO_IDS.find(id => id === saved?.scenario) ?? 'reviewing';
+  const state = { active: Boolean(saved?.active && saved.scenario === scenario), scenario };
+  // Set before any screen reads storage, so demo records never mix with user records.
+  setStorageNamespace(state.active ? 'demo:' : '');
+  return state;
+}
 
-export const DemoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [active, setActive] = useState(false);
-  const [scenario, setScenarioState] = useState<ScenarioId>('stable');
+export function DemoProvider({ children }: { children: ReactNode }) {
+  const [state, setState] = useState(initialState);
+  const [version, setVersion] = useState(0);
 
-  // Initialize from storage
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && parsed.active && ['stable', 'reviewing', 'incomplete'].includes(parsed.scenario)) {
-          setActive(true);
-          setScenarioState(parsed.scenario);
-          setStorageNamespace('demo:');
-        }
-      }
-    } catch (e) {
-      // Corrupted storage, fall back to inactive
-      setActive(false);
-    }
-  }, []);
-
-  const persist = (isActive: boolean, currentScenario: ScenarioId) => {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ active: isActive, scenario: currentScenario }));
-    } catch (e) {
-      // Handle gracefully
-    }
-  };
-
-  const enter = useCallback((id: ScenarioId = 'reviewing') => {
-    setActive(true);
-    setScenarioState(id);
-    setStorageNamespace('demo:');
-    persist(true, id);
-    // When entering, it's good to reset previous demo decisions so it's a fresh state
-    resetAll('demo:');
-  }, []);
-
-  const exit = useCallback(() => {
-    setActive(false);
-    setStorageNamespace('');
-    persist(false, scenario);
-  }, [scenario]);
-
-  const setScenario = useCallback((id: ScenarioId) => {
-    setScenarioState(id);
-    persist(active, id);
-    if (active) {
-      resetAll('demo:');
-    }
-  }, [active]);
-
-  const resetDemo = useCallback(() => {
-    if (active) {
-      resetAll('demo:');
-      // Trigger a re-render if needed, but storage reset is synchronous
-      setScenarioState(prev => prev); 
-    }
-  }, [active]);
-
-  return (
-    <DemoContext.Provider value={{ active, scenario, enter, exit, setScenario, resetDemo }}>
-      {children}
-    </DemoContext.Provider>
-  );
-};
-
-export function useDemo() {
-  const context = useContext(DemoContext);
-  if (!context) {
-    throw new Error('useDemo must be used within a DemoProvider');
+  function apply(next: DemoState) {
+    setStorageNamespace(next.active ? 'demo:' : '');
+    writeDemoState(next);
+    setState(next);
+    setVersion(v => v + 1);
   }
-  return context;
+
+  const value: DemoContextValue = {
+    ...state,
+    dataset: state.active ? SCENARIOS[state.scenario].dataset : defaultDataset,
+    version,
+    // Each scenario starts clean: demo: records only; user records untouched.
+    enter: (scenario = 'reviewing') => { resetAll('demo:'); apply({ active: true, scenario }); },
+    exit: () => apply({ ...state, active: false }),
+    setScenario: scenario => { resetAll('demo:'); apply({ ...state, scenario }); },
+    resetDemo: () => { resetAll('demo:'); setVersion(v => v + 1); },
+  };
+  return <DemoContext.Provider value={value}>{children}</DemoContext.Provider>;
 }
 
-// Data hooks that P1 can wire into BriefScreen
-export function useObservations() {
-  const { active, scenario } = useDemo();
-  return active ? SCENARIO_DATA[scenario].observations : defaultObservations;
-}
+const noop = () => {};
+const outside: DemoContextValue = { active: false, scenario: 'reviewing', dataset: defaultDataset, version: 0, enter: noop, exit: noop, setScenario: noop, resetDemo: noop };
 
-export function useCrew() {
-  const { active, scenario } = useDemo();
-  return active ? SCENARIO_DATA[scenario].crew : defaultCrew;
-}
-
-export function useTasks() {
-  const { active, scenario } = useDemo();
-  return active ? SCENARIO_DATA[scenario].tasks : defaultTasks;
+/** Works outside the provider too (isolated screen tests): default seeds, demo off. */
+export function useDemo(): DemoContextValue {
+  return useContext(DemoContext) ?? outside;
 }
