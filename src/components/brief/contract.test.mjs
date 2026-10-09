@@ -19,6 +19,13 @@ symlinkSync(join(root, 'node_modules'), join(work, 'node_modules'), process.plat
 mkdirSync(join(work, 'src/lib'), { recursive: true });
 mkdirSync(join(work, 'src/data'), { recursive: true });
 const save = (name, value) => writeFileSync(join(work, 'src', name), value);
+// Theme controls exist only in this temporary preview, never in P1's shell.
+save('main.tsx', `import { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+function Preview() { const [theme, setTheme] = useState('dark'); return <div data-theme={theme}><div style={{padding:12,background:'Canvas',color:'CanvasText'}}><button onClick={() => setTheme('dark')}>Preview dark theme</button> · <button onClick={() => setTheme('light')}>Preview light theme</button></div><App /></div>; }
+ReactDOM.createRoot(document.getElementById('root')!).render(<Preview />);`);
 // Verbatim field contracts, with exports for module imports.
 save('lib/types.ts', `
 export interface CrewMember { id: string; name: string; role: string; }
@@ -29,9 +36,9 @@ export interface TaskContext { crewId: string; title: string; scheduledFor: stri
 `);
 save('lib/storage.ts', `import type { Decision, Observation } from './types';
 export function getDecisions(crewId: string): Decision[] { return typeof localStorage === 'undefined' ? [] : JSON.parse(localStorage.getItem('p3-test-decisions') ?? '[]').filter((item: Decision) => item.crewId === crewId); }
-export function getCheckins(crewId: string): Observation[] { return []; }
+export function getCheckins(crewId: string): Observation[] { return typeof localStorage === 'undefined' ? [] : JSON.parse(localStorage.getItem('dashboard-test-checkins') ?? '[]').filter((item: Observation) => item.crewId === crewId); }
 export function saveDecision(decision: Decision): boolean { const rows = JSON.parse(localStorage.getItem('p3-test-decisions') ?? '[]'); localStorage.setItem('p3-test-decisions', JSON.stringify([...rows, decision])); return true; }
-export function saveCheckinEntry(observation: Observation, details: { crewId: string; timestamp: string; fatigue: number; note: string }): boolean { return true; }
+export function saveCheckinEntry(observation: Observation, details: { crewId: string; timestamp: string; fatigue: number; note: string }): boolean { const rows = JSON.parse(localStorage.getItem('dashboard-test-checkins') ?? '[]'); localStorage.setItem('dashboard-test-checkins', JSON.stringify([...rows, observation])); return true; }
 `);
 save('lib/baseline.ts', `import type { Observation, BaselineResult } from './types';
 export function computeBaselines(observations: Observation[], crewId: string, now: Date): BaselineResult[] {
@@ -41,9 +48,9 @@ export function computeBaselines(observations: Observation[], crewId: string, no
  {metric:'exercise_min',status:'insufficient_data',baselineMean:0,currentMean:0,deltaPct:null},
  {metric:'radiation_msv',status:'stale_data',baselineMean:0.3,currentMean:0.3,deltaPct:0},
  {metric:'mood',status:'within_range',baselineMean:4,currentMean:4,deltaPct:0},
- ].map(row => ({...row,baselineWindowDays:21,currentWindowDays:7,explanation:'Average HRV is 16% below this crew member’s baseline. Change worth reviewing.'})) as BaselineResult[];
+ ].map(row => ({...row,status:crewId==='ac-eng-02'?'within_range':row.status,baselineWindowDays:21,currentWindowDays:7,explanation:row.status==='worth_reviewing'?'Average HRV is 16% below this crew member’s baseline. Change worth reviewing.':'Personal observations compared with baseline.'})) as BaselineResult[];
 }`);
-save('data/crew.json', JSON.stringify([{ id: 'ac-cmdr-01', name: 'Demo Commander', role: 'Commander' }]));
+save('data/crew.json', JSON.stringify([{ id: 'ac-cmdr-01', name: 'Demo Commander', role: 'Commander' }, { id:'ac-eng-02', name:'Demo Engineer', role:'Engineer' }]));
 save('data/observations.json', JSON.stringify(['hrv', 'sleep_hours', 'exercise_min', 'radiation_msv', 'mood'].flatMap(metric => Array.from({ length: metric === 'exercise_min' ? 2 : 35 }, (_, daysAgo) => ({ crewId: 'ac-cmdr-01', metric, value: metric === 'hrv' ? (daysAgo < 7 ? 42 + (daysAgo - 3) : 50) : ({ sleep_hours: 7.3, exercise_min: 45, radiation_msv: 0.3, mood: 4 })[metric], timestamp: new Date(Date.now() - daysAgo * 86_400_000 - 3_600_000).toISOString(), provenance: 'synthetic_telemetry' }))).filter(row => row.metric !== 'radiation_msv' || Date.parse(row.timestamp) < Date.now() - 3 * 86_400_000)));
 save('data/tasks.json', JSON.stringify([{ crewId: 'ac-cmdr-01', title: 'Docking approach monitoring', scheduledFor: new Date(Date.now() + 86_400_000).toISOString(), attentionDemands: ['sustained attention', 'fine motor control'] }]));
 const run = (file, args) => execFileSync(process.execPath, [join(root, 'node_modules', file), ...args], { cwd: work, stdio: 'pipe' }).toString();
@@ -54,8 +61,12 @@ try {
   const { default: BriefScreen } = await import(pathToFileURL(join(work, 'ssr/BriefScreen.js')).href);
   const render = path => renderToString(React.createElement(MemoryRouter, { initialEntries: [path] }, React.createElement(Routes, null, React.createElement(Route, { path: '/crew/:crewId', element: React.createElement(BriefScreen) }))));
   const page = render('/crew/ac-cmdr-01');
-  for (const text of ['Demo Commander', 'Commander', 'No check-in recorded yet', 'Worth reviewing', 'Within range', 'Insufficient data', 'Stale data', 'Not enough baseline observations', '48 hours', 'Shaded: personal baseline', 'Docking approach monitoring', 'sustained attention', 'fine motor control', 'Recheck', 'Request review', 'Propose schedule change', 'No decisions recorded yet']) assert.ok(page.includes(text), `Missing ${text}`);
-  assert.ok(page.includes('aria-expanded="true"'), 'Review details initially expanded');
+  for (const text of ["Today&#x27;s overview", 'Demo Commander', 'Latest observation', 'Start check-in', 'Changes to review', 'Worth reviewing', 'Within range', 'Insufficient data', 'Stale data', 'Not enough baseline observations', 'Last reading 3 days ago', 'Shaded: personal baseline', 'Docking approach monitoring', 'sustained attention', 'fine motor control', 'Recheck', 'Request review', 'Propose schedule change', 'No decisions recorded yet']) assert.ok(page.includes(text), `Missing ${text}`);
+  assert.ok(page.indexOf('Changes to review') < page.indexOf('Baseline vs recent trend'), 'Review comes before chart');
+  assert.ok((page.match(/class="brief-support-card"/g) ?? []).length <= 4);
+  const clear = render('/crew/ac-eng-02');
+  assert.ok(clear.includes('No changes flagged against personal baseline'));
+  assert.ok(clear.includes('This is not medical clearance'));
   assert.ok(render('/crew/unknown').includes('Crew member not found'));
   assert.ok(existsSync(join(work, 'dist/index.html')));
   assert.ok(readFileSync(join(root, 'src/screens/BriefScreen.tsx'), 'utf8').includes('saveDecision(decision)'));

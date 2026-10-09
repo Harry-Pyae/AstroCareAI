@@ -1,9 +1,9 @@
+import { Link } from 'react-router-dom';
 import type { TaskContext } from '../../lib/types';
 import { formatTime, timeUntil } from './format';
-
+import Icon from './Icon';
 export default function TaskCard({ task, now }: { task?: TaskContext; now: Date }) {
-  return <section aria-labelledby="task-heading" className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-5">
-    <h2 id="task-heading" className="font-mono text-xs uppercase tracking-widest text-neutral-400">Upcoming task context</h2>
-    {task ? <><div className="mt-3 flex flex-wrap items-start justify-between gap-3"><h3 className="text-lg font-medium text-neutral-100">{task.title}</h3><span className="rounded border border-neutral-700 px-2 py-1 font-mono text-xs text-neutral-300">{timeUntil(task.scheduledFor, now)}</span></div><p className="mt-1 text-sm text-neutral-400"><time dateTime={task.scheduledFor}>{formatTime(task.scheduledFor)}</time></p><div className="mt-4 flex flex-wrap gap-2">{task.attentionDemands.map(demand => <span key={demand} className="rounded-full border border-neutral-700 px-3 py-1 text-xs text-neutral-300">{demand}</span>)}</div><p className="mt-4 text-sm text-neutral-400">Review suggested before tasks with sustained attention demands.</p></> : <p className="mt-3 text-sm text-neutral-400">No upcoming task is recorded for this crew member.</p>}
+  return <section className="brief-panel" aria-labelledby="task-heading"><div className="brief-panel-header"><h2 id="task-heading">Upcoming task context</h2><Icon name="calendar" /></div>
+    {task ? <><p className="brief-eyebrow">{timeUntil(task.scheduledFor, now)}</p><h3 className="mt-3">{task.title}</h3><p className="brief-muted mt-2 text-xs"><time dateTime={task.scheduledFor}>{formatTime(task.scheduledFor)}</time></p><div className="brief-chip-list">{task.attentionDemands.map(demand => <span className="brief-chip" key={demand}>{demand}</span>)}</div><p className="brief-muted">Review suggested before tasks with sustained attention demands.</p></> : <div className="brief-empty"><p>No upcoming task is recorded for this crew member.</p><p className="mt-2">Review personal observations or <Link to="/" className="brief-link">choose another astronaut</Link>.</p></div>}
   </section>;
 }

@@ -1,0 +1,64 @@
+.brief-dashboard {
+  --brief-surface: var(--surface, #111820); --brief-subtle: var(--surface-subtle, #17212c);
+  --brief-text: var(--text-primary, #edf2f7); --brief-muted: var(--text-secondary, #a1afbd);
+  --brief-border: var(--border-color, #2c3947); --brief-accent: var(--accent, #a6d5e6); --brief-on-accent: var(--on-accent, #10212b);
+  --brief-review: var(--status-review, #efc372); --brief-review-bg: var(--status-review-bg, #2a2318); --brief-good: var(--status-neutral, #a3cbbd);
+  --brief-chart-grid: var(--chart-grid, #334253); --brief-chart-line: var(--chart-line, #a6d5e6); --brief-chart-window: var(--chart-baseline, #a3cbbd);
+  color: var(--brief-text); background: var(--brief-surface); border-radius: 16px; padding: clamp(16px, 3vw, 32px); font-size: 14px; line-height: 1.6;
+}
+[data-theme="light"] .brief-dashboard, .light .brief-dashboard, .brief-dashboard[data-theme="light"] {
+  --brief-surface: var(--surface, #ffffff); --brief-subtle: var(--surface-subtle, #f3f6f8);
+  --brief-text: var(--text-primary, #192c3c); --brief-muted: var(--text-secondary, #536779);
+  --brief-border: var(--border-color, #d5dee5); --brief-accent: var(--accent, #265d73); --brief-on-accent: var(--on-accent, #ffffff);
+  --brief-review: var(--status-review, #835400); --brief-review-bg: var(--status-review-bg, #fff6e5); --brief-good: var(--status-neutral, #326858);
+  --brief-chart-grid: var(--chart-grid, #d5dee5); --brief-chart-line: var(--chart-line, #265d73); --brief-chart-window: var(--chart-baseline, #608c7c);
+}
+.brief-dashboard :is(button,a,input,select,summary,[tabindex]):focus-visible { outline: 3px solid var(--brief-accent); outline-offset: 4px; }
+.brief-dashboard :is(button,a,input,select) { border-radius: 7px; }
+.brief-dashboard h1 { font-size: clamp(24px,3vw,32px); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; }
+.brief-dashboard h2 { font-size: 19px; line-height: 1.4; font-weight: 600; }
+.brief-dashboard h3 { font-size: 15px; font-weight: 600; }
+.brief-muted { color: var(--brief-muted); }
+.brief-eyebrow { color: var(--brief-muted); font-size: 11px; text-transform: uppercase; letter-spacing: .13em; font-weight: 600; }
+.brief-overview { display: flex; justify-content: space-between; gap: 24px; align-items: center; padding: 24px 0; }
+.brief-summary { border-bottom: 1px solid var(--brief-border); padding-bottom: 24px; margin-bottom: 28px; font-size: 15px; }
+.brief-columns { display: grid; gap: 28px; align-items: start; }
+.brief-stack { display: grid; gap: 24px; min-width: 0; }
+.brief-panel { border: 1px solid var(--brief-border); border-radius: 12px; padding: 24px; min-width: 0; }
+.brief-review-panel { border-top: 3px solid var(--brief-review); }
+.brief-panel-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.brief-icon { width: 17px; height: 17px; flex-shrink: 0; vertical-align: middle; }
+.brief-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--brief-border); background: var(--brief-subtle); color: var(--brief-text); padding: 10px 14px; font-weight: 500; min-height: 44px; cursor: pointer; text-decoration: none; }
+.brief-button:hover { border-color: var(--brief-accent); }
+.brief-primary { background: var(--brief-accent); color: var(--brief-on-accent); border-color: var(--brief-accent); white-space: nowrap; }
+.brief-link { color: var(--brief-accent); text-decoration: underline; text-underline-offset: 4px; }
+.brief-status { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; padding: 4px 9px; border-radius: 6px; background: var(--brief-subtle); color: var(--brief-muted); }
+.brief-status-review { color: var(--brief-review); background: var(--brief-review-bg); }
+.brief-status-good { color: var(--brief-good); }
+.brief-review-row { padding: 20px 0; border-top: 1px solid var(--brief-border); }
+.brief-review-row:last-child { padding-bottom: 0; }
+.brief-row-title { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.brief-values { display: flex; gap: 16px; flex-wrap: wrap; margin: 8px 0; align-items: baseline; font-variant-numeric: tabular-nums; }
+.brief-value { font-size: 25px; font-weight: 600; letter-spacing: -.025em; }
+.brief-delta { color: var(--brief-review); font-weight: 600; }
+.brief-chip-list { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+.brief-chip { background: var(--brief-subtle); border: 1px solid var(--brief-border); padding: 4px 9px; border-radius: 6px; font-size: 12px; }
+.brief-support { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.brief-support-card { padding: 18px; border: 1px solid var(--brief-border); border-radius: 10px; }
+.brief-field { display: block; width: 100%; margin-top: 8px; border: 1px solid var(--brief-border); padding: 10px 12px; background: var(--brief-subtle); color: var(--brief-text); min-height: 44px; }
+.brief-field::placeholder { color: var(--brief-muted); }
+.brief-action-list { display: grid; gap: 8px; margin-top: 18px; }
+.brief-action-list .brief-button { justify-content: flex-start; }
+.brief-action-list [aria-pressed="true"] { border-color: var(--brief-accent); }
+.brief-history { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--brief-border); }
+.brief-history li { padding: 14px 0; border-bottom: 1px solid var(--brief-border); overflow-wrap: anywhere; }
+.brief-history li:last-child { border-bottom: 0; }
+.brief-empty { padding: 18px 0 0; color: var(--brief-muted); }
+.brief-chart { height: 230px; width: 100%; margin-top: 20px; }
+.brief-chart-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; font-size: 12px; color: var(--brief-muted); }
+.brief-chart-swatch { display: inline-block; width: 12px; height: 8px; background: var(--brief-chart-window); opacity: .4; margin-right: 6px; }
+.brief-toast { position: fixed; bottom: 24px; right: 24px; z-index: 50; padding: 12px 18px; border: 1px solid var(--brief-border); border-radius: 10px; background: var(--brief-subtle); color: var(--brief-text); display: flex; gap: 10px; align-items: center; max-width: calc(100vw - 32px); }
+.brief-dashboard details { margin-top: 18px; }
+.brief-dashboard summary { color: var(--brief-accent); cursor: pointer; padding: 6px 0; }
+@media (min-width:1024px) { .brief-columns { grid-template-columns: minmax(0,2fr) minmax(0,1fr); } }
+@media (max-width:600px) { .brief-overview { align-items: stretch; flex-direction: column; gap: 16px; } .brief-support { grid-template-columns: 1fr; } .brief-panel { padding: 18px; } .brief-toast { bottom: 16px; right: 16px; } }

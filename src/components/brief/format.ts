@@ -1,4 +1,14 @@
 export const DAY = 86_400_000;
+export function freshness(timestamp: string | undefined, now: Date) {
+  if (!timestamp) return 'No reading available';
+  const elapsed = now.getTime() - Date.parse(timestamp);
+  if (!Number.isFinite(elapsed) || elapsed < 0) return 'No current reading available';
+  if (elapsed < 3_600_000) return 'Last reading less than an hour ago';
+  if (elapsed < DAY) { const hours = Math.floor(elapsed / 3_600_000); return `Last reading ${hours} hour${hours === 1 ? '' : 's'} ago`; }
+  const days = Math.floor(elapsed / DAY);
+  return `Last reading ${days} day${days === 1 ? '' : 's'} ago`;
+}
+export function metricValue(value: number, metric: string) { return `${Number(value.toFixed(3))} ${metricLabels[metric]?.unit ?? ''}`; }
 export const metricLabels: Record<string, { name: string; unit: string }> = {
   hrv: { name: 'Heart rate variability', unit: 'ms' },
   sleep_hours: { name: 'Sleep', unit: 'h' },
