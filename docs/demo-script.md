@@ -39,4 +39,4 @@
 - If anything breaks: Reset demo → continue; worst case, switch to the backup recording without comment.
 
 ## Reset for repeat runs
-Demo control panel → **Reset demo** (restores the selected scenario, touches only demo records).
+Top-bar **Demo** panel → **Reset this scenario** (restores the selected scenario, touches only demo records).
