@@ -1,4 +1,5 @@
 import { translate, type Translator } from '../../i18n/index';
+import type { IconName } from '../icons/Icon';
 export const DAY = 86_400_000;
 export function freshness(timestamp: string | undefined, now: Date, t: Translator = (key, params) => translate('en', key, params)) {
   if (!timestamp) return t('No reading available');
@@ -10,12 +11,12 @@ export function freshness(timestamp: string | undefined, now: Date, t: Translato
   return t('freshness.days', { count: days });
 }
 export function metricValue(value: number, metric: string, t: Translator = (key, params) => translate('en', key, params)) { const unit = metricLabels[metric]?.unit ?? ''; return `${Number(value.toFixed(3))} ${unit === 'points' ? t('points') : unit}`; }
-export const metricLabels: Record<string, { name: string; unit: string }> = {
-  hrv: { name: 'Heart rate variability', unit: 'ms' },
-  sleep_hours: { name: 'Sleep', unit: 'h' },
-  exercise_min: { name: 'Exercise', unit: 'min' },
-  radiation_msv: { name: 'Radiation', unit: 'mSv' },
-  mood: { name: 'Mood', unit: 'points' },
+export const metricLabels: Record<string, { name: string; unit: string; icon: IconName }> = {
+  hrv: { name: 'Heart rate variability', unit: 'ms', icon: 'heart-pulse' },
+  sleep_hours: { name: 'Sleep', unit: 'h', icon: 'sleep' },
+  exercise_min: { name: 'Exercise', unit: 'min', icon: 'metrics' },
+  radiation_msv: { name: 'Radiation', unit: 'mSv', icon: 'spaceweather' },
+  mood: { name: 'Mood', unit: 'points', icon: 'checkin' },
 };
 export function formatTime(timestamp: string) {
   const date = new Date(timestamp);

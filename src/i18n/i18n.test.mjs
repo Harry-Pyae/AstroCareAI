@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import ts from 'typescript';
 import { baselineExplanation, localizedDate, translate } from './index.ts';
 import { computeBaselines } from '../lib/baseline.ts';
@@ -17,6 +17,7 @@ const activeFiles = [
   '../components/LanguageSwitcher.tsx', '../components/layout/TopBar.tsx', '../components/layout/Nav.tsx', '../components/layout/Layout.tsx', '../components/layout/CrewSelectPage.tsx',
   '../screens/BriefScreen.tsx', '../screens/CheckinScreen.tsx', '../routes.tsx', '../components/qr/CrewQR.tsx', '../components/spaceweather/SpaceWeatherCard.tsx',
   '../components/brief/BaselineComparison.tsx', '../components/brief/DecisionBar.tsx', '../components/brief/TaskCard.tsx', '../components/brief/format.ts',
+  '../components/demo/DemoControlPanel.tsx', '../components/demo/DemoStatusChip.tsx', '../components/demo/ExploreDemoEntry.tsx',
 ];
 for (const file of activeFiles) {
   const source = ts.createSourceFile(file, readFileSync(new URL(file, import.meta.url), 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -28,6 +29,29 @@ for (const file of activeFiles) {
       const text = node.text.trim();
       assert.ok(!/[A-Za-z]/.test(text) || ['ASTROCARE', 'EN'].includes(text), `Untranslated JSX text in ${file}: ${text}`);
     }
+    ts.forEachChild(node, visit);
+  }
+  visit(source);
+}
+// All literal translation calls (including conditional label branches) must have
+// both translations. This includes lazy routes and shared controls beyond the
+// active JSX list above, so later component additions cannot silently fall back.
+let translatedCalls = 0;
+const sourceRoot = new URL('../', import.meta.url);
+function verifyKeyArgument(argument, file) {
+  if (ts.isStringLiteralLike(argument)) {
+    assert.ok(argument.text in en, `Missing English key ${argument.text} in ${file}`);
+    assert.ok(argument.text in my, `Missing Myanmar key ${argument.text} in ${file}`);
+    translatedCalls += 1;
+  } else if (ts.isConditionalExpression(argument)) {
+    verifyKeyArgument(argument.whenTrue, file);
+    verifyKeyArgument(argument.whenFalse, file);
+  }
+}
+for (const file of readdirSync(sourceRoot, { recursive: true }).filter(file => file.endsWith('.tsx'))) {
+  const source = ts.createSourceFile(file, readFileSync(new URL(file.replaceAll('\\', '/'), sourceRoot), 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  function visit(node) {
+    if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === 't' && node.arguments[0]) verifyKeyArgument(node.arguments[0], file);
     ts.forEachChild(node, visit);
   }
   visit(source);
@@ -49,4 +73,4 @@ for (const crewId of ['ac-cmdr-01', 'ac-eng-02', 'ac-sci-03']) {
 assert.ok(translate('my', 'overview.change', { metric: 'အိပ်ချိန်', current: '5.84 h', delta: 20, direction: translate('my', 'below') }).includes('5.84 h'));
 assert.ok(localizedDate('2026-10-09T06:00:00Z', 'my').includes('2026') === false); // default date intentionally omits year
 assert.equal(translate('en', 'points'), 'points');
-console.log(`PASS: ${Object.keys(en).length} bilingual keys, placeholder parity, all active JSX labels, seed task/role coverage, and dynamic baseline translations.`);
+console.log(`PASS: ${Object.keys(en).length} bilingual keys, placeholder parity, ${translatedCalls} literal labels, all active JSX labels, seed task/role coverage, and dynamic baseline translations.`);

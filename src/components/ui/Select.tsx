@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
+import Icon from '../icons/Icon';
 
 export interface SelectOption {
   value: string;
@@ -16,17 +17,6 @@ interface SelectProps {
   id?: string;
   className?: string;
 }
-
-const chevron = (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="m6 9 6 6 6-6" />
-  </svg>
-);
-const check = (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="shrink-0 text-accent">
-    <path d="m5 12.5 4.5 4.5L19 7.5" />
-  </svg>
-);
 
 /** Themed replacement for native <select>: button trigger + listbox popover. */
 export default function Select({ value, options, onChange, label, placeholder = '', id, className = '' }: SelectProps) {
@@ -140,7 +130,7 @@ export default function Select({ value, options, onChange, label, placeholder = 
         className="inline-flex min-h-11 w-full items-center justify-between gap-2 rounded-lg border border-default bg-card px-3 text-left text-sm text-primary hover:border-strong"
       >
         <span className={`truncate ${selected ? '' : 'text-secondary'}`}>{selected?.label ?? placeholder}</span>
-        <span className={`text-secondary transition-transform duration-[var(--dur-fast)] ${open ? 'rotate-180' : ''}`}>{chevron}</span>
+        <span className={`text-secondary transition-transform duration-[var(--dur-fast)] ${open ? 'rotate-180' : ''}`}><Icon name="arrow" size={16} className="rotate-90" /></span>
       </button>
 
       {open && (
@@ -167,7 +157,7 @@ export default function Select({ value, options, onChange, label, placeholder = 
               } ${option.value === value ? 'font-semibold text-primary' : ''}`}
             >
               {option.label}
-              {option.value === value && check}
+              {option.value === value && <Icon name="check" size={16} className="shrink-0 text-accent" />}
             </li>
           ))}
         </ul>

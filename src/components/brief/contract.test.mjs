@@ -34,13 +34,8 @@ export interface BaselineResult { metric: string; baselineMean: number; baseline
 export interface Decision { crewId: string; action: "recheck"|"request_review"|"propose_schedule_change"; note: string; timestamp: string; }
 export interface TaskContext { crewId: string; title: string; scheduledFor: string; attentionDemands: string[]; }
 `);
-save('lib/storage.ts', `import type { Decision, Observation } from './types';
-export function resetAll(): void { }
-export function getDecisions(crewId: string): Decision[] { return typeof localStorage === 'undefined' ? [] : JSON.parse(localStorage.getItem('p3-test-decisions') ?? '[]').filter((item: Decision) => item.crewId === crewId); }
-export function getCheckins(crewId: string): Observation[] { return typeof localStorage === 'undefined' ? [] : JSON.parse(localStorage.getItem('dashboard-test-checkins') ?? '[]').filter((item: Observation) => item.crewId === crewId); }
-export function saveDecision(decision: Decision): boolean { const rows = JSON.parse(localStorage.getItem('p3-test-decisions') ?? '[]'); localStorage.setItem('p3-test-decisions', JSON.stringify([...rows, decision])); return true; }
-export function saveCheckinEntry(observation: Observation, details: { crewId: string; timestamp: string; fatigue: number; note: string }): boolean { const rows = JSON.parse(localStorage.getItem('dashboard-test-checkins') ?? '[]'); localStorage.setItem('dashboard-test-checkins', JSON.stringify([...rows, observation])); return true; }
-`);
+// Keep real storage signatures, including DemoProvider namespace support.
+// Effects do not run during server rendering, so this fixture never persists data.
 save('lib/baseline.ts', `import type { Observation, BaselineResult } from './types';
 export function computeBaselines(observations: Observation[], crewId: string, now: Date): BaselineResult[] {
  return [
@@ -58,18 +53,29 @@ const run = (file, args) => execFileSync(process.execPath, [join(root, 'node_mod
 try {
   run('typescript/bin/tsc', ['--noEmit']);
   run('vite/bin/vite.js', ['build']);
-  save('verify.tsx', "export { default as BriefScreen } from './screens/BriefScreen'; export { LanguageProvider } from './i18n/LanguageProvider';");
+  save('verify.tsx', "export { default as BriefScreen } from './screens/BriefScreen'; export { LanguageProvider } from './i18n/LanguageProvider'; export { DemoProvider } from './components/demo/DemoProvider'; export { default as DecisionBar } from './components/brief/DecisionBar';");
   run('vite/bin/vite.js', ['build', '--ssr', 'src/verify.tsx', '--outDir', 'ssr']);
-  const { BriefScreen, LanguageProvider } = await import(pathToFileURL(join(work, 'ssr/verify.js')).href);
-  const render = path => renderToString(React.createElement(LanguageProvider, null, React.createElement(MemoryRouter, { initialEntries: [path] }, React.createElement(Routes, null, React.createElement(Route, { path: '/crew/:crewId', element: React.createElement(BriefScreen) })))));
+  const { BriefScreen, LanguageProvider, DemoProvider, DecisionBar } = await import(pathToFileURL(join(work, 'ssr/verify.js')).href);
+  const render = path => renderToString(React.createElement(LanguageProvider, null, React.createElement(DemoProvider, null, React.createElement(MemoryRouter, { initialEntries: [path] }, React.createElement(Routes, null, React.createElement(Route, { path: '/crew/:crewId', element: React.createElement(BriefScreen) }))))));
   const page = render('/crew/ac-cmdr-01');
   for (const text of ["Today&#x27;s overview", 'Demo Commander', 'Latest observation', 'Start check-in', 'Changes to review', 'Worth reviewing', 'Within range', 'Insufficient data', 'Stale data', 'Not enough baseline observations', 'Last reading 3 days ago', 'Shaded: personal baseline', 'Docking approach monitoring', 'sustained attention', 'fine motor control', 'Recheck', 'Request review', 'Propose schedule change', 'No decisions recorded yet']) assert.ok(page.includes(text), `Missing ${text}`);
   assert.ok(page.indexOf('Changes to review') < page.indexOf('Baseline vs recent trend'), 'Review comes before chart');
-  assert.ok((page.match(/class="brief-support-card"/g) ?? []).length <= 4);
+  assert.ok((page.match(/class="brief-support-card\b/g) ?? []).length <= 4);
+  assert.ok(page.includes('aria-haspopup="listbox"'), 'Metric uses shared accessible Select');
+  assert.equal(page.includes('<select'), false, 'No native metric selector');
   const clear = render('/crew/ac-eng-02');
   assert.ok(clear.includes('No changes flagged against personal baseline'));
   assert.ok(clear.includes('This is not medical clearance'));
   assert.ok(render('/crew/unknown').includes('Crew member not found'));
+  const decisionRows = [
+    { crewId: 'ac-cmdr-01', action: 'recheck', note: 'Earlier note', timestamp: '2026-10-09T04:00:00Z' },
+    { crewId: 'ac-cmdr-01', action: 'request_review', note: 'Latest note', timestamp: '2026-10-09T05:00:00Z' },
+  ];
+  const history = renderToString(React.createElement(LanguageProvider, null, React.createElement(DecisionBar, { decisions: decisionRows, onSave: () => {} })));
+  for (const column of ['Action', 'Note', 'Recorded']) assert.ok(history.includes('role="columnheader"') && history.includes(column));
+  assert.ok(history.indexOf('Latest note') < history.indexOf('Earlier note'), 'History newest first');
+  assert.match(history, /datetime="2026-10-09T05:00:00Z"/i, 'Recorded timestamp retained');
+  assert.equal(decisionRows[0].note, 'Earlier note', 'Rendering does not mutate history');
   assert.ok(existsSync(join(work, 'dist/index.html')));
   assert.ok(readFileSync(join(root, 'src/screens/BriefScreen.tsx'), 'utf8').includes('saveDecision(decision)'));
   console.log('PASS: contract typecheck, production build, crew route, all status states, chart reference legend, task context, decision controls, and unknown crew.');

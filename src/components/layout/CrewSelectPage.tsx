@@ -1,31 +1,32 @@
 import { Link } from 'react-router-dom';
 import { useI18n } from '../../i18n/LanguageProvider';
-import crewData from '../../data/crew.json';
-import observationData from '../../data/observations.json';
-import type { CrewMember, Observation } from '../../lib/types';
+import type { Observation } from '../../lib/types';
 import CrewQR from '../qr/CrewQR';
 import Icon from '../icons/Icon';
-
-const crew: CrewMember[] = crewData;
-const observations: Observation[] = observationData as Observation[];
+import { useCrew, useObservations, useTasks } from '../demo/DemoProvider';
+import { ExploreDemoEntry } from '../demo/ExploreDemoEntry';
 
 /**
  * Summarizes the tracked baseline metrics for a crew member.
  */
-function getCrewMetricSummary(crewId: string) {
+function getCrewMetricSummary(crewId: string, observations: Observation[]) {
   const memberObs = observations.filter((o) => o.crewId === crewId);
   const metricSet = new Set(memberObs.map((o) => o.metric));
   return {
-    count: metricSet.size || 5,
+    count: metricSet.size,
     totalReadings: memberObs.length,
+    latest: memberObs.reduce<string | null>((latest, reading) => !latest || Date.parse(reading.timestamp) > Date.parse(latest) ? reading.timestamp : latest, null),
   };
 }
 
 export default function CrewSelectPage() {
-  const { t } = useI18n();
+  const { t, date } = useI18n();
+  const crew = useCrew();
+  const observations = useObservations();
+  const tasks = useTasks();
 
   return (
-    <section className="space-y-8" aria-labelledby="crew-select-heading">
+    <section className="motion-mount space-y-8" aria-labelledby="crew-select-heading">
       {/* Page Header */}
       <header className="space-y-2">
         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-accent">
@@ -43,41 +44,13 @@ export default function CrewSelectPage() {
         </p>
       </header>
 
-      {/* P3 DEMO INTEGRATION SLOT: P3 mounts <ExploreDemoButton /> here */}
-      <div
-        id="p3-demo-slot"
-        className="flex flex-col items-start justify-between gap-4 rounded-xl border border-default bg-card p-5 sm:flex-row sm:items-center"
-      >
-        <div className="flex items-start gap-3.5">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/15 text-accent">
-            <Icon name="schedule" size={20} />
-          </span>
-          <div>
-            <h2 className="text-sm font-medium text-primary">
-              {t("Demonstration Walkthrough")}
-            </h2>
-            <p className="text-xs text-secondary">
-              {t("Explore pre-configured astronaut scenarios with personal baseline deviations.")}
-            </p>
-          </div>
-        </div>
-
-        {/* P3 Explore Demo Button Mount Hook */}
-        <div id="p3-explore-demo-mount" className="w-full sm:w-auto">
-          <Link
-            to="/crew/ac-cmdr-01"
-            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition-all duration-[var(--dur-fast,150ms)] hover:opacity-90 focus-visible:outline-2 focus-visible:outline-focus-ring sm:w-auto"
-          >
-            <Icon name="arrow" size={16} />
-            <span>{t("Explore demo")}</span>
-          </Link>
-        </div>
-      </div>
+      <ExploreDemoEntry />
 
       {/* Crew Badge Cards Grid - 24px gap (gap-6) & responsive 390px stacking */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {crew.map((member) => {
-          const { count, totalReadings } = getCrewMetricSummary(member.id);
+          const { count, totalReadings, latest } = getCrewMetricSummary(member.id, observations);
+          const nextTask = tasks.filter(task => task.crewId === member.id && Date.parse(task.scheduledFor) >= Date.now()).sort((a, b) => Date.parse(a.scheduledFor) - Date.parse(b.scheduledFor))[0];
 
           return (
             <Link
@@ -91,7 +64,7 @@ export default function CrewSelectPage() {
               {/* Card Top: Identity & Role */}
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-2">
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="text-lg font-semibold text-primary group-hover:text-accent">
                       {member.name}
                     </h3>
@@ -123,6 +96,8 @@ export default function CrewSelectPage() {
                     </span>
                   </div>
 
+                  <p className="text-xs text-secondary">{t('Latest observation')}: {latest ? <time dateTime={latest}>{date(latest)}</time> : t('No observations available')}</p>
+
                   {/* Summary metric indicators */}
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     <span className="inline-flex items-center gap-1 rounded bg-card-raised px-2 py-0.5 text-[11px] text-secondary">
@@ -141,6 +116,7 @@ export default function CrewSelectPage() {
                       <Icon name="note" size={12} /> {t("Mood")}
                     </span>
                   </div>
+                  {nextTask ? <p className="pt-2 text-xs text-secondary"><Icon name="schedule" size={14} className="mr-1 inline-block" />{t(nextTask.title)} · <time dateTime={nextTask.scheduledFor}>{date(nextTask.scheduledFor)}</time></p> : <p className="pt-2 text-xs text-secondary">{t('No upcoming task is recorded for this crew member.')}</p>}
                 </div>
               </div>
 

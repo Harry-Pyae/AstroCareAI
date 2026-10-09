@@ -1,5 +1,31 @@
 # Dashboard integration
 
+## Full local integration (2026-10-09)
+
+The integrated dashboard uses P1's shared `Select` and `DataList`, P5's shared
+`Icon`, and the semantic theme/chart/motion tokens in `styles/tokens.css`.
+There is no legacy palette bridge or parallel `--brief-*` color layer.
+The overview retains two rows; panel and right-rail sections are at least
+24px apart. The disclosure uses the shared motion timing and reduced-motion
+rules. All visible labels and explanations consume the English/Myanmar
+language provider.
+
+`useCrew`, `useObservations`, and `useTasks` supply the current DemoProvider
+data. The dashboard refreshes its scoped stored records when `active`,
+`scenario`, or `revision` changes, and resets the mounted crew view so old
+scenario observations, decisions, chart selection, and toast state cannot
+linger after switching or reset. Real user check-in timestamps are unchanged.
+The NASA card keeps the existing same-origin backend and clearly labeled
+synthetic fallback; NASA availability never gates the baseline journey.
+
+The formerly duplicated `DecisionHistory`, `TaskContextCard`, `MetricRow`,
+`MetricTrendChart`, and local brief `Icon` components have no active imports
+and were removed. Decision records retain their `dateTime`, use titled
+columns, and render newest first without mutating input history.
+
+The sections below retain the original consolidation audit as historical
+context; dependencies described as missing there are now integrated above.
+
 ## P2 consolidation audit (2026-10-09)
 
 `p2-complete` starts at `origin/p2-dashboard` (`3ee1aa2`). The complete

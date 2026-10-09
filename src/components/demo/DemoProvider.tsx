@@ -1,114 +1,65 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import type { ScenarioId } from '../../data/scenarios';
+import { createContext, useContext, useState, useMemo, useCallback, type ReactNode } from 'react';
+import type { ScenarioId, ScenarioData } from '../../data/scenarios';
 import { SCENARIO_DATA } from '../../data/scenarios';
-import { setStorageNamespace, resetAll } from '../../lib/storage';
-
-// Original seeds
+import { initializeDemoSession, changeDemoSession, rebaseScenarioData, type DemoAction, type DemoSession } from '../../lib/demo';
+import type { CrewMember, Observation, TaskContext } from '../../lib/types';
 import defaultObservations from '../../data/observations.json';
 import defaultCrew from '../../data/crew.json';
 import defaultTasks from '../../data/tasks.json';
+import { DemoControlPanel } from './DemoControlPanel';
 
-interface DemoContextType {
-  active: boolean;
-  scenario: ScenarioId;
+interface DemoContextType extends DemoSession {
+  data: ScenarioData;
+  storageMessage: string;
   enter: (id?: ScenarioId) => void;
   exit: () => void;
   setScenario: (id: ScenarioId) => void;
   resetDemo: () => void;
 }
 
-const DemoContext = createContext<DemoContextType | null>(null);
-
-const STORAGE_KEY = 'demo:active_scenario';
-
-export const DemoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [active, setActive] = useState(false);
-  const [scenario, setScenarioState] = useState<ScenarioId>('stable');
-
-  // Initialize from storage
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && parsed.active && ['stable', 'reviewing', 'incomplete'].includes(parsed.scenario)) {
-          setActive(true);
-          setScenarioState(parsed.scenario);
-          setStorageNamespace('demo:');
-        }
-      }
-    } catch (e) {
-      // Corrupted storage, fall back to inactive
-      setActive(false);
-    }
-  }, []);
-
-  const persist = (isActive: boolean, currentScenario: ScenarioId) => {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ active: isActive, scenario: currentScenario }));
-    } catch (e) {
-      // Handle gracefully
-    }
-  };
-
-  const enter = useCallback((id: ScenarioId = 'reviewing') => {
-    setActive(true);
-    setScenarioState(id);
-    setStorageNamespace('demo:');
-    persist(true, id);
-    // When entering, it's good to reset previous demo decisions so it's a fresh state
-    resetAll('demo:');
-  }, []);
-
-  const exit = useCallback(() => {
-    setActive(false);
-    setStorageNamespace('');
-    persist(false, scenario);
-  }, [scenario]);
-
-  const setScenario = useCallback((id: ScenarioId) => {
-    setScenarioState(id);
-    persist(active, id);
-    if (active) {
-      resetAll('demo:');
-    }
-  }, [active]);
-
-  const resetDemo = useCallback(() => {
-    if (active) {
-      resetAll('demo:');
-      // Trigger a re-render if needed, but storage reset is synchronous
-      setScenarioState(prev => prev); 
-    }
-  }, [active]);
-
-  return (
-    <DemoContext.Provider value={{ active, scenario, enter, exit, setScenario, resetDemo }}>
-      {children}
-    </DemoContext.Provider>
-  );
+const defaultData: ScenarioData = {
+  crew: defaultCrew as CrewMember[],
+  observations: defaultObservations as Observation[],
+  tasks: defaultTasks as TaskContext[],
 };
 
-export function useDemo() {
+const DemoContext = createContext<DemoContextType | null>(null);
+
+export function DemoProvider({ children }: { children: ReactNode }) {
+  const [session, setSession] = useState(initializeDemoSession);
+  const [storageMessage, setStorageMessage] = useState('');
+  const transition = useCallback((action: DemoAction) => {
+    try {
+      const next = changeDemoSession(session, action);
+      setStorageMessage('');
+      setSession(next);
+    } catch (error) {
+      setStorageMessage(error instanceof Error ? error.message : 'Demo storage is unavailable.');
+    }
+  }, [session]);
+  const enter = useCallback((id: ScenarioId = 'reviewing') => transition({ type: 'enter', scenario: id }), [transition]);
+  const exit = useCallback(() => transition({ type: 'exit' }), [transition]);
+  const setScenario = useCallback((id: ScenarioId) => transition({ type: 'scenario', scenario: id }), [transition]);
+  const resetDemo = useCallback(() => transition({ type: 'reset' }), [transition]);
+  const data = useMemo(() => {
+    const defaults = rebaseScenarioData(defaultData, session.anchor);
+    if (!session.active) return defaults;
+    const chosen = rebaseScenarioData(SCENARIO_DATA[session.scenario], session.anchor);
+    const scenarioCrews = new Set(chosen.tasks.map(task => task.crewId));
+    return { ...chosen, tasks: [...chosen.tasks, ...defaults.tasks.filter(task => !scenarioCrews.has(task.crewId))] };
+  }, [session.active, session.scenario, session.anchor]);
+  return <DemoContext.Provider value={{ ...session, data, storageMessage, enter, exit, setScenario, resetDemo }}>
+    {children}
+    <DemoControlPanel />
+  </DemoContext.Provider>;
+}
+
+export function useDemo(): DemoContextType {
   const context = useContext(DemoContext);
-  if (!context) {
-    throw new Error('useDemo must be used within a DemoProvider');
-  }
+  if (!context) throw new Error('useDemo must be used within a DemoProvider');
   return context;
 }
 
-// Data hooks that P1 can wire into BriefScreen
-export function useObservations() {
-  const { active, scenario } = useDemo();
-  return active ? SCENARIO_DATA[scenario].observations : defaultObservations;
-}
-
-export function useCrew() {
-  const { active, scenario } = useDemo();
-  return active ? SCENARIO_DATA[scenario].crew : defaultCrew;
-}
-
-export function useTasks() {
-  const { active, scenario } = useDemo();
-  return active ? SCENARIO_DATA[scenario].tasks : defaultTasks;
-}
+export function useObservations(): Observation[] { return useDemo().data.observations; }
+export function useCrew(): CrewMember[] { return useDemo().data.crew; }
+export function useTasks(): TaskContext[] { return useDemo().data.tasks; }
