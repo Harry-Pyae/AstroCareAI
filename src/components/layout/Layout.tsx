@@ -21,7 +21,9 @@ function PageSkeleton({ label }: { label: string }) {
 }
 
 export default function Layout() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
+  const mainRef = useRef<HTMLElement>(null);
+  const firstLanguage = useRef(language);
   const [menuOpen, setMenuOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
   const [collapsed, setCollapsed] = useState(() => getUiPref('sidebar') === 'collapsed');
@@ -34,6 +36,14 @@ export default function Layout() {
   const { pathname } = useLocation();
 
   useEffect(() => setMenuOpen(false), [pathname]);
+
+  // Brief crossfade when the language changes (skipped on load and under reduced motion).
+  useEffect(() => {
+    if (language === firstLanguage.current) return;
+    firstLanguage.current = language;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    mainRef.current?.animate([{ opacity: 0.35 }, { opacity: 1 }], { duration: 280, easing: 'cubic-bezier(0.2, 0, 0, 1)' });
+  }, [language]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -84,7 +94,7 @@ export default function Layout() {
 
       <div className="flex min-w-0 flex-1 flex-col">
         <TopBar onOpenMenu={() => setMenuOpen(true)} />
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:px-8 md:py-8">
+        <main ref={mainRef} className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:px-8 md:py-8">
           <Suspense fallback={<PageSkeleton label={t("Loading…")} />}>
             <div key={pathname} className="motion-page"><Outlet /></div>
           </Suspense>
