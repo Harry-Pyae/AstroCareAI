@@ -1,0 +1,162 @@
+/* ASTROCARE semantic theme tokens. Style components ONLY with these.
+   Theme is selected by data-theme="dark|light" on <html> (set before paint
+   by the inline script in index.html, then managed by src/theme.tsx). */
+
+/* Motion: hover/focus = fast; mount, theme switch, toast = base;
+   layout-level (drawer, reflow) = slow. Calm only — no bounce, no loops. */
+:root {
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 280ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #0b1220;
+  --card: #111a2e;
+  --card-raised: #18233a;
+  --border-default: #26334d;
+  --border-strong: #3a4a68;
+  --text-primary: #e7ecf3;
+  --text-secondary: #a3afc2;
+  --accent: #2dd4bf;
+  --on-accent: #042f2e;
+  --accent-review: #fbbf4a;
+  --danger: #f87171;
+  --focus-ring: #67e8f9;
+  --chart-line: #5eead4;
+  --chart-grid: #26334d;
+  --chart-label: #a3afc2;
+  --chart-tooltip-bg: #18233a;
+  --chart-baseline-fill: rgb(163 175 194 / 0.12);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --page: #f4f6fa;
+  --card: #ffffff;
+  --card-raised: #eef2f7;
+  --border-default: #d6dde8;
+  --border-strong: #b4c0d1;
+  --text-primary: #0f172a;
+  --text-secondary: #4a5568;
+  --accent: #0f766e;
+  --on-accent: #ffffff;
+  --accent-review: #a35208;
+  --danger: #b91c1c;
+  --focus-ring: #0e7490;
+  --chart-line: #0f766e;
+  --chart-grid: #e2e8f0;
+  --chart-label: #4a5568;
+  --chart-tooltip-bg: #ffffff;
+  --chart-baseline-fill: rgb(74 85 104 / 0.1);
+}
+
+/* Tailwind class names: bg-page, bg-card, bg-card-raised, text-primary,
+   text-secondary, border-default, border-strong, bg-accent, text-on-accent,
+   text-accent-review, text-danger, outline-focus-ring. Opacity modifiers work
+   (bg-accent-review/15). Recharts: stroke="var(--chart-line)" etc. */
+@theme inline {
+  --color-page: var(--page);
+  --color-card: var(--card);
+  --color-card-raised: var(--card-raised);
+  --color-default: var(--border-default);
+  --color-strong: var(--border-strong);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-review: var(--accent-review);
+  --color-danger: var(--danger);
+  --color-focus-ring: var(--focus-ring);
+}
+@layer base {
+  body {
+    background-color: var(--page);
+    color: var(--text-primary);
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+  ::placeholder {
+    color: var(--text-secondary);
+    opacity: 1;
+  }
+}
+
+@layer base {
+  /* Interactive color feedback. Color properties only — never layout. */
+  :where(a, button, summary, [role='option'], .brief-button) {
+    transition-property: color, background-color, border-color, outline-color, box-shadow;
+    transition-duration: var(--dur-fast);
+    transition-timing-function: var(--ease);
+  }
+}
+
+/* Added for ~one --dur-base by theme.tsx while the theme flips. */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition-property: color, background-color, border-color, fill, stroke !important;
+  transition-duration: var(--dur-base) !important;
+  transition-timing-function: var(--ease) !important;
+}
+
+/* Shared mount utility: fade + 4px rise. Use .motion-mount, not per-component keyframes. */
+@keyframes motion-mount {
+  from { opacity: 0; transform: translateY(4px); }
+}
+.motion-mount,
+.brief-panel {
+  animation: motion-mount var(--dur-base) var(--ease) both;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+.brief-toast {
+  animation: toast-in var(--dur-base) var(--ease) both;
+}
+
+/* Mobile nav drawer (Layout.tsx): always mounted, slides via data-open. */
+.drawer {
+  transition: visibility 0s linear var(--dur-slow);
+}
+.drawer[data-open='false'] {
+  visibility: hidden;
+}
+.drawer[data-open='true'] {
+  transition-delay: 0s;
+}
+.drawer-backdrop {
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease);
+}
+.drawer-panel {
+  transform: translateX(-100%);
+  transition: transform var(--dur-slow) var(--ease);
+}
+.drawer[data-open='true'] .drawer-backdrop {
+  opacity: 1;
+}
+.drawer[data-open='true'] .drawer-panel {
+  transform: none;
+}
+
+@keyframes popover-in {
+  from { opacity: 0; transform: translateY(-4px); }
+}
+.motion-popover {
+  animation: popover-in var(--dur-fast) var(--ease) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}

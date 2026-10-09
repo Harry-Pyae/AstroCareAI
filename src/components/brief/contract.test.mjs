@@ -35,6 +35,7 @@ export interface Decision { crewId: string; action: "recheck"|"request_review"|"
 export interface TaskContext { crewId: string; title: string; scheduledFor: string; attentionDemands: string[]; }
 `);
 save('lib/storage.ts', `import type { Decision, Observation } from './types';
+export function resetAll(): void { }
 export function getDecisions(crewId: string): Decision[] { return typeof localStorage === 'undefined' ? [] : JSON.parse(localStorage.getItem('p3-test-decisions') ?? '[]').filter((item: Decision) => item.crewId === crewId); }
 export function getCheckins(crewId: string): Observation[] { return typeof localStorage === 'undefined' ? [] : JSON.parse(localStorage.getItem('dashboard-test-checkins') ?? '[]').filter((item: Observation) => item.crewId === crewId); }
 export function saveDecision(decision: Decision): boolean { const rows = JSON.parse(localStorage.getItem('p3-test-decisions') ?? '[]'); localStorage.setItem('p3-test-decisions', JSON.stringify([...rows, decision])); return true; }
@@ -57,9 +58,10 @@ const run = (file, args) => execFileSync(process.execPath, [join(root, 'node_mod
 try {
   run('typescript/bin/tsc', ['--noEmit']);
   run('vite/bin/vite.js', ['build']);
-  run('vite/bin/vite.js', ['build', '--ssr', 'src/screens/BriefScreen.tsx', '--outDir', 'ssr']);
-  const { default: BriefScreen } = await import(pathToFileURL(join(work, 'ssr/BriefScreen.js')).href);
-  const render = path => renderToString(React.createElement(MemoryRouter, { initialEntries: [path] }, React.createElement(Routes, null, React.createElement(Route, { path: '/crew/:crewId', element: React.createElement(BriefScreen) }))));
+  save('verify.tsx', "export { default as BriefScreen } from './screens/BriefScreen'; export { LanguageProvider } from './i18n/LanguageProvider';");
+  run('vite/bin/vite.js', ['build', '--ssr', 'src/verify.tsx', '--outDir', 'ssr']);
+  const { BriefScreen, LanguageProvider } = await import(pathToFileURL(join(work, 'ssr/verify.js')).href);
+  const render = path => renderToString(React.createElement(LanguageProvider, null, React.createElement(MemoryRouter, { initialEntries: [path] }, React.createElement(Routes, null, React.createElement(Route, { path: '/crew/:crewId', element: React.createElement(BriefScreen) })))));
   const page = render('/crew/ac-cmdr-01');
   for (const text of ["Today&#x27;s overview", 'Demo Commander', 'Latest observation', 'Start check-in', 'Changes to review', 'Worth reviewing', 'Within range', 'Insufficient data', 'Stale data', 'Not enough baseline observations', 'Last reading 3 days ago', 'Shaded: personal baseline', 'Docking approach monitoring', 'sustained attention', 'fine motor control', 'Recheck', 'Request review', 'Propose schedule change', 'No decisions recorded yet']) assert.ok(page.includes(text), `Missing ${text}`);
   assert.ok(page.indexOf('Changes to review') < page.indexOf('Baseline vs recent trend'), 'Review comes before chart');

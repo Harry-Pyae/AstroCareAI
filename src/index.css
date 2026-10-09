@@ -1,1 +1,3 @@
 @import "tailwindcss";
+@import "./i18n/language.css";
+@import "./styles/tokens.css";

@@ -1,0 +1,8 @@
+@font-face { font-family: 'Noto Sans Myanmar'; src: url('../assets/fonts/NotoSansMyanmar.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+:lang(my) { font-family: 'Noto Sans Myanmar', 'Myanmar Text', 'Pyidaungsu', system-ui, sans-serif; line-height: 1.8; letter-spacing: normal; }
+.language-switch button[lang=my] { font-family: 'Noto Sans Myanmar', 'Myanmar Text', sans-serif; }
+html[lang=my] :is(button, a, label, select, h1, h2, h3) { letter-spacing: normal; }
+html[lang=my] :is(h1, h2, h3) { line-height: 1.7; }
+html[lang=my] .brief-eyebrow { letter-spacing: normal; font-size: 12px; }
+html[lang=my] .brief-primary { white-space: normal; }
+html[lang=my] .brief-dashboard { line-height: 1.85; }

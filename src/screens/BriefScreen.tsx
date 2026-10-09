@@ -1,3 +1,4 @@
+import { useI18n } from "../i18n/LanguageProvider";
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import crewData from '../data/crew.json';
@@ -8,8 +9,8 @@ import { getCheckins, getDecisions, saveDecision } from '../lib/storage';
 import type { CrewMember, Decision, Observation, TaskContext } from '../lib/types';
 import BaselineComparison from '../components/brief/BaselineComparison';
 import DecisionBar from '../components/brief/DecisionBar';
-import TaskCard from '../components/brief/TaskCard';
 import SpaceWeatherCard from '../components/spaceweather/SpaceWeatherCard';
+import TaskCard from '../components/brief/TaskCard';
 import Icon from '../components/brief/Icon';
 import { formatTime, metricLabels, metricValue } from '../components/brief/format';
 import '../components/brief/dashboard.css';
@@ -21,6 +22,7 @@ const tasks = taskData as TaskContext[];
 const acknowledgedCheckins = new Set<string>();
 
 function CrewBrief({ member }: { member: CrewMember }) {
+  const { t, language, date } = useI18n();
   const [now, setNow] = useState(() => new Date());
   const [checkins, setCheckins] = useState<Observation[]>([]);
   const [decisions, setDecisions] = useState<Decision[]>([]);
@@ -61,7 +63,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
   const task = tasks.filter(item => item.crewId === member.id && Date.parse(item.scheduledFor) >= now.getTime()).sort((a, b) => Date.parse(a.scheduledFor) - Date.parse(b.scheduledFor))[0];
   const relevant = [...results].filter(item => item.status === 'worth_reviewing').sort((a, b) => Math.abs(b.deltaPct ?? 0) - Math.abs(a.deltaPct ?? 0))[0];
   const limited = results.filter(item => item.status === 'stale_data' || item.status === 'insufficient_data').length;
-  const summary = relevant?.deltaPct === null ? relevant.explanation : relevant ? `${metricLabels[relevant.metric]?.name} averages ${metricValue(relevant.currentMean, relevant.metric)}, ${Math.abs(relevant.deltaPct ?? 0).toFixed(0)}% ${Number(relevant.deltaPct) < 0 ? 'below' : 'above'} your personal baseline. Change worth reviewing.` : limited ? `${limited} metric${limited === 1 ? '' : 's'} need fresher or more observations before a comparison can be made.` : 'Recent observations are within personal baseline range. This is not medical clearance.';
+  const summary = relevant?.deltaPct === null ? relevant.explanation : relevant ? t('overview.change', { metric: t(metricLabels[relevant.metric]?.name ?? relevant.metric), current: metricValue(relevant.currentMean, relevant.metric, t), delta: Math.abs(relevant.deltaPct ?? 0).toFixed(0), direction: t(Number(relevant.deltaPct) < 0 ? 'below' : 'above') }) : limited ? t('overview.limited', { count: limited }) : t('Recent observations are within personal baseline range. This is not medical clearance.');
   function recordDecision(action: Decision['action'], note: string) {
     const decision: Decision = { crewId: member.id, action, note, timestamp: new Date().toISOString() };
     if (saveDecision(decision) === false) throw new Error('Decision storage unavailable');
@@ -69,19 +71,19 @@ function CrewBrief({ member }: { member: CrewMember }) {
     setToast('Decision saved on this device.');
   }
   return <div className="brief-dashboard">
-    <header><Link to="/" className="brief-link text-xs">← All crew</Link><div className="brief-overview"><div className="brief-overview-identity"><p className="brief-eyebrow">Personal baseline brief</p><h1 className="mt-2">Today's overview</h1><p className="mt-3 text-lg font-medium">{member.name} <span className="brief-muted text-sm">· {member.role}</span></p></div><div className="brief-overview-actions"><div className="brief-overview-metadata"><p className="brief-muted text-xs">Latest observation: {latest ? <time dateTime={latest}>{formatTime(latest)}</time> : 'No observations available'}</p><p className="brief-muted text-xs">Last check-in: {lastCheckin ? <time dateTime={lastCheckin}>{formatTime(lastCheckin)}</time> : 'No check-in recorded yet'}</p></div><Link to={`/crew/${encodeURIComponent(member.id)}/checkin`} className="brief-button brief-primary">Start check-in <Icon name="arrow" /></Link></div></div><p className="brief-summary">{summary}</p></header>
-    {storageMessage && <p role="status" className="brief-muted mb-5">{storageMessage}</p>}
-    <div className="brief-columns"><div className="brief-stack"><BaselineComparison results={results} observations={observations} now={now} crewId={member.id} /></div><aside className="brief-stack" aria-label="Task and next steps"><TaskCard task={task} now={now} /><DecisionBar decisions={decisions.filter(row => row.crewId === member.id)} onSave={recordDecision} /><SpaceWeatherCard /></aside></div>
-    <div role="status" aria-live="polite" aria-atomic="true">{toast && <div className="brief-toast"><Icon name="check" />{toast}</div>}</div>
+    <header><Link to="/" className="brief-link text-xs">{t("← All crew")}</Link><div className="brief-overview"><div className="brief-overview-identity"><p className="brief-eyebrow">{t("Personal baseline brief")}</p><h1 className="mt-2">{t("Today's overview")}</h1><p className="mt-3 text-lg font-medium">{member.name} <span className="brief-muted text-sm">· {t(member.role)}</span></p></div><div className="brief-overview-actions"><div className="brief-overview-metadata"><p className="brief-muted text-xs">{t("Latest observation")}: {latest ? <time dateTime={latest}>{date(latest)}</time> : t('No observations available')}</p><p className="brief-muted text-xs">{t("Last check-in")}: {lastCheckin ? <time dateTime={lastCheckin}>{date(lastCheckin)}</time> : t('No check-in recorded yet')}</p></div><Link to={`/crew/${encodeURIComponent(member.id)}/checkin`} className="brief-button brief-primary">{t("Start check-in")} <Icon name="arrow" /></Link></div></div><p className="brief-summary">{summary}</p></header>
+    {storageMessage && <p role="status" className="brief-muted mb-5">{t(storageMessage)}</p>}
+    <div className="brief-columns"><div className="brief-stack"><BaselineComparison results={results} observations={observations} now={now} crewId={member.id} /></div><aside className="brief-stack" aria-label={t("Task and next steps")}><TaskCard task={task} now={now} /><DecisionBar decisions={decisions.filter(row => row.crewId === member.id)} onSave={recordDecision} /><SpaceWeatherCard /></aside></div>
+    <div role="status" aria-live="polite" aria-atomic="true">{toast && <div className="brief-toast"><Icon name="check" />{t(toast)}</div>}</div>
   </div>;
 }
 
-// Compatible with both P1's default and named lazy route loaders.
-export { BriefScreen };
-
 export default function BriefScreen() {
+  const { t, language, date } = useI18n();
   const { crewId } = useParams<{ crewId: string }>();
   const member = crew.find(item => item.id === crewId);
-  if (!member) return <section className="brief-dashboard"><h1>Crew member not found</h1><p className="brief-muted mt-3">This link does not match a crew member in the demonstration data.</p><Link to="/" className="brief-link mt-4 inline-block">Choose a crew member</Link></section>;
+  if (!member) return <section className="brief-dashboard"><h1>{t("Crew member not found")}</h1><p className="brief-muted mt-3">{t("This link does not match a crew member in the demonstration data.")}</p><Link to="/" className="brief-link mt-4 inline-block">{t("Choose a crew member")}</Link></section>;
   return <CrewBrief key={member.id} member={member} />;
 }
+
+export { BriefScreen };
