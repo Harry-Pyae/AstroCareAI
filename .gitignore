@@ -1,3 +1,9 @@
 node_modules
 dist
 .vercel
+
+# Local credentials must never be committed. Keep only the empty template.
+.env
+.env.*
+!.env.example
+server/dist/

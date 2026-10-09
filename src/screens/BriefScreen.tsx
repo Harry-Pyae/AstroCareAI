@@ -9,6 +9,7 @@ import type { CrewMember, Decision, Observation, TaskContext } from '../lib/type
 import BaselineComparison from '../components/brief/BaselineComparison';
 import DecisionBar from '../components/brief/DecisionBar';
 import TaskCard from '../components/brief/TaskCard';
+import SpaceWeatherCard from '../components/spaceweather/SpaceWeatherCard';
 import Icon from '../components/brief/Icon';
 import { formatTime, metricLabels, metricValue } from '../components/brief/format';
 import '../components/brief/dashboard.css';
@@ -70,7 +71,7 @@ function CrewBrief({ member }: { member: CrewMember }) {
   return <div className="brief-dashboard">
     <header><Link to="/" className="brief-link text-xs">← All crew</Link><div className="brief-overview"><div className="brief-overview-identity"><p className="brief-eyebrow">Personal baseline brief</p><h1 className="mt-2">Today's overview</h1><p className="mt-3 text-lg font-medium">{member.name} <span className="brief-muted text-sm">· {member.role}</span></p></div><div className="brief-overview-actions"><div className="brief-overview-metadata"><p className="brief-muted text-xs">Latest observation: {latest ? <time dateTime={latest}>{formatTime(latest)}</time> : 'No observations available'}</p><p className="brief-muted text-xs">Last check-in: {lastCheckin ? <time dateTime={lastCheckin}>{formatTime(lastCheckin)}</time> : 'No check-in recorded yet'}</p></div><Link to={`/crew/${encodeURIComponent(member.id)}/checkin`} className="brief-button brief-primary">Start check-in <Icon name="arrow" /></Link></div></div><p className="brief-summary">{summary}</p></header>
     {storageMessage && <p role="status" className="brief-muted mb-5">{storageMessage}</p>}
-    <div className="brief-columns"><div className="brief-stack"><BaselineComparison results={results} observations={observations} now={now} crewId={member.id} /></div><aside className="brief-stack" aria-label="Task and next steps"><TaskCard task={task} now={now} /><DecisionBar decisions={decisions.filter(row => row.crewId === member.id)} onSave={recordDecision} /></aside></div>
+    <div className="brief-columns"><div className="brief-stack"><BaselineComparison results={results} observations={observations} now={now} crewId={member.id} /></div><aside className="brief-stack" aria-label="Task and next steps"><TaskCard task={task} now={now} /><DecisionBar decisions={decisions.filter(row => row.crewId === member.id)} onSave={recordDecision} /><SpaceWeatherCard /></aside></div>
     <div role="status" aria-live="polite" aria-atomic="true">{toast && <div className="brief-toast"><Icon name="check" />{toast}</div>}</div>
   </div>;
 }
