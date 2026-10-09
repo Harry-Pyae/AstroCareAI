@@ -12,7 +12,8 @@ export function createSpaceWeatherHandler(options: {
   let pending: Promise<SpaceWeatherResponse> | undefined;
   let cooldown: { error: DonkiError; until: number } | undefined;
   async function getData() {
-    if (cached && Date.now() < expires) return cached;
+    // Preserve NASA retrieval time; serving memory cache is not a live fetch.
+    if (cached && Date.now() < expires) return { ...cached, freshness: 'cached' as const };
     if (cooldown && Date.now() < cooldown.until) throw cooldown.error;
     if (!pending) {
       pending = options.load().then(data => {
@@ -56,7 +57,11 @@ export function createSpaceWeatherHandler(options: {
     catch (error) {
       const safe = error instanceof DonkiError ? error : new DonkiError('upstream_unavailable', 502);
       if (safe.retryAfter) headers.set('Retry-After', String(safe.retryAfter));
-      return send(safe.status, { error: { code: safe.code }, fallback: 'synthetic_demo' });
+      return send(safe.status, {
+        error: { code: safe.code },
+        fallback: 'synthetic_demo',
+        ...(safe.categories ? { categories: safe.categories } : {}),
+      });
     }
   };
 }

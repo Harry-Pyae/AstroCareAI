@@ -14,6 +14,10 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
 const work = mkdtempSync(join(tmpdir(), 'astrocare-p3-'));
 cpSync(join(root, 'src'), join(work, 'src'), { recursive: true });
+// The weather client imports only this shared transport type contract.
+// Include it in the isolated shell without copying server runtime or secrets.
+mkdirSync(join(work, 'server'), { recursive: true });
+cpSync(join(root, 'server/space-weather-types.ts'), join(work, 'server/space-weather-types.ts'));
 for (const file of ['package.json', 'tsconfig.json', 'vite.config.ts', 'index.html']) cpSync(join(root, file), join(work, file));
 symlinkSync(join(root, 'node_modules'), join(work, 'node_modules'), process.platform === 'win32' ? 'junction' : 'dir');
 mkdirSync(join(work, 'src/lib'), { recursive: true });
