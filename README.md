@@ -2,7 +2,7 @@
 
 **Astronaut health self-monitoring that compares each crew member with their own personal baseline.**
 
-> **Live demo:** _add the Vercel URL here_
+> **Live demo:** _https://astro-care-ai.vercel.app_
 >
 > All health data in this prototype is **synthetic** and labelled as such. It is **not medical advice** and does not diagnose, predict, score risk, or label anyone "safe" or "unsafe".
 
