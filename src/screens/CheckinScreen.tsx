@@ -7,7 +7,9 @@ import { useDemo } from '../components/demo/DemoProvider';
 import Icon, { type IconName } from '../components/icons/Icon';
 import Button, { buttonClass } from '../components/ui/Button';
 
-const inputClass = 'min-h-11 w-full rounded-lg border border-default bg-page px-4 py-2 text-primary aria-invalid:border-danger';
+// Same surface, height, hover and motion as the themed Select and buttons.
+const control = 'border border-default bg-card-raised text-primary transition-[border-color,background-color,color] duration-[var(--dur-base)] hover:border-strong';
+const inputClass = `h-11 w-full rounded-lg ${control} pl-4 pr-20 [appearance:textfield] aria-invalid:border-danger [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none`;
 
 type Errors = Partial<Record<'sleep' | 'sleepQuality' | 'fatigue' | 'exercise' | 'exertion' | 'hydration' | 'mood' | 'stress' | 'symptomOther', string>>;
 
@@ -24,7 +26,7 @@ function Rating({ name, legend, value, onChange, low, high, error }: { name: str
     <div className="grid grid-cols-5 gap-2">
       {[1, 2, 3, 4, 5].map(n => <label key={n} className="cursor-pointer">
         <input className="peer sr-only" type="radio" name={name} value={n} checked={value === n} onChange={() => onChange(n)} aria-label={t('rating.value', { value: n })} />
-        <span className="flex min-h-11 items-center justify-center gap-1.5 rounded-lg border border-default bg-page text-primary hover:border-strong peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:font-semibold peer-checked:text-accent peer-focus-visible:focus-ring">
+        <span className="flex min-h-11 items-center justify-center gap-1.5 rounded-lg border border-default bg-card-raised text-primary transition-[border-color,background-color,color] duration-[var(--dur-base)] hover:border-strong peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:font-semibold peer-checked:text-accent peer-focus-visible:focus-ring">
           {n}{value === n ? <Icon name="check" size={16} /> : null}
         </span>
       </label>)}
@@ -146,10 +148,7 @@ export default function CheckinScreen() {
       <Group icon="sleep" title="Rest" hint="checkin.restHint">
         <div>
           <label htmlFor="sleep-field" className="mb-2 block text-sm font-medium">{t('Sleep in the last 24 hours')}</label>
-          <div className="flex items-center gap-3">
-            <input autoFocus type="number" inputMode="decimal" min="0" max="24" step="any" value={sleep} onChange={e => setSleep(e.target.value)} className={inputClass} {...described('sleep', 'sleep-help')} />
-            <span className="text-sm text-secondary">{t('hours')}</span>
-          </div>
+          <div className="relative"><input autoFocus type="number" inputMode="decimal" min="0" max="24" step="any" value={sleep} onChange={e => setSleep(e.target.value)} className={inputClass} {...described('sleep', 'sleep-help')} /><span aria-hidden className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm text-secondary">{t('hours')}</span></div>
           <p id="sleep-help" className="mt-2 text-xs text-secondary">{t('Enter a value from 0 to 24.')}</p>
           <FieldError id="sleep-error" message={errors.sleep} />
         </div>
@@ -160,19 +159,13 @@ export default function CheckinScreen() {
       <Group icon="activity" title="Activity" hint="checkin.activityHint">
         <div>
           <label htmlFor="exercise-field" className="mb-2 block text-sm font-medium">{t('Exercise today')} <span className="text-secondary">{t('(optional)')}</span></label>
-          <div className="flex items-center gap-3">
-            <input type="number" inputMode="numeric" min="0" max="600" step="1" value={exercise} onChange={e => setExercise(e.target.value)} className={inputClass} {...described('exercise')} />
-            <span className="text-sm text-secondary">{t('min')}</span>
-          </div>
+          <div className="relative"><input type="number" inputMode="numeric" min="0" max="600" step="1" value={exercise} onChange={e => setExercise(e.target.value)} className={inputClass} {...described('exercise')} /><span aria-hidden className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm text-secondary">{t('min')}</span></div>
           <FieldError id="exercise-error" message={errors.exercise} />
         </div>
         {Number(exercise) > 0 && <Rating name="exertion" legend="How hard did the exercise feel?" value={exertion} onChange={setExertion} low="1 · Very light" high="5 · Very hard" error={errors.exertion} />}
         <div>
           <label htmlFor="hydration-field" className="mb-2 block text-sm font-medium">{t('Water intake today')} <span className="text-secondary">{t('(optional)')}</span></label>
-          <div className="flex items-center gap-3">
-            <input type="number" inputMode="decimal" min="0" max="10" step="0.25" value={hydration} onChange={e => setHydration(e.target.value)} className={inputClass} {...described('hydration', 'hydration-help')} />
-            <span className="text-sm text-secondary">{t('litres')}</span>
-          </div>
+          <div className="relative"><input type="number" inputMode="decimal" min="0" max="10" step="0.25" value={hydration} onChange={e => setHydration(e.target.value)} className={inputClass} {...described('hydration', 'hydration-help')} /><span aria-hidden className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm text-secondary">{t('litres')}</span></div>
           <p id="hydration-help" className="mt-2 text-xs text-secondary">{t('About 4 glasses per litre. Shown for your record only.')}</p>
           <FieldError id="hydration-error" message={errors.hydration} />
         </div>
@@ -187,7 +180,7 @@ export default function CheckinScreen() {
           <div className="flex flex-wrap gap-2">
             {SYMPTOMS.map(symptom => <label key={symptom} className="cursor-pointer">
               <input type="checkbox" className="peer sr-only" checked={symptoms.includes(symptom)} onChange={() => toggleSymptom(symptom)} />
-              <span className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-default bg-page px-4 text-sm text-primary hover:border-strong peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent peer-focus-visible:focus-ring">
+              <span className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-default bg-card-raised px-4 text-sm text-primary transition-[border-color,background-color,color] duration-[var(--dur-base)] hover:border-strong peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent peer-focus-visible:focus-ring">
                 {symptoms.includes(symptom) ? <Icon name="check" size={16} /> : null}{t(`symptom.${symptom}`)}
               </span>
             </label>)}
@@ -200,7 +193,7 @@ export default function CheckinScreen() {
         </fieldset>
         <div>
           <label htmlFor="checkin-note" className="mb-2 block text-sm font-medium">{t('Note')} <span className="text-secondary">{t('(optional)')}</span></label>
-          <textarea id="checkin-note" rows={3} maxLength={1000} value={note} onChange={e => setNote(e.target.value)} className="w-full rounded-lg border border-default bg-page px-4 py-3 text-primary" />
+          <textarea id="checkin-note" rows={3} maxLength={1000} value={note} onChange={e => setNote(e.target.value)} className={`w-full rounded-lg ${control} px-4 py-3`} />
           <p className="mt-2 text-right text-xs tabular-nums text-secondary">{note.length}/1000</p>
         </div>
       </Group>
