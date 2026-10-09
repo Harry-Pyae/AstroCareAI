@@ -10,14 +10,14 @@
 
 ## Judge quick start (about 60 seconds)
 
-1. **Open the live URL.** You land on **Crew selection**: one card per crew member, each with a QR code.
+1. **Open the live URL.** You land on **Crew selection**: six crew members, each with data freshness and a neutral count of changes (never a score).
 2. Select **Explore demo**. Demo mode starts in the *Change worth reviewing* scenario and opens **Alex Chen's** brief. The top bar now shows a **Demo** button.
 3. Read **Changes to review**: sleep is about 20% and HRV about 16% below Alex's own 3-week baseline. Below it, the **Baseline vs recent trend** chart shades the baseline period.
 4. Note the **Upcoming task context** card (docking approach monitoring, high attention demands).
 5. Select **Start check-in**, fill in Rest / Activity / Wellbeing, and save. Back on the brief, the recent averages update and the **Self-reported today** card shows what you entered.
 6. Under **What would you like to do?**, record **Recheck**, **Request review** or **Propose schedule change**. It appears in the decision history.
 7. Open the top-bar **Demo** button to switch to **Stable observations** or **Incomplete information**. Every screen updates. **Reset this scenario** restores the starting point (select twice to confirm).
-8. Optional: scan a crew card's QR code with a phone to open that brief directly. Try the **Light/Dark theme** and **EN / မြန်မာ** switches.
+8. Optional: on a brief, select **Crew badge** to show its QR code (plus Copy link / Download PNG). Scanning it with a phone opens that brief directly. Try the **Light/Dark theme**, **EN / မြန်မာ** and **Collapse sidebar** controls.
 
 Need help in the app? Select **How this demo works** on the crew page or in the Demo panel for a 4-step guide.
 
@@ -32,7 +32,8 @@ Need help in the app? Select **How this demo works** on the crew page or in the 
 | Task context and decisions | Upcoming task with its attention demands, and three human-in-command actions with a saved history. |
 | Demo mode | Three synthetic scenarios (*Stable observations*, *Change worth reviewing*, *Incomplete information*). Demo records are kept separate from your own check-ins. |
 | Space weather context | Recent solar flares from **NASA DONKI** (live via NASA CCMC, with a clearly labelled cached fallback). Context only: never linked to anyone's readings. |
-| QR deep links | Each crew card's QR code opens that crew member's brief on another device. |
+| Crew overview | Six synthetic crew profiles (stable, declining, incomplete, stale, exercise increase, mixed), each with freshness and counts of changes; counts only, never a health rating. |
+| QR deep links | **Crew badge** on each brief opens the QR code, link copy and PNG download, so personal links are shared only on purpose. |
 | Accessibility and polish | Light/dark themes, English and Myanmar, keyboard navigation with visible focus, reduced-motion support, works from phone to desktop. |
 
 ## Honest limitations
@@ -68,7 +69,7 @@ Framework preset **Vite**, build command `npm run build`, output directory `dist
 
 ## Tech stack
 
-React 18 · Vite · TypeScript · Tailwind CSS v4 · React Router · Recharts · qrcode. Synthetic seed data in `src/data/`, the baseline logic in `src/lib/baseline.ts` (a pure, unit-tested function), browser storage in `src/lib/storage.ts`. The `server/` folder holds an optional local NASA proxy that the deployed app does not use.
+React 18 · Vite · TypeScript · Tailwind CSS v4 · React Router · Recharts · qrcode. Synthetic crew profiles in `src/data/profiles.ts` (regenerate fixtures with `node src/data/generate-seeds.mjs`), the baseline logic in `src/lib/baseline.ts` (a pure, unit-tested function), browser storage in `src/lib/storage.ts`. No server is needed: NASA DONKI is fetched directly from the browser.
 
 ## More
 
