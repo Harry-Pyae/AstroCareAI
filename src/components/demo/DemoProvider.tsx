@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
-import { ScenarioId, Scenario } from '../../data/scenarios';
-import { clearDemoStorage, getDemoScenario } from '../../lib/demo';
+import React, { createContext, useContext, useState, useCallback } from 'react';
+import type { ReactNode } from 'react';
+import type { ScenarioId, Scenario } from '../../data/scenarios';
+import { clearDemoStorage, getDemoScenario, getSavedScenarioId, saveScenarioId } from '../../lib/demo';
 
 interface DemoContextType {
   isActive: boolean;
@@ -22,10 +23,11 @@ export const useDemo = () => {
 };
 
 export const DemoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [activeScenarioId, setActiveScenarioId] = useState<ScenarioId | null>(null);
+  const [activeScenarioId, setActiveScenarioId] = useState<ScenarioId | null>(() => getSavedScenarioId());
 
   const setScenario = useCallback((id: ScenarioId) => {
     setActiveScenarioId(id);
+    saveScenarioId(id);
     // When switching scenarios, ensure demo storage is reset to prevent contradictory data
     clearDemoStorage();
   }, []);
@@ -38,6 +40,8 @@ export const DemoProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const exitDemo = useCallback(() => {
     setActiveScenarioId(null);
+    saveScenarioId(null);
+    clearDemoStorage();
   }, []);
 
   const isActive = activeScenarioId !== null;

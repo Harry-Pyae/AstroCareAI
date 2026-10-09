@@ -1,20 +1,22 @@
+import type { Observation, BaselineResult, TaskContext } from '../../screens/BriefScreen';
+
 export type ScenarioId = 'stable' | 'review' | 'incomplete';
 
 export interface Scenario {
   id: ScenarioId;
   name: string;
   description: string;
-  baselines: any[];
-  observations: any[];
-  task: any | null;
+  baselines: BaselineResult[];
+  observations: Observation[];
+  task: TaskContext | null;
 }
 
 // Deterministic seeded datasets
 const nowTime = Date.now();
 const DAY = 24 * 60 * 60 * 1000;
 
-function generateObservations(baseHrv: number, baseSleep: number, dropHrv: boolean, dropSleep: boolean): any[] {
-  const obs: any[] = [];
+function generateObservations(baseHrv: number, baseSleep: number, dropHrv: boolean, dropSleep: boolean): Observation[] {
+  const obs: Observation[] = [];
   // Use a pseudo-random seed to make it deterministic
   const random = (seed: number) => {
     let x = Math.sin(seed++) * 10000;
