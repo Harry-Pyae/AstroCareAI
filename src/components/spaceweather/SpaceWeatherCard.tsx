@@ -33,12 +33,19 @@ export default function SpaceWeatherCard() {
       .finally(() => { window.clearTimeout(timeout); if (active) setLoading(false); });
     return () => { active=false; window.clearTimeout(timeout); controller.abort(); };
   }, []);
-  return <section aria-label='Space weather context' className='rounded-lg border border-neutral-800 bg-neutral-900 p-5'>
-    <h2 className='text-lg text-neutral-100'>Space weather context</h2>
-    <p className='mt-1 text-sm text-neutral-400'>Recent solar activity — NASA DONKI{cached ? ' (cached)' : ''}</p>
-    {cached ? <p className='mt-2 text-xs text-neutral-400'>Illustrative cached demo events.</p> : null}
-    {loading ? <p role='status' className='mt-2 text-xs text-neutral-400'>Checking for live events…</p> : null}
-    {events.length ? <ul className='mt-4 divide-y divide-neutral-800'>{events.map(event => <li key={event.flrID} className='flex flex-wrap justify-between gap-2 py-3'><span className='font-mono text-sm text-neutral-100'>Class {event.classType}</span><span className='text-xs text-neutral-400'>Peak <time dateTime={event.peakTime}>{displayTime(event.peakTime)}</time></span></li>)}</ul> : <p className='mt-4 text-sm text-neutral-400'>Solar activity context is unavailable.</p>}
-    <p className='mt-4 text-xs leading-relaxed text-neutral-400'>Space-weather context only. These events do not explain or assess a crew member’s readings.</p>
+  return <section aria-label='Space weather context' className='rounded-xl border border-default bg-card p-5 text-primary sm:p-6'>
+    <div className='flex flex-wrap items-start justify-between gap-3'>
+      <div>
+        <h2 className='text-lg font-semibold'>Space weather context</h2>
+        <p className='mt-1 text-sm text-secondary'>Recent solar activity · NASA DONKI</p>
+      </div>
+      <span className='inline-flex min-h-8 items-center gap-2 rounded-full border border-default px-3 py-1 text-xs text-secondary'>
+        <span aria-hidden='true'>{cached ? '◷' : '✓'}</span>{cached ? 'Cached demonstration data' : 'Live data'}
+      </span>
+    </div>
+    {loading ? <p role='status' aria-live='polite' className='mt-3 text-sm text-secondary'>Checking for recent solar flares… Cached events remain available.</p> : null}
+    {events.length ? <ul className='mt-4 divide-y divide-default'>{events.map(event => <li key={event.flrID} className='flex min-h-11 flex-wrap items-center justify-between gap-2 py-3'><span className='font-mono text-sm font-medium'>Class {event.classType}</span><span className='text-sm text-secondary'>Peak <time dateTime={event.peakTime}>{displayTime(event.peakTime)}</time></span></li>)}</ul> : <p className='mt-4 rounded-lg border border-default p-4 text-sm text-secondary'>Solar activity context is unavailable. This does not affect the check-in or personal baseline brief.</p>}
+    {cached ? <p className='mt-4 text-xs text-secondary'>These are illustrative cached events, not current observations.</p> : null}
+    <p className='mt-3 text-xs leading-relaxed text-secondary'>Space-weather context only. These events do not explain or assess a crew member’s readings.</p>
   </section>;
 }
