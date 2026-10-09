@@ -19,6 +19,7 @@ export default function CheckinScreen() {
   const briefPath = `/crew/${encodeURIComponent(memberId)}`;
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!member) return;
     const hours = Number(sleep);
     if (!sleep.trim() || !Number.isFinite(hours) || hours < 0 || hours > 24 || fatigue === null) { setError('Enter sleep from 0 to 24 hours and choose a fatigue rating.'); return; }
     const timestamp = new Date().toISOString();

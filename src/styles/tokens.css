@@ -1,0 +1,122 @@
+/* ASTROCARE semantic theme tokens. Style components ONLY with these.
+   Theme is selected by data-theme="dark|light" on <html> (set before paint
+   by the inline script in index.html, then managed by src/theme.tsx). */
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #0b1220;
+  --card: #111a2e;
+  --card-raised: #18233a;
+  --border-default: #26334d;
+  --border-strong: #3a4a68;
+  --text-primary: #e7ecf3;
+  --text-secondary: #a3afc2;
+  --accent: #2dd4bf;
+  --on-accent: #042f2e;
+  --accent-review: #fbbf4a;
+  --danger: #f87171;
+  --focus-ring: #67e8f9;
+  --chart-line: #5eead4;
+  --chart-grid: #26334d;
+  --chart-label: #a3afc2;
+  --chart-tooltip-bg: #18233a;
+  --chart-baseline-fill: rgb(163 175 194 / 0.12);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --page: #f4f6fa;
+  --card: #ffffff;
+  --card-raised: #eef2f7;
+  --border-default: #d6dde8;
+  --border-strong: #b4c0d1;
+  --text-primary: #0f172a;
+  --text-secondary: #4a5568;
+  --accent: #0f766e;
+  --on-accent: #ffffff;
+  --accent-review: #a35208;
+  --danger: #b91c1c;
+  --focus-ring: #0e7490;
+  --chart-line: #0f766e;
+  --chart-grid: #e2e8f0;
+  --chart-label: #4a5568;
+  --chart-tooltip-bg: #ffffff;
+  --chart-baseline-fill: rgb(74 85 104 / 0.1);
+}
+
+/* Tailwind class names: bg-page, bg-card, bg-card-raised, text-primary,
+   text-secondary, border-default, border-strong, bg-accent, text-on-accent,
+   text-accent-review, text-danger, outline-focus-ring. Opacity modifiers work
+   (bg-accent-review/15). Recharts: stroke="var(--chart-line)" etc. */
+@theme inline {
+  --color-page: var(--page);
+  --color-card: var(--card);
+  --color-card-raised: var(--card-raised);
+  --color-default: var(--border-default);
+  --color-strong: var(--border-strong);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-review: var(--accent-review);
+  --color-danger: var(--danger);
+  --color-focus-ring: var(--focus-ring);
+
+  /* ponytail: legacy bridge — maps the gray/neutral/amber/white classes still
+     used by pre-redesign screens onto tokens so both themes work there.
+     Delete this block once P2/P4 have migrated their files to tokens. */
+  --color-white: var(--text-primary);
+  --color-gray-100: var(--text-primary);
+  --color-gray-200: var(--text-primary);
+  --color-gray-300: var(--text-primary);
+  --color-gray-400: var(--text-secondary);
+  --color-gray-500: var(--text-secondary);
+  --color-gray-600: var(--border-strong);
+  --color-gray-700: var(--border-default);
+  --color-gray-800: var(--card-raised);
+  --color-gray-900: var(--card);
+  --color-neutral-100: var(--text-primary);
+  --color-neutral-200: var(--text-primary);
+  --color-neutral-400: var(--text-secondary);
+  --color-neutral-500: var(--text-secondary);
+  --color-neutral-700: var(--border-default);
+  --color-neutral-800: var(--border-default);
+  --color-neutral-900: var(--card);
+  --color-neutral-950: var(--page);
+  --color-amber-200: var(--accent-review);
+  --color-amber-300: var(--accent-review);
+  --color-amber-400: var(--accent-review);
+  --color-amber-500: var(--accent-review);
+  --color-amber-600: var(--accent-review);
+  --color-red-400: var(--danger);
+}
+.bg-\[\#0a0f18\] {
+  background-color: var(--page) !important;
+}
+
+@layer base {
+  body {
+    background-color: var(--page);
+    color: var(--text-primary);
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+  ::placeholder {
+    color: var(--text-secondary);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
