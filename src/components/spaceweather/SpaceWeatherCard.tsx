@@ -27,7 +27,7 @@ export default function SpaceWeatherCard() {
     const timeout = window.setTimeout(() => controller.abort(), 8000);
     const endDate = new Date().toISOString().slice(0,10);
     const start = new Date(); start.setUTCDate(start.getUTCDate()-60);
-    const params = new URLSearchParams({ startDate:start.toISOString().slice(0,10), endDate, api_key:'DEMO_KEY' });
+    const params = new URLSearchParams({ startDate:start.toISOString().slice(0,10), endDate, api_key: import.meta.env.VITE_NASA_API_KEY || 'DEMO_KEY' });
     fetch(`https://api.nasa.gov/DONKI/FLR?${params}`, { signal:controller.signal })
       .then(response => { if (!response.ok) throw new Error('Request failed'); return response.json(); })
       .then(data => { const rows = recentFlares(data); if (!rows.length) throw new Error('No usable events'); if (active) { setEvents(rows); setCached(false); } })
