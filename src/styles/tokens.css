@@ -90,8 +90,8 @@
 @layer base {
   /* Interactive color feedback. Color properties only — never layout. */
   :where(a, button, summary, [role='option'], .brief-button) {
-    transition-property: color, background-color, border-color, outline-color, box-shadow;
-    transition-duration: var(--dur-fast);
+    transition-property: color, background-color, border-color, outline-color, box-shadow, opacity, transform;
+    transition-duration: var(--dur-base);
     transition-timing-function: var(--ease);
   }
 }
@@ -176,4 +176,32 @@ dialog.modal[open] {
 }
 dialog.modal::backdrop {
   background: rgb(0 0 0 / 0.55);
+}
+
+/* Breathing room: pages fade in; stacked panels and form groups enter in a
+   short sequence (60ms apart) rather than all at once. */
+.motion-page {
+  animation: motion-mount var(--dur-slow) var(--ease) both;
+}
+.brief-stack > :nth-child(2), .motion-stagger > :nth-child(2) { animation-delay: 60ms; }
+.brief-stack > :nth-child(3), .motion-stagger > :nth-child(3) { animation-delay: 120ms; }
+.brief-stack > :nth-child(4), .motion-stagger > :nth-child(4) { animation-delay: 180ms; }
+.brief-stack > :nth-child(n + 5), .motion-stagger > :nth-child(n + 5) { animation-delay: 240ms; }
+.motion-stagger > * {
+  animation: motion-mount var(--dur-base) var(--ease) both;
+}
+
+/* Skeleton placeholder (pulse is switched off by the reduced-motion guard). */
+@keyframes skeleton-pulse {
+  50% { opacity: 0.45; }
+}
+.skeleton {
+  border-radius: 0.5rem;
+  background: var(--card-raised);
+  animation: skeleton-pulse 1.4s var(--ease) infinite;
+}
+
+/* Gentle press feedback on every button-like control. */
+:where(button, .brief-button, [role='option']):not(:disabled):active {
+  transform: scale(0.98);
 }

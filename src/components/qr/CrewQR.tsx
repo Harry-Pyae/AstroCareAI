@@ -20,7 +20,8 @@ export default function CrewQR({ crewId, size = 160, className = '' }: CrewQRPro
   const current = result?.url === url ? result : null;
   return <span className={`inline-flex flex-col items-center gap-2 ${className}`}>
     {current?.image ? <img src={current.image} width={size} height={size} className='rounded' alt={t('qr.alt', { id: crewId })} /> :
-      <span role='status' className='flex items-center justify-center rounded border border-default bg-card p-3 text-center text-xs text-secondary' style={{width:size,height:size}}>{current?.error ? t("QR unavailable. Use the crew card or link.") : t("Generating crew QR\u2026")}</span>}
+      current?.error ? <span role='status' className='flex items-center justify-center rounded border border-default bg-card p-3 text-center text-xs text-secondary' style={{width:size,height:size}}>{t("QR unavailable. Use the crew card or link.")}</span>
+      : <span role='status' aria-label={t("Generating crew QR\u2026")} className='skeleton block' style={{width:size,height:size}} />}
     <span className='font-mono text-xs text-secondary'>{t('Scan badge')} · {crewId}</span>
   </span>;
 }

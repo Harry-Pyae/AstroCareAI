@@ -137,7 +137,7 @@ export default function Select({ value, options, onChange, label, placeholder = 
         aria-labelledby={`${baseId}-label ${baseId}-trigger`}
         onClick={() => (open ? close() : openList())}
         onKeyDown={onTriggerKeyDown}
-        className="inline-flex h-11 w-full items-center justify-between gap-2 rounded-lg border border-default bg-card px-3 text-left text-sm text-primary transition-colors duration-[var(--dur-fast)] hover:border-strong hover:bg-card-raised"
+        className="inline-flex h-11 w-full items-center justify-between gap-2 rounded-lg border border-default bg-card px-3 text-left text-sm text-primary transition-[color,background-color,border-color,opacity,transform] duration-[var(--dur-base)] hover:border-strong hover:bg-card-raised"
       >
         <span className={`truncate ${selected ? '' : 'text-secondary'}`}>{selected?.label ?? placeholder}</span>
         <span className={`text-secondary transition-transform duration-[var(--dur-fast)] ${open ? 'rotate-180' : ''}`}>{chevron}</span>

@@ -142,7 +142,7 @@ export default function CheckinScreen() {
       <h2 className="mt-2 text-xl font-semibold">{t('Your new observation is ready to review')}</h2>
       <p className="mt-2 text-sm text-secondary">{t('checkin.savedSummary', { hours: Number(sleep), time: date(savedAt) })}</p>
       <Link to={briefPath} className={buttonClass('primary', 'md', 'mt-5')}>{t('Return to brief')}<Icon name="arrow" size={18} /></Link>
-    </div> : <form onSubmit={submit} noValidate className="space-y-6">
+    </div> : <form onSubmit={submit} noValidate className="motion-stagger space-y-6">
       <Group icon="sleep" title="Rest" hint="checkin.restHint">
         <div>
           <label htmlFor="sleep-field" className="mb-2 block text-sm font-medium">{t('Sleep in the last 24 hours')}</label>

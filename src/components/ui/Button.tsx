@@ -4,7 +4,7 @@ export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 export type ButtonSize = 'md' | 'sm';
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg border text-sm font-medium no-underline transition-colors duration-[var(--dur-fast)] disabled:cursor-not-allowed disabled:opacity-60';
+  'inline-flex items-center justify-center gap-2 rounded-lg border text-sm font-medium no-underline transition-[color,background-color,border-color,opacity,transform] duration-[var(--dur-base)] disabled:cursor-not-allowed disabled:opacity-60';
 const variants: Record<ButtonVariant, string> = {
   primary: 'border-accent bg-accent text-on-accent hover:opacity-90',
   secondary: 'border-default bg-card-raised text-primary hover:border-strong aria-pressed:border-accent aria-pressed:text-accent',

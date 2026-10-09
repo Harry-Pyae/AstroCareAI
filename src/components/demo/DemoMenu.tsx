@@ -51,7 +51,7 @@ export default function DemoMenu() {
   }
 
   return <div ref={rootRef} className="relative">
-    <button ref={triggerRef} type="button" aria-expanded={open} aria-controls="demo-panel" onClick={() => { setOpen(!open); setNotice(''); }} className={`${chip} transition-colors duration-[var(--dur-fast)] hover:bg-accent-review/20`}>
+    <button ref={triggerRef} type="button" aria-expanded={open} aria-controls="demo-panel" onClick={() => { setOpen(!open); setNotice(''); }} className={`${chip} transition-[color,background-color,border-color,opacity,transform] duration-[var(--dur-base)] hover:bg-accent-review/20`}>
       <Icon name="play" size={14} />{t('Demo')} · {t(SCENARIOS[scenario].label)}<Icon name="chevron-down" size={14} />
     </button>
     {open && <div id="demo-panel" role="dialog" aria-label={t('Demo controls')} className="motion-popover absolute right-0 z-40 mt-2 w-[min(22rem,calc(100vw-2rem))] rounded-xl border border-default bg-card p-5 text-primary shadow-lg">

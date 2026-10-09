@@ -53,7 +53,7 @@ export function NavList({ collapsible }: { collapsible: boolean }) {
             title={t(item.label)}
             aria-label={t(item.label)}
             className={({ isActive }) =>
-              `flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm transition-colors duration-[var(--dur-fast)] ${collapsible ? collapseAlign : ''} ${
+              `flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm transition-[color,background-color,border-color,opacity,transform] duration-[var(--dur-base)] ${collapsible ? collapseAlign : ''} ${
                 isActive
                   ? 'bg-accent/15 font-semibold text-accent'
                   : 'text-secondary hover:bg-card-raised hover:text-primary'

@@ -86,7 +86,7 @@ export default function Layout() {
         <TopBar onOpenMenu={() => setMenuOpen(true)} />
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:px-8 md:py-8">
           <Suspense fallback={<PageSkeleton label={t("Loading…")} />}>
-            <Outlet />
+            <div key={pathname} className="motion-page"><Outlet /></div>
           </Suspense>
         </main>
         <footer className="border-t border-default px-4 py-3 text-center font-mono text-xs text-secondary md:px-8">

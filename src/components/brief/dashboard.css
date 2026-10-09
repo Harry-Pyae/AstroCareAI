@@ -6,8 +6,7 @@
   --brief-chart-grid: var(--chart-grid); --brief-chart-line: var(--chart-line); --brief-chart-window: var(--chart-baseline-fill);
   color: var(--brief-text); background: var(--brief-surface); border-radius: 16px; padding: clamp(16px, 3vw, 32px); font-size: 14px; line-height: 1.6;
 }
-.brief-dashboard :is(button,a,input,select,summary,[tabindex]):focus-visible { outline: 3px solid var(--brief-accent); outline-offset: 4px; }
-.brief-dashboard :is(button,a,input,select) { border-radius: 7px; }
+.brief-dashboard :is(button,a,input,select) { border-radius: 0.5rem; }
 .brief-dashboard h1 { font-size: clamp(24px,3vw,32px); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; }
 .brief-dashboard h2 { font-size: 19px; line-height: 1.4; font-weight: 600; }
 .brief-dashboard h3 { font-size: 15px; font-weight: 600; }
