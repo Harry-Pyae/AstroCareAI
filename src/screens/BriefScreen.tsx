@@ -1,151 +1,63 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { CrewMember, Observation, TaskContext, BaselineResult, Decision } from '../lib/types';
-import { computeBaselines } from '../lib/baseline';
-import { getDecisions, getCheckins } from '../lib/storage';
-
-// In a real app these might be fetched asynchronously, but per P2's contract they are static JSON
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import crewData from '../data/crew.json';
-import observationsData from '../data/observations.json';
-import tasksData from '../data/tasks.json';
+import observationData from '../data/observations.json';
+import taskData from '../data/tasks.json';
+import { computeBaselines } from '../lib/baseline';
+import { getCheckins, getDecisions, saveDecision } from '../lib/storage';
+import type { CrewMember, Decision, Observation, TaskContext } from '../lib/types';
+import BaselineComparison from '../components/brief/BaselineComparison';
+import DecisionBar from '../components/brief/DecisionBar';
+import TaskCard from '../components/brief/TaskCard';
+import { formatTime } from '../components/brief/format';
 
-import { BaselineComparison } from '../components/brief/BaselineComparison';
-import { TaskContextCard } from '../components/brief/TaskContextCard';
-import { DecisionBar } from '../components/brief/DecisionBar';
-import { DecisionHistory } from '../components/brief/DecisionHistory';
+const crew = crewData as CrewMember[];
+const telemetry = observationData as Observation[];
+const tasks = taskData as TaskContext[];
 
-export const BriefScreen: React.FC = () => {
-  const { crewId } = useParams<{ crewId: string }>();
-  
+function CrewBrief({ member }: { member: CrewMember }) {
+  const [now, setNow] = useState(() => new Date());
+  const [checkins, setCheckins] = useState<Observation[]>([]);
   const [decisions, setDecisions] = useState<Decision[]>([]);
-  const [latestCheckinTime, setLatestCheckinTime] = useState<string | null>(null);
-
-  // Load static data safely
-  const crewMembers: CrewMember[] = (crewData as any)?.crew || crewData || [];
-  const allObservations: Observation[] = (observationsData as any)?.observations || observationsData || [];
-  const allTasks: TaskContext[] = (tasksData as any)?.tasks || tasksData || [];
-
-  const member = crewMembers.find(c => c.id === crewId);
-  const task = allTasks.find(t => t.crewId === crewId) || null;
-  const observations = allObservations.filter(o => o.crewId === crewId);
-
-  // Use a fixed "now" or current time. A mission dashboard often uses real time.
-  // Using current time. Note: if demo data is fixed in the past, this might affect baseline windows.
-  // The prompt says: "use computeBaselines(observations, crewId, now)".
-  const now = new Date().toISOString(); 
-  
-  const baselineResults = useMemo(() => {
-    if (!crewId) return [];
-    try {
-      return computeBaselines(observations, crewId, now);
-    } catch (e) {
-      console.error("Failed to compute baselines:", e);
-      return [];
-    }
-  }, [observations, crewId, now]);
-
-  const refreshDecisions = () => {
-    if (crewId) {
-      try {
-        const storedDecisions = getDecisions(crewId);
-        setDecisions(storedDecisions || []);
-      } catch (e) {
-        console.error("Failed to fetch decisions", e);
-      }
-    }
-  };
-
-  const loadCheckinTime = () => {
-    if (crewId) {
-      try {
-        const checkins = getCheckins(crewId);
-        if (checkins && checkins.length > 0) {
-          // Assuming checkins have a timestamp property
-          const latest = checkins.sort((a: any, b: any) => 
-            new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-          )[0];
-          setLatestCheckinTime(latest.timestamp);
-        }
-      } catch (e) {
-        console.error("Failed to fetch checkins", e);
-      }
-    }
-  };
-
+  const [storageMessage, setStorageMessage] = useState('');
   useEffect(() => {
-    refreshDecisions();
-    loadCheckinTime();
-  }, [crewId]);
-
-  if (!crewId || !member) {
-    return (
-      <div className="min-h-screen bg-[#0a0f18] text-gray-300 p-8 font-sans flex items-center justify-center">
-        <div className="bg-gray-800 p-8 rounded-lg border border-gray-700 max-w-md text-center">
-          <h2 className="text-xl font-bold text-white mb-2">Crew Member Not Found</h2>
-          <p className="text-gray-400 mb-6">
-            The requested crew ID ({crewId || 'none'}) does not match any active roster entries.
-          </p>
-          <Link to="/" className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded transition-colors">
-            Return to Roster
-          </Link>
-        </div>
-      </div>
-    );
+    const refresh = () => {
+      setNow(new Date());
+      try {
+        setCheckins(getCheckins(member.id));
+        setDecisions(getDecisions(member.id));
+        setStorageMessage('');
+      } catch {
+        setStorageMessage('Local history is unavailable. Showing synthetic telemetry; browser storage access is needed for saved check-ins and decisions.');
+      }
+    };
+    refresh();
+    const interval = window.setInterval(refresh, 60_000);
+    window.addEventListener('storage', refresh);
+    window.addEventListener('focus', refresh);
+    return () => { window.clearInterval(interval); window.removeEventListener('storage', refresh); window.removeEventListener('focus', refresh); };
+  }, [member.id]);
+  const observations = [...telemetry, ...checkins].filter(row => row.crewId === member.id);
+  const results = computeBaselines(observations, member.id, now);
+  const lastCheckin = checkins.filter(row => row.crewId === member.id && Number.isFinite(Date.parse(row.timestamp)) && Date.parse(row.timestamp) <= now.getTime()).sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))[0]?.timestamp;
+  const task = tasks.filter(item => item.crewId === member.id && Date.parse(item.scheduledFor) >= now.getTime()).sort((a, b) => Date.parse(a.scheduledFor) - Date.parse(b.scheduledFor))[0];
+  function recordDecision(action: Decision['action'], note: string) {
+    const decision: Decision = { crewId: member.id, action, note, timestamp: new Date().toISOString() };
+    saveDecision(decision);
+    setDecisions(getDecisions(member.id));
   }
+  return <div className="space-y-6">
+    <header><Link to="/" className="text-xs text-neutral-400 underline underline-offset-4 hover:text-neutral-200">← All crew</Link><div className="mt-4 flex flex-wrap items-start justify-between gap-4"><div><p className="font-mono text-xs uppercase tracking-widest text-amber-300">Personal baseline brief</p><h1 className="mt-2 text-3xl font-semibold tracking-tight text-neutral-100">{member.name}</h1><p className="mt-1 text-sm text-neutral-400">{member.role} · <span className="font-mono">{member.id}</span></p></div><Link to={`/crew/${encodeURIComponent(member.id)}/checkin`} className="rounded-lg border border-neutral-600 bg-neutral-900 px-4 py-2 text-sm text-neutral-200 hover:border-amber-400 focus-visible:outline-2 focus-visible:outline-amber-400">Add check-in →</Link></div><p className="mt-4 text-xs text-neutral-400">Last check-in: {lastCheckin ? <time dateTime={lastCheckin}>{formatTime(lastCheckin)}</time> : 'No check-in recorded yet'}</p></header>
+    {storageMessage && <p role="status" className="rounded-lg border border-neutral-700 bg-neutral-900 p-4 text-sm text-neutral-300">{storageMessage}</p>}
+    <BaselineComparison results={results} observations={observations} now={now} />
+    <TaskCard task={task} now={now} />
+    <DecisionBar decisions={decisions.filter(row => row.crewId === member.id)} onSave={recordDecision} />
+  </div>;
+}
 
-  return (
-    <div className="min-h-screen bg-[#0a0f18] text-gray-300 p-4 md:p-8 font-sans">
-      <div className="max-w-5xl mx-auto space-y-6">
-        
-        {/* Header */}
-        <header className="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-800 pb-6 gap-4">
-          <div>
-            <div className="text-amber-500 font-bold tracking-widest text-xs mb-2 uppercase">AstroCare Baseline Brief</div>
-            <h1 className="text-3xl font-bold text-white tracking-tight">{member.name}</h1>
-            <div className="flex items-center gap-3 mt-2 text-sm text-gray-400">
-              <span className="font-medium bg-gray-800 px-2 py-0.5 rounded">{member.role}</span>
-              <span className="font-mono">ID: {member.id}</span>
-            </div>
-          </div>
-          
-          <div className="flex flex-col md:items-end gap-2">
-            {latestCheckinTime ? (
-              <div className="text-xs text-gray-500 flex flex-col md:items-end">
-                <span>Latest check-in</span>
-                <span className="font-mono text-gray-400">
-                  {new Date(latestCheckinTime).toLocaleString()}
-                </span>
-              </div>
-            ) : (
-              <div className="text-xs text-gray-500">No recent check-ins</div>
-            )}
-            <Link 
-              to={`/crew/${crewId}/checkin`}
-              className="mt-2 inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white px-4 py-2 rounded text-sm transition-colors"
-            >
-              Start New Check-in
-            </Link>
-          </div>
-        </header>
-
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-4">
-          
-          {/* Left Column: Baselines (takes up more space) */}
-          <div className="lg:col-span-2 space-y-6">
-            <BaselineComparison results={baselineResults} observations={observations} now={now} />
-          </div>
-          
-          {/* Right Column: Task Context & Actions */}
-          <div className="space-y-6">
-            <TaskContextCard task={task} />
-            <DecisionBar crewId={crewId} onDecisionSaved={refreshDecisions} />
-            <DecisionHistory decisions={decisions} />
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  );
-};
+export default function BriefScreen() {
+  const { crewId } = useParams<{ crewId: string }>();
+  const member = crew.find(item => item.id === crewId);
+  if (!member) return <section className="rounded-xl border border-neutral-800 p-6"><h1 className="text-xl text-neutral-100">Crew member not found</h1><p className="mt-2 text-sm text-neutral-400">This link does not match a crew member in the demonstration data.</p><Link to="/" className="mt-4 inline-block text-sm text-amber-200 underline underline-offset-4">Choose a crew member</Link></section>;
+  return <CrewBrief key={member.id} member={member} />;
+}
