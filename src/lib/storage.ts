@@ -9,6 +9,10 @@ export type StorageNamespace = '' | 'demo:';
 let activeNamespace: StorageNamespace = '';
 const METRICS = new Set(['hrv', 'sleep_hours', 'exercise_min', 'radiation_msv', 'mood']);
 const ACTIONS = new Set(['recheck', 'request_review', 'propose_schedule_change']);
+// A second submission for the same crew within five minutes is a duplicate.
+export const CHECKIN_DUPLICATE_WINDOW_MINUTES = 5;
+const CHECKIN_DUPLICATE_WINDOW_MS = CHECKIN_DUPLICATE_WINDOW_MINUTES * 60_000;
+export type CheckinSaveResult = 'saved' | 'duplicate' | 'invalid' | 'unavailable';
 
 export interface CheckinDetails {
   crewId: string;
@@ -94,6 +98,21 @@ function newestFirst<T extends { timestamp: string }>(values: T[]): T[] {
   return values.sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp));
 }
 
+function isDuplicateCheckin(checkins: Observation[], obs: Observation): boolean {
+  const submittedAt = Date.parse(obs.timestamp);
+  return checkins.some((item) => item.crewId === obs.crewId && (
+    (item.metric === obs.metric && item.timestamp === obs.timestamp)
+    || (item.metric === 'sleep_hours' && obs.metric === 'sleep_hours'
+      && Math.abs(Date.parse(item.timestamp) - submittedAt) < CHECKIN_DUPLICATE_WINDOW_MS)
+  ));
+}
+
+// localStorage's native storage event only reaches other tabs. The existing
+// dashboard listens for it, so notify this tab after a successful change too.
+function notifyStorageChange(): void {
+  window.dispatchEvent(new Event('storage'));
+}
+
 export function getCheckins(crewId: string, namespace?: StorageNamespace): Observation[] {
   try {
     return newestFirst(readState(resolveNamespace(namespace)).checkins.filter((item) => item.crewId === crewId));
@@ -124,8 +143,10 @@ export function saveCheckin(obs: Observation, namespace?: StorageNamespace): boo
     if (!isObservation(obs)) return false;
     const targetNamespace = resolveNamespace(namespace);
     const state = readState(targetNamespace);
+    if (isDuplicateCheckin(state.checkins, obs)) return false;
     state.checkins.push(obs);
     window.localStorage.setItem(storageKey(targetNamespace), JSON.stringify(state));
+    notifyStorageChange();
     return true;
   } catch {
     return false;
@@ -134,20 +155,28 @@ export function saveCheckin(obs: Observation, namespace?: StorageNamespace): boo
 
 // Fatigue is not mood. Keep it and the optional note outside the shared
 // Observation metric union; the brief still receives sleep observations.
-export function saveCheckinEntry(obs: Observation, details: CheckinDetails, namespace?: StorageNamespace): boolean {
+export function saveCheckinEntryResult(
+  obs: Observation, details: CheckinDetails, namespace?: StorageNamespace,
+): CheckinSaveResult {
+  if (!isObservation(obs) || obs.metric !== 'sleep_hours' || obs.value < 0 || obs.value > 24
+    || !isDetails(details) || details.crewId !== obs.crewId
+    || details.timestamp !== obs.timestamp) return 'invalid';
   try {
-    if (!isObservation(obs) || obs.metric !== 'sleep_hours' || obs.value < 0 || obs.value > 24
-      || !isDetails(details) || details.crewId !== obs.crewId
-      || details.timestamp !== obs.timestamp) return false;
     const targetNamespace = resolveNamespace(namespace);
     const state = readState(targetNamespace);
+    if (isDuplicateCheckin(state.checkins, obs)) return 'duplicate';
     state.checkins.push(obs);
     state.details.push(details);
     window.localStorage.setItem(storageKey(targetNamespace), JSON.stringify(state));
-    return true;
+    notifyStorageChange();
+    return 'saved';
   } catch {
-    return false;
+    return 'unavailable';
   }
+}
+
+export function saveCheckinEntry(obs: Observation, details: CheckinDetails, namespace?: StorageNamespace): boolean {
+  return saveCheckinEntryResult(obs, details, namespace) === 'saved';
 }
 
 export function saveDecision(decision: Decision, namespace?: StorageNamespace): boolean {
@@ -157,6 +186,7 @@ export function saveDecision(decision: Decision, namespace?: StorageNamespace): 
     const state = readState(targetNamespace);
     state.decisions.push(decision);
     window.localStorage.setItem(storageKey(targetNamespace), JSON.stringify(state));
+    notifyStorageChange();
     return true;
   } catch {
     return false;
@@ -166,8 +196,17 @@ export function saveDecision(decision: Decision, namespace?: StorageNamespace): 
 export function resetAll(namespace?: StorageNamespace): boolean {
   try {
     window.localStorage.removeItem(storageKey(resolveNamespace(namespace)));
+    notifyStorageChange();
     return true;
   } catch {
     return false;
   }
+}
+
+export function resetUserData(): boolean {
+  return resetAll('');
+}
+
+export function resetDemoData(): boolean {
+  return resetAll('demo:');
 }

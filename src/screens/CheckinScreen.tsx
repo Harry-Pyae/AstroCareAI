@@ -1,25 +1,27 @@
 import { useI18n } from "../i18n/LanguageProvider";
-import { useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import crewData from '../data/crew.json';
 import type { CrewMember, Observation } from '../lib/types';
-import { saveCheckinEntry } from '../lib/storage';
+import { CHECKIN_DUPLICATE_WINDOW_MINUTES, saveCheckinEntryResult } from '../lib/storage';
 
 const crew: CrewMember[] = crewData;
 
 export default function CheckinScreen() {
-  const { t, language, date } = useI18n();
+  const { t, date } = useI18n();
   const { crewId } = useParams<{ crewId: string }>();
   const member = crew.find((person) => person.id === crewId);
   const [sleep, setSleep] = useState('');
   const [fatigue, setFatigue] = useState<number | null>(null);
   const [note, setNote] = useState('');
-  const [error, setError] = useState('');
+  const [attempted, setAttempted] = useState(false);
+  const [saveError, setSaveError] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [savedAt, setSavedAt] = useState<string | null>(null);
+  const submissionInProgress = useRef(false);
   const parsedSleep = Number(sleep);
-  const sleepIsInvalid = Boolean(error && (!sleep.trim() || !Number.isFinite(parsedSleep) || parsedSleep < 0 || parsedSleep > 24));
-  const fatigueIsInvalid = Boolean(error && fatigue === null);
+  const sleepIsInvalid = attempted && (!sleep.trim() || !Number.isFinite(parsedSleep) || parsedSleep < 0 || parsedSleep > 24);
+  const fatigueIsInvalid = attempted && fatigue === null;
 
   if (!member) {
     return <section className="mx-auto max-w-xl rounded-xl border border-default bg-card p-6 text-primary">
@@ -30,23 +32,31 @@ export default function CheckinScreen() {
 
   const memberId = member.id;
   const briefPath = `/crew/${encodeURIComponent(memberId)}`;
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (isSaving || savedAt) return;
+    if (submissionInProgress.current || savedAt) return;
+    setAttempted(true);
     const hours = Number(sleep);
     if (!sleep.trim() || !Number.isFinite(hours) || hours < 0 || hours > 24 || fatigue === null) {
-      setError('Enter sleep from 0 to 24 hours and choose a fatigue rating.');
       return;
     }
 
-    setError('');
+    submissionInProgress.current = true;
+    setSaveError('');
     setIsSaving(true);
-    const timestamp = new Date().toISOString();
-    const observation: Observation = { crewId: memberId, metric: 'sleep_hours', value: hours, timestamp, provenance: 'user_checkin' };
-    const saved = saveCheckinEntry(observation, { crewId: memberId, timestamp, fatigue, note: note.trim() });
-    setIsSaving(false);
-    if (saved) setSavedAt(timestamp);
-    else setError('Could not save in this browser. Your entries are still here; enable browser storage and try again.');
+    try {
+      // Yield once so the disabled/saving state is visible before the write.
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      const timestamp = new Date().toISOString();
+      const observation: Observation = { crewId: memberId, metric: 'sleep_hours', value: hours, timestamp, provenance: 'user_checkin' };
+      const result = saveCheckinEntryResult(observation, { crewId: memberId, timestamp, fatigue, note: note.trim() });
+      if (result === 'saved') setSavedAt(timestamp);
+      else if (result === 'duplicate') setSaveError('checkin.duplicate');
+      else setSaveError('Could not save in this browser. Your entries are still here; enable browser storage and try again.');
+    } finally {
+      submissionInProgress.current = false;
+      setIsSaving(false);
+    }
   }
 
   return <section className="mx-auto max-w-2xl text-primary">
@@ -66,13 +76,14 @@ export default function CheckinScreen() {
       <div>
         <label htmlFor="sleep-hours" className="mb-2 block text-sm font-medium">{t("Sleep in the last 24 hours")}</label>
         <div className="flex items-center gap-3">
-          <input autoFocus id="sleep-hours" name="sleepHours" type="number" inputMode="decimal" min="0" max="24" step="any" required value={sleep} onChange={event => setSleep(event.target.value)} aria-invalid={sleepIsInvalid} aria-describedby={sleepIsInvalid ? 'sleep-help checkin-error' : 'sleep-help'} className="min-h-11 w-full rounded-lg border border-default bg-page px-4 py-2 text-primary focus-ring" />
+          <input autoFocus id="sleep-hours" name="sleepHours" type="number" inputMode="decimal" min="0" max="24" step="any" required value={sleep} onChange={event => setSleep(event.target.value)} aria-invalid={sleepIsInvalid} aria-describedby={sleepIsInvalid ? 'sleep-help sleep-error' : 'sleep-help'} className="min-h-11 min-w-0 w-full rounded-lg border border-default bg-page px-4 py-2 text-primary focus-ring" />
           <span className="text-sm text-secondary">{t("hours")}</span>
         </div>
         <p id="sleep-help" className="mt-2 text-xs text-secondary">{t("Enter a value from 0 to 24.")}</p>
+        {sleepIsInvalid ? <p id="sleep-error" role="alert" className="mt-2 text-sm text-danger">{t(sleep.trim() ? 'checkin.sleepRange' : 'checkin.sleepRequired')}</p> : null}
       </div>
 
-      <fieldset aria-invalid={fatigueIsInvalid} aria-describedby={fatigueIsInvalid ? 'checkin-error' : undefined}>
+      <fieldset aria-invalid={fatigueIsInvalid} aria-describedby={fatigueIsInvalid ? 'fatigue-error' : undefined}>
         <legend className="mb-3 text-sm font-medium">{t("How fatigued do you feel?")}</legend>
         <div className="grid grid-cols-5 gap-2">
           {[1, 2, 3, 4, 5].map(value => <label key={value} className="cursor-pointer">
@@ -89,7 +100,8 @@ export default function CheckinScreen() {
         <p className="mt-2 text-right text-xs text-secondary">{note.length}/1000</p>
       </div>
 
-      {error ? <p id="checkin-error" role="alert" className="rounded-lg border border-accent-review bg-card p-3 text-sm text-accent-review">{t(error)}</p> : null}
+      {fatigueIsInvalid ? <p id="fatigue-error" role="alert" className="text-sm text-danger">{t('checkin.fatigueRequired')}</p> : null}
+      {saveError ? <p id="checkin-error" role="alert" className="rounded-lg border border-default bg-page p-3 text-sm text-danger">{t(saveError, { minutes: CHECKIN_DUPLICATE_WINDOW_MINUTES })}</p> : null}
       <button className="min-h-11 w-full rounded-lg bg-accent px-5 py-3 font-medium text-on-accent focus-ring disabled:cursor-wait disabled:opacity-70" type="submit" disabled={isSaving}>
         {isSaving ? t("Saving check-in\u2026") : t("Save check-in")}
       </button>
