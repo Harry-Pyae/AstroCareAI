@@ -1,3 +1,4 @@
+import { useI18n } from "../../i18n/LanguageProvider";
 import { NavLink, useMatch } from 'react-router-dom';
 
 const svg = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true } as const;
@@ -30,6 +31,7 @@ export function Brand({ collapsible }: { collapsible: boolean }) {
 
 /** Existing destinations only. Brief/Check-in appear once a crew member is selected. */
 export function NavList({ collapsible }: { collapsible: boolean }) {
+  const { t, language, date } = useI18n();
   const crewId = useMatch('/crew/:crewId/*')?.params.crewId;
   const items = [
     { to: '/', label: 'Crew', icon: icons.crew },
@@ -48,7 +50,7 @@ export function NavList({ collapsible }: { collapsible: boolean }) {
           <NavLink
             to={item.to}
             end
-            title={item.label}
+            title={t(item.label)}
             className={({ isActive }) =>
               `flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm ${
                 isActive
@@ -58,7 +60,7 @@ export function NavList({ collapsible }: { collapsible: boolean }) {
             }
           >
             {item.icon}
-            <span className={collapsible ? collapseLabel : ''}>{item.label}</span>
+            <span className={collapsible ? collapseLabel : ''}>{t(item.label)}</span>
           </NavLink>
         </li>
       ))}

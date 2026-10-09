@@ -1,17 +1,10 @@
 .brief-dashboard {
-  --brief-surface: var(--surface, #111820); --brief-subtle: var(--surface-subtle, #17212c);
-  --brief-text: var(--text-primary, #edf2f7); --brief-muted: var(--text-secondary, #a1afbd);
-  --brief-border: var(--border-color, #2c3947); --brief-accent: var(--accent, #a6d5e6); --brief-on-accent: var(--on-accent, #10212b);
-  --brief-review: var(--status-review, #efc372); --brief-review-bg: var(--status-review-bg, #2a2318); --brief-good: var(--status-neutral, #a3cbbd);
-  --brief-chart-grid: var(--chart-grid, #334253); --brief-chart-line: var(--chart-line, #a6d5e6); --brief-chart-window: var(--chart-baseline, #a3cbbd);
+  --brief-surface: var(--card); --brief-subtle: var(--card-raised);
+  --brief-text: var(--text-primary); --brief-muted: var(--text-secondary);
+  --brief-border: var(--border-default); --brief-accent: var(--accent); --brief-on-accent: var(--on-accent);
+  --brief-review: var(--accent-review); --brief-review-bg: color-mix(in srgb, var(--accent-review) 12%, var(--card)); --brief-good: var(--accent);
+  --brief-chart-grid: var(--chart-grid); --brief-chart-line: var(--chart-line); --brief-chart-window: var(--chart-baseline-fill);
   color: var(--brief-text); background: var(--brief-surface); border-radius: 16px; padding: clamp(16px, 3vw, 32px); font-size: 14px; line-height: 1.6;
-}
-[data-theme="light"] .brief-dashboard, .light .brief-dashboard, .brief-dashboard[data-theme="light"] {
-  --brief-surface: var(--surface, #ffffff); --brief-subtle: var(--surface-subtle, #f3f6f8);
-  --brief-text: var(--text-primary, #192c3c); --brief-muted: var(--text-secondary, #536779);
-  --brief-border: var(--border-color, #d5dee5); --brief-accent: var(--accent, #265d73); --brief-on-accent: var(--on-accent, #ffffff);
-  --brief-review: var(--status-review, #835400); --brief-review-bg: var(--status-review-bg, #fff6e5); --brief-good: var(--status-neutral, #326858);
-  --brief-chart-grid: var(--chart-grid, #d5dee5); --brief-chart-line: var(--chart-line, #265d73); --brief-chart-window: var(--chart-baseline, #608c7c);
 }
 .brief-dashboard :is(button,a,input,select,summary,[tabindex]):focus-visible { outline: 3px solid var(--brief-accent); outline-offset: 4px; }
 .brief-dashboard :is(button,a,input,select) { border-radius: 7px; }
