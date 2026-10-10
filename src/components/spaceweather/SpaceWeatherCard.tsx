@@ -2,6 +2,7 @@ import { useI18n } from "../../i18n/LanguageProvider";
 import { useEffect, useState } from 'react';
 import fallbackData from '../../data/spaceweather-fallback.json';
 import Icon from '../icons/Icon';
+import DataList from '../ui/DataList';
 
 interface SolarFlare { flrID: string; beginTime: string; peakTime: string; classType: string; }
 function recentFlares(data: unknown): SolarFlare[] {
@@ -12,7 +13,7 @@ function recentFlares(data: unknown): SolarFlare[] {
     return typeof row.flrID === 'string' && typeof row.beginTime === 'string' && Number.isFinite(Date.parse(row.beginTime)) && typeof row.peakTime === 'string' && Number.isFinite(Date.parse(row.peakTime)) && typeof row.classType === 'string' && /^[ABCMX]\d+(\.\d+)?$/.test(row.classType);
   });
   const seen = new Set<string>();
-  return [...events].sort((a,b) => Date.parse(b.peakTime)-Date.parse(a.peakTime)).filter(e => !seen.has(e.flrID) && Boolean(seen.add(e.flrID))).slice(0,3);
+  return [...events].sort((a,b) => Date.parse(b.peakTime)-Date.parse(a.peakTime)).filter(e => !seen.has(e.flrID) && Boolean(seen.add(e.flrID)));
 }
 const cachedEvents = recentFlares(fallbackData);
 
@@ -45,9 +46,22 @@ export default function SpaceWeatherCard() {
       </span>
     </div>
     {loading ? <div role='status' aria-label={t("Checking for recent solar flares… Cached events remain available.")} className='mt-4 space-y-3'>{[0, 1, 2].map(i => <div key={i} className='flex items-center justify-between gap-4'><div className='skeleton h-5 w-24' /><div className='skeleton h-5 w-40' /></div>)}</div>
-    : events.length ? <ul className='mt-4 divide-y divide-default'>{events.map(event => <li key={event.flrID} className='flex min-h-11 flex-wrap items-center justify-between gap-2 py-3'><span className='font-mono text-sm font-medium'>{t("Class")} {event.classType}</span><span className='text-sm text-secondary'>{t("Peak")} <time dateTime={event.peakTime}>{date(event.peakTime, { timeZone: 'UTC', year: 'numeric', hour12: false })}</time></span></li>)}</ul> : <p className='mt-4 rounded-lg border border-default p-4 text-sm text-secondary'>{t("Solar activity context is unavailable. This does not affect the check-in or personal baseline brief.")}</p>}
+    : events.length ? <ul className='mt-4 divide-y divide-default'>{events.slice(0, 3).map(event => <li key={event.flrID} className='flex min-h-11 flex-wrap items-center justify-between gap-2 py-3'><span className='font-mono text-sm font-medium'>{t("Class")} {event.classType}</span><span className='text-sm text-secondary'>{t("Peak")} <time dateTime={event.peakTime}>{date(event.peakTime, { timeZone: 'UTC', year: 'numeric', hour12: false })}</time></span></li>)}</ul> : <p className='mt-4 rounded-lg border border-default p-4 text-sm text-secondary'>{t("Solar activity context is unavailable. This does not affect the check-in or personal baseline brief.")}</p>}
+    {!loading && events.length > 3 ? <details>
+      <summary className='min-h-11 content-center text-sm'>{t('weather.all', { count: events.length })}</summary>
+      <div tabIndex={0} role='group' aria-label={t('All recent solar flares')} className='mt-2 max-h-80 overflow-y-auto pr-1'>
+        <DataList label={t('All recent solar flares')}
+          columns={[{ key: 'class', title: t('Class'), width: 'minmax(3.5rem, auto)' }, { key: 'begin', title: t('Began (UTC)'), numeric: true }, { key: 'peak', title: t('Peak (UTC)'), numeric: true }]}
+          rows={events.map(event => ({ key: event.flrID, cells: {
+            class: <span className='font-mono font-medium'>{event.classType}</span>,
+            begin: <time dateTime={event.beginTime}>{date(event.beginTime, { timeZone: 'UTC', hour12: false, timeZoneName: undefined })}</time>,
+            peak: <time dateTime={event.peakTime}>{date(event.peakTime, { timeZone: 'UTC', hour12: false, timeZoneName: undefined })}</time>,
+          } }))} />
+      </div>
+    </details> : null}
+    {!cached && !loading ? <p className='mt-4 text-sm text-primary'>{t('weather.count', { count: events.length })}</p> : null}
     {cached ? <p className='mt-4 text-xs text-secondary'>{t("These are illustrative cached events, not current observations.")}</p>
-    : fetchedAt ? <p className='mt-4 text-xs text-secondary'>{t("weather.fetched", { time: date(fetchedAt, { timeZone: 'UTC', hour12: false }) })}</p> : null}
+    : fetchedAt ? <p className='mt-1 text-xs text-secondary'>{t("weather.fetched", { time: date(fetchedAt, { timeZone: 'UTC', hour12: false }) })}</p> : null}
     <p className='mt-3 text-xs leading-relaxed text-secondary'>{t("Space-weather context only. These events do not explain or assess a crew member’s readings.")}</p>
   </section>;
 }
