@@ -148,6 +148,7 @@
   "Recent solar activity · NASA DONKI": "Recent solar activity · NASA DONKI",
   "Cached demonstration data": "Cached demonstration data",
   "Live data": "Live data",
+  "weather.fetched": "Last fetched from NASA DONKI: {time}",
   "Checking for recent solar flares… Cached events remain available.": "Checking for recent solar flares… Cached events remain available.",
   "Class": "Class",
   "Peak": "Peak",

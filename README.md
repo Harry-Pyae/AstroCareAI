@@ -31,7 +31,7 @@ Need help in the app? Select **How this demo works** on the crew page or in the 
 | Daily check-in | Sleep hours and quality, fatigue, exercise and effort, water intake, mood, stress, symptoms and a note. Sleep, exercise and mood join the baseline comparison. Everything else is shown as recorded, never interpreted. HRV and radiation stay synthetic telemetry and cannot be entered by hand. |
 | Task context and decisions | Upcoming task with its attention demands, and three human-in-command actions with a saved history. |
 | Demo mode | Three synthetic scenarios (*Stable observations*, *Change worth reviewing*, *Incomplete information*). Demo records are kept separate from your own check-ins. |
-| Space weather context | Recent solar flares from **NASA DONKI** (live via NASA CCMC, with a clearly labelled cached fallback). Context only: never linked to anyone's readings. |
+| Space weather context | Recent solar flares from **NASA DONKI** (live through the app's own `/api/space-weather` function, with a clearly labelled cached fallback). Context only: never linked to anyone's readings. |
 | Crew overview | Six synthetic crew profiles (stable, declining, incomplete, stale, exercise increase, mixed), each with freshness and counts of changes; counts only, never a health rating. |
 | QR deep links | **Crew badge** on each brief opens the QR code, link copy and PNG download, so personal links are shared only on purpose. |
 | Accessibility and polish | Light/dark themes, English and Myanmar, keyboard navigation with visible focus, reduced-motion support, works from phone to desktop. |
@@ -59,17 +59,20 @@ node src/data/baseline.test.mjs               # baseline rules and seed profiles
 node src/components/brief/integration.test.mjs # storage + baseline integration
 node src/components/brief/contract.test.mjs    # dashboard render contract + build
 node src/i18n/i18n.test.mjs                    # English/Myanmar coverage
+node src/components/spaceweather/api.test.mjs  # space-weather function (offline)
 ```
 
-Configuration is optional: see `.env.example`. `VITE_DONKI_FLR_URL` overrides the NASA DONKI endpoint. No API key is needed.
+Space weather comes from `/api/space-weather` (`api/space-weather.ts`). Vercel runs it as a serverless function; `npm run dev` runs the same handler inside Vite, so there is no second process to start. `npm run preview` and plain static hosting have no function, so the card shows its cached events there.
+
+Configuration is optional and server-side only: see `.env.example` (`NASA_API_KEY`, `NASA_API_KEY_FALLBACK`, `DONKI_FLR_URL`). The default NASA CCMC endpoint needs no key.
 
 ## Deployment (Vercel)
 
-Framework preset **Vite**, build command `npm run build`, output directory `dist`. `vercel.json` contains the single-page-app rewrite so deep links such as `/crew/ac-cmdr-01` (and QR scans) open directly.
+Framework preset **Vite**, build command `npm run build`, output directory `dist`. Vercel picks up `api/space-weather.ts` automatically. `vercel.json` contains the single-page-app rewrite so deep links such as `/crew/ac-cmdr-01` (and QR scans) open directly.
 
 ## Tech stack
 
-React 18 · Vite · TypeScript · Tailwind CSS v4 · React Router · Recharts · qrcode. Synthetic crew profiles in `src/data/profiles.ts` (regenerate fixtures with `node src/data/generate-seeds.mjs`), the baseline logic in `src/lib/baseline.ts` (a pure, unit-tested function), browser storage in `src/lib/storage.ts`. No server is needed: NASA DONKI is fetched directly from the browser.
+React 18 · Vite · TypeScript · Tailwind CSS v4 · React Router · Recharts · qrcode. Synthetic crew profiles in `src/data/profiles.ts` (regenerate fixtures with `node src/data/generate-seeds.mjs`), the baseline logic in `src/lib/baseline.ts` (a pure, unit-tested function), browser storage in `src/lib/storage.ts`. The only server code is `api/space-weather.ts`, a small cached relay for NASA DONKI; the core journey works without it.
 
 ## More
 
